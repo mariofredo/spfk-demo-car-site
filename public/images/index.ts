@@ -1,0 +1,12 @@
+export {default as Mitsubishi} from './mitsubishi.png';
+export {default as ArrowTop} from './arrow_top.png';
+export {default as ArrowTopLight} from './arrow_top_light.png';
+export {default as OpeningBg} from './opening_bg.png';
+export {default as OpeningBtn} from './opening_btn.png';
+export {default as OpeningBtnLight} from './opening_btn_light.png';
+export {default as MarkLineRed} from './mark_line_red.png';
+export {default as ArrowLeftRed} from './arrow_left_red.png';
+export {default as CarOne} from './car_one.png';
+export {default as CarInfo} from './car_info_icon.png';
+export {default as AddCircle} from './add_circle.png';
+export {default as MitsubishiLight} from './mitsubishi_light.png';
