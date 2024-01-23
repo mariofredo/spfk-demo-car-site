@@ -28,7 +28,11 @@ export default function Header({
     },
   ];
   return (
-    <div className='grid grid-cols-2 pt-[106px]'>
+    <div
+      className={`grid grid-cols-2 pt-[106px] header_ctr ${
+        step >= 1 ? 'active static' : 'absolute top-0'
+      }`}
+    >
       <div className='flex justify-between items-center px-[78px]'>
         <Image
           src={ArrowLeftRed}
@@ -39,22 +43,22 @@ export default function Header({
           }}
         />
         <p className='text-[32px] text-right'>
-          {listQuestion[step - 1].question}{' '}
+          {listQuestion[step - 1]?.question}{' '}
           <span className='header_redline'>
-            {listQuestion[step - 1].markedRed}
+            {listQuestion[step - 1]?.markedRed}
           </span>
         </p>
       </div>
       <div
         className={`flex  ${
-          listQuestion[step - 1].type === 'horizontal'
+          listQuestion[step - 1]?.type === 'horizontal'
             ? 'flex-row justify-evenly items-center'
             : 'flex-col items-start justify-between gap-[15px]'
         } `}
       >
-        {listQuestion[step - 1].options.map((option) => (
+        {listQuestion[step - 1]?.options.map((option) => (
           <>
-            {listQuestion[step - 1].type === 'horizontal' && (
+            {listQuestion[step - 1]?.type === 'horizontal' && (
               <div className='header_option'>
                 <input
                   id={option}
@@ -68,7 +72,7 @@ export default function Header({
                 </label>
               </div>
             )}
-            {listQuestion[step - 1].type === 'vertical' && (
+            {listQuestion[step - 1]?.type === 'vertical' && (
               <div className='header_option_ver'>
                 <input
                   id={option}

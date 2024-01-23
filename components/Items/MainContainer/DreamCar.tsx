@@ -21,7 +21,7 @@ export default function DreamCar({
           Tell us about your <span className='redline'>dream car</span>
         </p>
       </div>
-      <div className='absolute bottom-0'>
+      {/* <div className='absolute bottom-0'>
         <div
           className='relative flex justify-center cursor-pointer'
           onClick={() => setStep(1)}
@@ -36,7 +36,7 @@ export default function DreamCar({
             alt='OpeningBtn'
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
