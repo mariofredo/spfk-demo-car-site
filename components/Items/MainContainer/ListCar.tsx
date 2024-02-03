@@ -106,37 +106,51 @@ export default function ListCar({
           </div>
         ) : (
           <>
-            <div className='flex gap-[40px]'>
-              <div className='py-[30px]'>
-                <div className='lc_fc_ctr'>
-                  <div className='lc_fc_body pt-[150px]'>
-                    <div className='lc_fc_title'>CAR TYPE</div>
-                    <div className='lc_fc_list_ctr mt-[85px]'>
-                      {selectedCar.recommendation.specs.map((item) => (
-                        <div className='fc_list_item'>{item.spec_name}</div>
-                      ))}
+            {selectedCar ? (
+              <div className='flex gap-[40px]'>
+                <div className='py-[30px]'>
+                  <div className='lc_fc_ctr'>
+                    <div className='lc_fc_body pt-[150px]'>
+                      <div className='lc_fc_title'>CAR TYPE</div>
+                      <div className='lc_fc_list_ctr mt-[85px]'>
+                        {selectedCar.recommendation.specs.map((item) => (
+                          <div className='fc_list_item'>{item.spec_name}</div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div className='py-[30px]'>
+                  <FinalCard
+                    data={selectedCar.recommendation}
+                    selected={true}
+                  />
+                </div>
+                <div
+                  className={`flex w-[calc(100%-120px)] overflow-x-scroll flex-nowrap gap-[40px] py-[30px] ${
+                    isDragging ? 'cursor-grabbing' : 'cursor-grab'
+                  }`}
+                  ref={containerRef}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                >
+                  {selectedCar.competitor.map(
+                    (selectedCar: SelectedCarItem) => (
+                      <FinalCard data={selectedCar} selected={false} />
+                    )
+                  )}
+                </div>
               </div>
-              <div className='py-[30px]'>
-                <FinalCard data={selectedCar.recommendation} selected={true} />
+            ) : (
+              <div className='lc_empty_ctr'>
+                <div className='lc_empty_title'>
+                  Finish the question first <br />
+                  <span>then select your car for comparison</span>
+                </div>
               </div>
-              <div
-                className={`flex w-[calc(100%-120px)] overflow-x-scroll flex-nowrap gap-[40px] py-[30px] ${
-                  isDragging ? 'cursor-grabbing' : 'cursor-grab'
-                }`}
-                ref={containerRef}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-              >
-                {selectedCar.competitor.map((selectedCar: SelectedCarItem) => (
-                  <FinalCard data={selectedCar} selected={false} />
-                ))}
-              </div>
-            </div>
+            )}
           </>
         )}
       </div>

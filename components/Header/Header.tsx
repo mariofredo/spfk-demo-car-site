@@ -65,13 +65,14 @@ export default function Header({
   }, [answeredQuestion]);
 
   useEffect(() => {
-    if (cars.length === 1)
+    if (cars.length === 1) {
       if (
         answeredQuestion[answeredQuestion.length - 1].next_question_id === 0
       ) {
         handleGetListComparison(cars[0].category_level_2_id);
         setTab(2);
       }
+    } else if (cars.length === 0) setSelectedCar(null);
   }, [cars]);
 
   const handleBack = useCallback(() => {

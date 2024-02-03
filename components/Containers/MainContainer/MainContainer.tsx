@@ -24,6 +24,8 @@ export default function MainContainer() {
     firstFetch,
     setFinish,
     finish,
+    setTab,
+    tab,
   } = useCar();
   const {theme} = useTheme();
   const handleReset = useCallback(() => {
@@ -33,7 +35,8 @@ export default function MainContainer() {
     setAnsweredQuestion([]);
     setFirstFetch(true);
     setFinish(false);
-  }, [cars, step, answeredQuestion, questionNum, finish, firstFetch]);
+    setTab(1);
+  }, [cars, step, answeredQuestion, questionNum, finish, firstFetch, tab]);
 
   return (
     <div
