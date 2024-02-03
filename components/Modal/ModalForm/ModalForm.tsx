@@ -10,6 +10,8 @@ export default function ModalForm({
     company_brand: '',
     batch: '',
   });
+  const [listBatch, setListBatch] = useState<{batch: number}[]>([]);
+  const [listBrand, setListBrand] = useState<{id: number; name: string}[]>([]);
   const getQuestions = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/question-list`,
@@ -29,9 +31,41 @@ export default function ModalForm({
       }
     }
   };
+  const getQuestionBatchList = async (company_brand_id: number) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/question-batch-list`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({company_brand_id}),
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      setListBatch(data.data);
+    }
+  };
+  const getBrandList = async () => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/brand-list`,
+      {
+        method: 'POST',
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      setListBrand(data.data);
+    }
+  };
   useEffect(() => {
-    console.log(payload);
-  }, [payload]);
+    getBrandList();
+  }, []);
+  useEffect(() => {
+    if (payload.company_brand)
+      getQuestionBatchList(parseInt(payload.company_brand));
+  }, [payload.company_brand]);
   return (
     <div className='mdl_bd'>
       <div className='mdl_form_ctr'>
@@ -48,7 +82,9 @@ export default function ModalForm({
             <option value='' disabled>
               Choose Your Brand
             </option>
-            <option value='1'>Mitsubishi</option>
+            {listBrand.map((key) => (
+              <option value={key.id}>{key.name}</option>
+            ))}
           </select>
         </div>
         <div className='mdl_form_input_ctr'>
@@ -60,14 +96,21 @@ export default function ModalForm({
               setPayload({...payload, [e.target.name]: e.target.value})
             }
             value={payload.batch}
+            disabled={!payload.company_brand}
           >
             <option value='' disabled>
               Choose Your Batch
             </option>
-            <option value='1'>1</option>
+            {listBatch.map((key) => (
+              <option value={key.batch}>{key.batch}</option>
+            ))}
           </select>
         </div>
-        <button className='mdl_form_btn' onClick={() => getQuestions()}>
+        <button
+          className='mdl_form_btn'
+          disabled={!payload.batch || !payload.company_brand}
+          onClick={() => getQuestions()}
+        >
           Submit
         </button>
       </div>
