@@ -1,7 +1,15 @@
 'use client';
 import Card from '@/components/Cards/Card';
 import FinalCard from '@/components/Cards/FinalCard';
-import React, {Dispatch, SetStateAction, useRef, useState} from 'react';
+import {useCar} from '@/context/carContext';
+import {Car} from '@/types/car';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 export default function ListCar({
   step,
@@ -16,6 +24,7 @@ export default function ListCar({
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const {cars} = useCar();
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (containerRef.current) {
@@ -37,10 +46,11 @@ export default function ListCar({
   const handleMouseUp = () => {
     setIsDragging(false);
   };
-
+  useEffect(() => {
+    console.log(cars, 'cars');
+  }, [cars]);
   return (
     <div
-      onClick={() => setStep(1)}
       className={`lc_ctr px-[50px] py-[30px] ${
         step >= 1 ? 'active' : 'inactive'
       }`}
@@ -67,9 +77,19 @@ export default function ListCar({
         </div>
         {tab === 1 ? (
           <div className='grid grid-cols-4 gap-[70px]'>
-            {arr.map((_) => (
-              <Card />
-            ))}
+            {cars.map(
+              ({brand, category, name, object_id, price, spec, image}: Car) => (
+                <Card
+                  brand={brand}
+                  category={category}
+                  name={name}
+                  object_id={object_id}
+                  price={price}
+                  spec={spec}
+                  image={image}
+                />
+              )
+            )}
           </div>
         ) : (
           <>

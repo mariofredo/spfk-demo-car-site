@@ -1,6 +1,15 @@
-import React, {Dispatch, SetStateAction} from 'react';
+'use client';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import {ArrowLeftRed} from '@/public/images';
+import {useCar} from '@/context/carContext';
+import {Question, AnsweredData} from '@/types/question';
 
 export default function Header({
   step,
@@ -9,24 +18,69 @@ export default function Header({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) {
-  const listQuestion = [
-    {
-      question: 'What type car',
-      markedRed: 'do you like?',
-      options: ['Sedan', 'Coupe', 'SUV', 'Truck'],
-      type: 'horizontal',
-    },
-    {
-      question: 'If your car had a personality,',
-      markedRed: 'what would it be?',
-      options: [
-        'Adventurous and ready for off-road exploration.',
-        'Reliable and practical, always there when needed.',
-        'Sophisticated and elegant, turning heads wherever it goes.',
-      ],
-      type: 'vertical',
-    },
-  ];
+  const {
+    setCars,
+    questions,
+    setQuestions,
+    answeredQuestion,
+    setAnsweredQuestion,
+    questionNum,
+    setQuestionNum,
+    firstFetch,
+    setFirstFetch,
+  } = useCar();
+  const handleFormatQuestion = (question: string, isMarkedRed: boolean) => {
+    if (question) {
+      if (isMarkedRed) return question.split(' ').slice(-3).join(' ');
+      else {
+        const arrSplit = question.split(' ');
+        return arrSplit.slice(0, arrSplit.length - 3).join(' ');
+      }
+    }
+  };
+
+  // useEffect(() => {
+  //   getQuestions();
+  // }, []);
+
+  useEffect(() => {
+    getCarRecommendations(answeredQuestion.map((el) => el.id));
+  }, [answeredQuestion]);
+
+  const handleBack = useCallback(() => {
+    if (answeredQuestion.length > 0) {
+      const filteredData = answeredQuestion.filter(
+        (key) => key.id !== questionNum
+      );
+      const lastIdx = answeredQuestion.length - 1;
+      const num = answeredQuestion[lastIdx].id;
+      setQuestionNum(num);
+      setAnsweredQuestion(filteredData.slice(0, -1));
+    }
+  }, [questionNum, answeredQuestion]);
+
+  const getCarRecommendations = async (arr: number[]) => {
+    try {
+      console.log(arr, 'arr');
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/get-recommendation`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({tags: arr}),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setCars(data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       className={`grid grid-cols-2 pt-[106px] header_ctr ${
@@ -38,56 +92,56 @@ export default function Header({
           src={ArrowLeftRed}
           alt='ArrowLeftRed'
           className='h-[20px] w-[10px] cursor-pointer'
-          onClick={() => {
-            if (step > 1) setStep(step - 1);
-          }}
+          onClick={handleBack}
         />
         <p className='text-[32px] text-right'>
-          {listQuestion[step - 1]?.question}{' '}
+          {handleFormatQuestion(
+            questions[
+              firstFetch === true
+                ? 0
+                : questions.findIndex((el) => el.id == questionNum)
+            ]?.content,
+            false
+          )}{' '}
           <span className='header_redline'>
-            {listQuestion[step - 1]?.markedRed}
+            {handleFormatQuestion(
+              questions[
+                firstFetch === true
+                  ? 0
+                  : questions.findIndex((el) => el.id == questionNum)
+              ]?.content,
+              true
+            )}
           </span>
         </p>
       </div>
-      <div
-        className={`flex  ${
-          listQuestion[step - 1]?.type === 'horizontal'
-            ? 'flex-row justify-evenly items-center'
-            : 'flex-col items-start justify-between gap-[15px]'
-        } `}
-      >
-        {listQuestion[step - 1]?.options.map((option) => (
-          <>
-            {listQuestion[step - 1]?.type === 'horizontal' && (
-              <div className='header_option'>
-                <input
-                  id={option}
-                  type='radio'
-                  name='option'
-                  value={option}
-                  onClick={() => setStep(step + 1)}
-                />
-                <label htmlFor={option} className='option_label'>
-                  {option}
-                </label>
-              </div>
-            )}
-            {listQuestion[step - 1]?.type === 'vertical' && (
-              <div className='header_option_ver'>
-                <input
-                  id={option}
-                  type='radio'
-                  name='option'
-                  value={option}
-                  // onClick={() => setStep(step + 1)}
-                />
-                <span className='checkmark'></span>
-                <label htmlFor={option} className='option_label'>
-                  {option}
-                </label>
-              </div>
-            )}
-          </>
+      <div className={`flex  ${'flex-row justify-evenly items-center'}`}>
+        {questions[
+          firstFetch === true
+            ? 0
+            : questions.findIndex((el) => el.id == questionNum)
+        ]?.result_answers.map(({tag, id, next_question_id}) => (
+          <div className='header_option' key={id}>
+            <input
+              id={tag}
+              type='radio'
+              name='option'
+              value={tag}
+              onClick={() => {
+                if (next_question_id !== 0) {
+                  setAnsweredQuestion((prev) => [
+                    ...prev,
+                    {id, next_question_id},
+                  ]);
+                  setQuestionNum(next_question_id);
+                  if (firstFetch) setFirstFetch(false);
+                }
+              }}
+            />
+            <label htmlFor={tag} className='option_label'>
+              {tag}
+            </label>
+          </div>
         ))}
       </div>
     </div>
