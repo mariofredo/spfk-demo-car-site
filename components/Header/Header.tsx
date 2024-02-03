@@ -19,6 +19,7 @@ export default function Header({
   setStep: Dispatch<SetStateAction<number>>;
 }) {
   const {
+    cars,
     setCars,
     questions,
     setQuestions,
@@ -28,6 +29,10 @@ export default function Header({
     setQuestionNum,
     firstFetch,
     setFirstFetch,
+    finish,
+    setFinish,
+    setSelectedCar,
+    setTab,
   } = useCar();
   const handleFormatQuestion = (question: string, isMarkedRed: boolean) => {
     if (question) {
@@ -39,29 +44,55 @@ export default function Header({
     }
   };
 
-  // useEffect(() => {
-  //   getQuestions();
-  // }, []);
-
+  const handleGetListComparison = async (category_level_2_id: number) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/comparison-list`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({category_level_2_id}),
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      setSelectedCar(data.data);
+    }
+  };
   useEffect(() => {
     getCarRecommendations(answeredQuestion.map((el) => el.id));
   }, [answeredQuestion]);
 
+  useEffect(() => {
+    if (cars.length === 1)
+      if (
+        answeredQuestion[answeredQuestion.length - 1].next_question_id === 0
+      ) {
+        handleGetListComparison(cars[0].category_level_2_id);
+        setTab(2);
+      }
+  }, [cars]);
+
   const handleBack = useCallback(() => {
+    if (answeredQuestion.length === 1) setFirstFetch(true);
     if (answeredQuestion.length > 0) {
-      const filteredData = answeredQuestion.filter(
-        (key) => key.id !== questionNum
-      );
-      const lastIdx = answeredQuestion.length - 1;
-      const num = answeredQuestion[lastIdx].id;
+      let updatedData = answeredQuestion;
+      updatedData.splice(-1, 1);
+      const lastIdx = updatedData.length - 1;
+      const num = updatedData[lastIdx].current_question_id;
       setQuestionNum(num);
-      setAnsweredQuestion(filteredData.slice(0, -1));
+      setAnsweredQuestion((prev) => {
+        let data = [...prev];
+        data.splice(-1, 1);
+        return data;
+      });
+      setFinish(false);
     }
   }, [questionNum, answeredQuestion]);
 
   const getCarRecommendations = async (arr: number[]) => {
     try {
-      console.log(arr, 'arr');
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/get-recommendation`,
         {
@@ -129,12 +160,42 @@ export default function Header({
               value={tag}
               onClick={() => {
                 if (next_question_id !== 0) {
-                  setAnsweredQuestion((prev) => [
-                    ...prev,
-                    {id, next_question_id},
-                  ]);
-                  setQuestionNum(next_question_id);
-                  if (firstFetch) setFirstFetch(false);
+                  if (firstFetch) {
+                    setFirstFetch(false);
+                    setAnsweredQuestion((prev) => [
+                      ...prev,
+                      {
+                        id,
+                        next_question_id,
+                        current_question_id: questions[0].id,
+                      },
+                    ]);
+                    setQuestionNum(next_question_id);
+                  } else {
+                    setAnsweredQuestion((prev) => [
+                      ...prev,
+                      {id, next_question_id, current_question_id: questionNum},
+                    ]);
+                    setQuestionNum(next_question_id);
+                  }
+                } else {
+                  if (finish) {
+                    setAnsweredQuestion((prev) => {
+                      const data = [...prev];
+                      data[data.length - 1] = {
+                        id,
+                        next_question_id,
+                        current_question_id: questionNum,
+                      };
+                      return data;
+                    });
+                  } else {
+                    setFinish(true);
+                    setAnsweredQuestion((prev) => [
+                      ...prev,
+                      {id, next_question_id, current_question_id: questionNum},
+                    ]);
+                  }
                 }
               }}
             />

@@ -12,4 +12,5 @@ export interface Question {
 export interface AnsweredData {
   id: number;
   next_question_id: number;
+  current_question_id: number;
 }

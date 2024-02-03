@@ -83,7 +83,9 @@ export default function ModalForm({
               Choose Your Brand
             </option>
             {listBrand.map((key) => (
-              <option value={key.id}>{key.name}</option>
+              <option key={key.id} value={key.id}>
+                {key.name}
+              </option>
             ))}
           </select>
         </div>
@@ -102,7 +104,9 @@ export default function ModalForm({
               Choose Your Batch
             </option>
             {listBatch.map((key) => (
-              <option value={key.batch}>{key.batch}</option>
+              <option key={key.batch} value={key.batch}>
+                {key.batch}
+              </option>
             ))}
           </select>
         </div>

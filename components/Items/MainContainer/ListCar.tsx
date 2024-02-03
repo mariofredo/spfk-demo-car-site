@@ -2,7 +2,7 @@
 import Card from '@/components/Cards/Card';
 import FinalCard from '@/components/Cards/FinalCard';
 import {useCar} from '@/context/carContext';
-import {Car} from '@/types/car';
+import {Car, SelectedCar, SelectedCarItem} from '@/types/car';
 import React, {
   Dispatch,
   SetStateAction,
@@ -19,12 +19,11 @@ export default function ListCar({
   setStep: Dispatch<SetStateAction<number>>;
 }) {
   const arr = [1, 2, 3, 4, 5, 6, 7];
-  const [tab, setTab] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const {cars} = useCar();
+  const {cars, tab, setTab, selectedCar} = useCar();
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (containerRef.current) {
@@ -46,9 +45,9 @@ export default function ListCar({
   const handleMouseUp = () => {
     setIsDragging(false);
   };
-  useEffect(() => {
-    console.log(cars, 'cars');
-  }, [cars]);
+  // useEffect(() => {
+  //   console.log(cars, 'cars');
+  // }, [cars]);
   return (
     <div
       className={`lc_ctr px-[50px] py-[30px] ${
@@ -57,7 +56,10 @@ export default function ListCar({
     >
       <div className='lc_wrapper'>
         <div className='lc_filters'>
-          <div>1,728 Cars Match</div>
+          <div>
+            {cars.length === 1 ? `${cars.length} Car` : `${cars.length} Cars`}{' '}
+            Match
+          </div>
           <div className='lc_filters_btn_ctr'>
             <button
               className={`lc_filters_btn ${tab === 1 ? 'active' : 'inactive'}`}
@@ -78,12 +80,23 @@ export default function ListCar({
         {tab === 1 ? (
           <div className='grid grid-cols-4 gap-[70px]'>
             {cars.map(
-              ({brand, category, name, object_id, price, spec, image}: Car) => (
+              ({
+                brand,
+                category,
+                name,
+                category_level_1_id,
+                category_level_2_id,
+                price,
+                spec,
+                image,
+              }: Car) => (
                 <Card
+                  key={category_level_2_id}
                   brand={brand}
                   category={category}
                   name={name}
-                  object_id={object_id}
+                  category_level_1_id={category_level_1_id}
+                  category_level_2_id={category_level_2_id}
                   price={price}
                   spec={spec}
                   image={image}
@@ -99,18 +112,15 @@ export default function ListCar({
                   <div className='lc_fc_body pt-[150px]'>
                     <div className='lc_fc_title'>CAR TYPE</div>
                     <div className='lc_fc_list_ctr mt-[85px]'>
-                      <div className='fc_list_item'>Truck</div>
-                      <div className='fc_list_item'>4 people</div>
-                      <div className='fc_list_item'>North</div>
-                      <div className='fc_list_item'>Chaffeured</div>
-                      <div className='fc_list_item'>City Driving</div>
-                      <div className='fc_list_item'>Daily Commute</div>
+                      {selectedCar.recommendation.specs.map((item) => (
+                        <div className='fc_list_item'>{item.spec_name}</div>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
               <div className='py-[30px]'>
-                <FinalCard selected={true} />
+                <FinalCard data={selectedCar.recommendation} selected={true} />
               </div>
               <div
                 className={`flex w-[calc(100%-120px)] overflow-x-scroll flex-nowrap gap-[40px] py-[30px] ${
@@ -122,8 +132,8 @@ export default function ListCar({
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
               >
-                {arr.map((_) => (
-                  <FinalCard selected={false} />
+                {selectedCar.competitor.map((selectedCar: SelectedCarItem) => (
+                  <FinalCard data={selectedCar} selected={false} />
                 ))}
               </div>
             </div>
