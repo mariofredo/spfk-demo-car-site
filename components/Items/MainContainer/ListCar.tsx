@@ -110,7 +110,7 @@ export default function ListCar({
               <div className='flex gap-[40px]'>
                 <div className='py-[30px]'>
                   <div className='lc_fc_ctr'>
-                    <div className='lc_fc_body pt-[150px]'>
+                    <div className='lc_fc_body pt-[180px]'>
                       <div className='lc_fc_title'>CAR TYPE</div>
                       <div className='lc_fc_list_ctr mt-[85px]'>
                         {selectedCar.recommendation.specs.map((item) => (

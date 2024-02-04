@@ -14,13 +14,15 @@ export default function Card({
 }: Car) {
   return (
     <div className='lc_card_ctr'>
-      <Image
-        width={200}
-        height={200}
-        src={image}
-        alt='CarOne'
-        className='relative top-[-30px] right-[-20px] w-[110%] max-w-none'
-      />
+      <div className='w-full h-[171px] flex items-center justify-center'>
+        <Image
+          width={200}
+          height={200}
+          src={image}
+          alt='CarOne'
+          className='relative top-[-30px] right-[-20px] w-[110%]  max-w-none'
+        />
+      </div>
       <div className='lc_card_body'>
         <div className='lc_card_title'>
           {brand} <br />

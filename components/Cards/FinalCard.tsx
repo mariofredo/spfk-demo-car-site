@@ -11,13 +11,15 @@ export default function FinalCard({
 }) {
   return (
     <div className={`lc_fc_ctr ${selected && 'selected'}`}>
-      <Image
-        className='relative top-[-25px]'
-        width={200}
-        height={200}
-        src={data.image}
-        alt='CarOne'
-      />
+      <div className='w-full h-[171px] flex items-center justify-center'>
+        <Image
+          className='relative top-[-25px]'
+          width={200}
+          height={200}
+          src={data.image}
+          alt='CarOne'
+        />
+      </div>
       <div className='lc_fc_body'>
         <div className='lc_fc_title'>
           {data.company_brand_name} <br />
