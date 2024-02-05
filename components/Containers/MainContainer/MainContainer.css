@@ -261,7 +261,6 @@
 }
 .mc_ctr.dark .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_btn_ctr {
   display: flex;
-  justify-content: flex-end;
   margin-top: 11px;
 }
 .mc_ctr.dark .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_btn_ctr .lc_card_btn {
@@ -340,6 +339,7 @@
 }
 .mc_ctr.dark .lc_ctr .lc_wrapper .lc_fc_ctr.selected {
   background: linear-gradient(140deg, rgba(217, 217, 217, 0.5) 31.46%, rgba(255, 255, 255, 0.2) 55.76%, rgba(217, 217, 217, 0.5) 69.76%, rgba(255, 255, 255, 0.2) 86.99%, rgba(255, 255, 255, 0.2) 93.75%, rgba(217, 217, 217, 0.5) 99.15%);
+  border: 2px solid #f31d1e;
 }
 .mc_ctr.dark .lc_ctr .lc_wrapper .lc_empty_ctr {
   width: 100%;

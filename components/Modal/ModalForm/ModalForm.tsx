@@ -90,7 +90,7 @@ export default function ModalForm({
           </select>
         </div>
         <div className='mdl_form_input_ctr'>
-          <label htmlFor='selectBrand'>Choose Your Question Batch</label>
+          <label htmlFor='selectBrand'>Choose Your Question Set</label>
           <select
             name='batch'
             id='selectBrand'
@@ -101,7 +101,7 @@ export default function ModalForm({
             disabled={!payload.company_brand}
           >
             <option value='' disabled>
-              Choose Your Batch
+              Choose Your Question Set
             </option>
             {listBatch.map((key) => (
               <option key={key.batch} value={key.batch}>
