@@ -56,18 +56,18 @@ export default function Header({
   };
   useEffect(() => {
     getCarRecommendations(answeredQuestion.map((el) => el.id));
-    console.log(answeredQuestion, 'test');
   }, [answeredQuestion]);
 
   useEffect(() => {
-    if (cars.length === 1) {
-      if (
-        answeredQuestion[answeredQuestion.length - 1].next_question_id === 0
-      ) {
-        handleGetListComparison(cars[0].category_level_2_id);
-        setTab(2);
-      }
-    } else if (cars.length === 0) setSelectedCar(null);
+    // if (cars.length === 1) {
+    //   if (
+    //     answeredQuestion[answeredQuestion.length - 1].next_question_id === 0
+    //   ) {
+    //     handleGetListComparison(cars[0].category_level_2_id);
+    //     // setTab(2);
+    //   }
+    // } else
+    if (cars.length === 0) setSelectedCar(null);
   }, [cars]);
 
   const handleBack = useCallback(() => {
@@ -84,6 +84,7 @@ export default function Header({
         return data;
       });
       setFinish(false);
+      setTab(1);
     }
   }, [questionNum, answeredQuestion]);
 

@@ -294,7 +294,7 @@
           }
           .lc_card_btn_ctr {
             display: flex;
-            justify-content: flex-end;
+            // justify-content: flex-end;
             margin-top: 11px;
             .lc_card_btn {
               display: flex;
@@ -394,6 +394,7 @@
           rgba(255, 255, 255, 0.2) 93.75%,
           rgba(217, 217, 217, 0.5) 99.15%
         );
+        border: 2px solid #f31d1e;
       }
       .lc_empty_ctr {
         width: 100%;
