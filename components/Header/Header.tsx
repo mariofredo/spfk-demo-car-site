@@ -62,6 +62,7 @@ export default function Header({
   };
   useEffect(() => {
     getCarRecommendations(answeredQuestion.map((el) => el.id));
+    console.log(answeredQuestion, 'test');
   }, [answeredQuestion]);
 
   useEffect(() => {
@@ -77,7 +78,7 @@ export default function Header({
 
   const handleBack = useCallback(() => {
     if (answeredQuestion.length === 1) setFirstFetch(true);
-    if (answeredQuestion.length > 0) {
+    if (answeredQuestion.length > 1) {
       let updatedData = answeredQuestion;
       updatedData.splice(-1, 1);
       const lastIdx = updatedData.length - 1;
