@@ -1,11 +1,5 @@
 'use client';
-import React, {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, {Dispatch, SetStateAction, useCallback, useEffect} from 'react';
 import Image from 'next/image';
 import {ArrowLeftRed} from '@/public/images';
 import {useCar} from '@/context/carContext';
