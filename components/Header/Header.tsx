@@ -115,7 +115,7 @@ export default function Header({
         step >= 1 ? 'active static' : 'absolute top-0'
       }`}
     >
-      <div className='flex justify-between items-center px-[78px]'>
+      <div className='flex justify-between items-center px-[39px]'>
         <Image
           src={ArrowLeftRed}
           alt='ArrowLeftRed'
