@@ -13,7 +13,7 @@ export default function Card({
   spec,
   image,
 }: Car) {
-  const {cars, setSelectedCar, setTab} = useCar();
+  const {cars, setSelectedCar, setTab, finish} = useCar();
   const handleGetListComparison = async (category_level_2_id: number) => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/comparison-list`,
@@ -50,7 +50,7 @@ export default function Card({
         <div className='lc_card_type'>{name}</div>
         <div className='lc_card_price'>{price}</div>
         <div className='lc_card_btn_ctr'>
-          {cars.length === 1 && (
+          {finish && (
             <button
               className='lc_card_btn'
               onClick={() => handleGetListComparison(category_level_2_id)}
