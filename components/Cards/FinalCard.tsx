@@ -1,14 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import {CarOne} from '@/public/images';
 import {SelectedCarItem} from '@/types/car';
-export default function FinalCard({
+export const FinalCard = ({
   data,
   selected,
 }: {
   data: SelectedCarItem;
   selected: boolean;
-}) {
+}) => {
   return (
     <div className={`lc_fc_ctr ${selected && 'selected'}`}>
       <div className='w-full h-[171px] flex items-center justify-center'>
@@ -35,4 +34,4 @@ export default function FinalCard({
       </div>
     </div>
   );
-}
+};

@@ -1,9 +1,8 @@
 'use client';
-import React, {Dispatch, SetStateAction, useCallback, useEffect} from 'react';
 import Image from 'next/image';
+import {Dispatch, SetStateAction, useCallback, useEffect} from 'react';
 import {ArrowLeftRed} from '@/public/images';
 import {useCar} from '@/context/carContext';
-import {Question, AnsweredData} from '@/types/question';
 
 export default function Header({
   step,
@@ -38,35 +37,11 @@ export default function Header({
     }
   };
 
-  const handleGetListComparison = async (category_level_2_id: number) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/comparison-list`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({category_level_2_id}),
-      }
-    );
-    if (response.ok) {
-      const data = await response.json();
-      setSelectedCar(data.data);
-    }
-  };
   useEffect(() => {
     getCarRecommendations(answeredQuestion.map((el) => el.id));
   }, [answeredQuestion]);
 
   useEffect(() => {
-    // if (cars.length === 1) {
-    //   if (
-    //     answeredQuestion[answeredQuestion.length - 1].next_question_id === 0
-    //   ) {
-    //     handleGetListComparison(cars[0].category_level_2_id);
-    //     // setTab(2);
-    //   }
-    // } else
     if (cars.length === 0) setSelectedCar(null);
   }, [cars]);
 

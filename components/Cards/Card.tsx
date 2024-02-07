@@ -1,9 +1,8 @@
-import React from 'react';
 import Image from 'next/image';
-import {CarOne, AddCircle, CarInfo} from '@/public/images';
+import {AddCircle, CarInfo} from '@/public/images';
 import {Car} from '@/types/car';
 import {useCar} from '@/context/carContext';
-export default function Card({
+export const Card = ({
   brand,
   category,
   name,
@@ -12,7 +11,7 @@ export default function Card({
   price,
   spec,
   image,
-}: Car) {
+}: Car) => {
   const {cars, setSelectedCar, setTab, finish} = useCar();
   const handleGetListComparison = async (category_level_2_id: number) => {
     const response = await fetch(
@@ -68,4 +67,4 @@ export default function Card({
       </div>
     </div>
   );
-}
+};

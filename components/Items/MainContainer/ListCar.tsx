@@ -1,6 +1,5 @@
 'use client';
-import Card from '@/components/Cards/Card';
-import FinalCard from '@/components/Cards/FinalCard';
+import {Card, FinalCard} from '@/components';
 import {useCar} from '@/context/carContext';
 import {Car, SelectedCar, SelectedCarItem} from '@/types/car';
 import React, {
