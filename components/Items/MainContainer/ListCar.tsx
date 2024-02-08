@@ -48,11 +48,7 @@ export default function ListCar({
   //   console.log(cars, 'cars');
   // }, [cars]);
   return (
-    <div
-      className={`lc_ctr px-[50px] py-[30px] ${
-        step >= 1 ? 'active' : 'inactive'
-      }`}
-    >
+    <div className={`lc_ctr ${step >= 1 ? 'active' : 'inactive'}`}>
       <div className='lc_wrapper'>
         <div className='lc_filters'>
           <div>
@@ -77,7 +73,7 @@ export default function ListCar({
           </div>
         </div>
         {tab === 1 ? (
-          <div className='grid grid-cols-4 gap-[70px]'>
+          <div className='grid grid-cols-4 gap-[70px] px-[50px]'>
             {cars.map(
               ({
                 brand,

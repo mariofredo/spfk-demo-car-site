@@ -21,22 +21,6 @@ export default function DreamCar({
           Tell us about your <span className='redline'>dream car</span>
         </p>
       </div>
-      {/* <div className='absolute bottom-0'>
-        <div
-          className='relative flex justify-center cursor-pointer'
-          onClick={() => setStep(1)}
-        >
-          <Image
-            src={theme === 'dark' ? ArrowTop : ArrowTopLight}
-            className={`absolute top-[10px] w-[40px] h-[12px]`}
-            alt='ArrowTop'
-          />
-          <Image
-            src={theme === 'dark' ? OpeningBtn : OpeningBtnLight}
-            alt='OpeningBtn'
-          />
-        </div>
-      </div> */}
     </div>
   );
 }

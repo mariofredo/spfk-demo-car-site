@@ -86,11 +86,11 @@ export default function Header({
 
   return (
     <div
-      className={`grid grid-cols-2 pt-[106px] header_ctr ${
+      className={`grid md:grid-rows-2 md:grid-cols-1 lg:grid-rows-1 lg:grid-cols-2 pt-[106px] header_ctr ${
         step >= 1 ? 'active static' : 'absolute top-0'
       }`}
     >
-      <div className='flex justify-between items-center px-[39px]'>
+      <div className='flex justify-between items-center px-[39px] '>
         <Image
           src={ArrowLeftRed}
           alt='ArrowLeftRed'
@@ -118,7 +118,9 @@ export default function Header({
           </span>
         </p>
       </div>
-      <div className={`flex  ${'flex-row justify-evenly items-center'}`}>
+      <div
+        className={`flex flex-wrap ${'flex-row justify-evenly items-center'}`}
+      >
         {questions[
           firstFetch === true
             ? 0

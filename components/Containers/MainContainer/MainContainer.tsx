@@ -40,28 +40,23 @@ export default function MainContainer() {
 
   return (
     <div
-      className={`mc_ctr ${theme === 'dark' ? 'dark' : 'light'} ${
+      className={`mc_ctr  ${
         step >= 1 ? 'overflow-y-scroll cursor-pointer' : 'overflow-y-hidden'
       }`}
       onClick={() => {
         if (step !== 1 && isSubmitFirstStep) setStep(1);
       }}
     >
-      <div className='absolute top-0 left-0 w-full flex justify-between  p-[20px]'>
-        <Image
-          className=' w-[150px] h-[50px]'
-          src={theme === 'dark' ? Mitsubishi : MitsubishiLight}
-          alt='Mitsubishi'
-        />
-        {step === 1 && (
-          <button
-            className='border-2 text-red-600 border-red-600 px-[15px] py-[2.5px] rounded-[5px] mt-7'
-            onClick={handleReset}
-          >
-            Reset
-          </button>
-        )}
-      </div>
+      <Image
+        className={`logo ${step === 0 ? 'active' : 'inactive'} `}
+        src={theme === 'dark' ? Mitsubishi : MitsubishiLight}
+        alt='Mitsubishi'
+      />
+
+      <button
+        className={`btn_reset ${step >= 1 ? 'active' : 'inactive'}`}
+        onClick={handleReset}
+      ></button>
       {step === 0 && <DreamCar setStep={setStep} />}
       {!isSubmitFirstStep && (
         <ModalForm setIsSubmitFirstStep={setIsSubmitFirstStep} />
