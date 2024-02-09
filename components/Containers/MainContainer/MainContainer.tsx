@@ -41,7 +41,7 @@ export default function MainContainer() {
   return (
     <div
       className={`mc_ctr  ${
-        step >= 1 ? 'overflow-y-scroll cursor-pointer' : 'overflow-y-hidden'
+        step >= 1 ? 'overflow-y-auto cursor-pointer' : 'overflow-y-hidden'
       }`}
       onClick={() => {
         if (step !== 1 && isSubmitFirstStep) setStep(1);

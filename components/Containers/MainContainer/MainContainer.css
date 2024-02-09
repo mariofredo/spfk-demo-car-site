@@ -68,11 +68,21 @@
   opacity: 1;
   transition: all 1s ease;
 }
-.mc_ctr .header_ctr .header_redline {
+.mc_ctr .header_ctr .header_q_ctr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 39px;
+}
+.mc_ctr .header_ctr .header_q_ctr .header_q_txt {
+  font-size: 32px;
+  text-align: right;
+}
+.mc_ctr .header_ctr .header_q_ctr .header_q_txt .header_redline {
   display: inline-block;
   position: relative;
 }
-.mc_ctr .header_ctr .header_redline::before {
+.mc_ctr .header_ctr .header_q_ctr .header_q_txt .header_redline::before {
   content: "";
   display: block;
   position: absolute;
@@ -82,10 +92,15 @@
   height: 20px;
   background: url("../../../public/images/mark_line_red.png") no-repeat center/contain;
 }
-.mc_ctr .header_ctr .header_option {
+.mc_ctr .header_ctr .header_option_ctr {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.mc_ctr .header_ctr .header_option_ctr .header_option {
   position: relative;
 }
-.mc_ctr .header_ctr .header_option::before {
+.mc_ctr .header_ctr .header_option_ctr .header_option::before {
   content: "";
   display: block;
   position: absolute;
@@ -94,7 +109,7 @@
   bottom: -5px;
   border: 1.5px solid #3e3e3e;
 }
-.mc_ctr .header_ctr .header_option input[type=radio] {
+.mc_ctr .header_ctr .header_option_ctr .header_option input[type=radio] {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -102,7 +117,7 @@
   left: 0;
   opacity: 0;
 }
-.mc_ctr .header_ctr .header_option input[type=radio]:checked + .option_label::before {
+.mc_ctr .header_ctr .header_option_ctr .header_option input[type=radio]:checked + .option_label::before {
   content: "";
   display: block;
   position: absolute;
@@ -111,11 +126,11 @@
   bottom: -5px;
   border: 1.5px solid #f31d1e;
 }
-.mc_ctr .header_ctr .header_option .option_label {
+.mc_ctr .header_ctr .header_option_ctr .header_option .option_label {
   font-size: 30px;
   font-weight: 600;
 }
-.mc_ctr .header_ctr .header_option:hover::before {
+.mc_ctr .header_ctr .header_option_ctr .header_option:hover::before {
   content: "";
   display: block;
   position: absolute;
@@ -195,21 +210,22 @@
   background: linear-gradient(138deg, rgba(0, 0, 0, 0.3) -1.05%, rgba(0, 0, 0, 0.02) 16.64%, rgba(0, 0, 0, 0.3) 41.01%, rgba(0, 0, 0, 0.3) 49.79%, rgba(0, 0, 0, 0.03) 74.76%, rgba(0, 0, 0, 0.3) 94.49%, rgba(0, 0, 0, 0.03) 99.89%, rgba(0, 0, 0, 0.12) 108.76%);
   border: 2px solid #3f3f3f;
   width: 100%;
-  min-height: 100vh;
   border-radius: 20px 20px 0 0;
 }
 .mc_ctr .lc_ctr.inactive {
   position: relative;
-  top: -50px;
+  top: -60px;
 }
 .mc_ctr .lc_ctr.inactive .lc_wrapper {
   opacity: 0;
   transition: all 1s ease;
 }
 .mc_ctr .lc_ctr.active {
-  position: relative;
-  top: 60px;
+  margin-top: 60px;
+  position: sticky;
   animation: goUp 1s ease;
+  height: 100vh;
+  overflow-y: visible;
 }
 .mc_ctr .lc_ctr.active .lc_wrapper {
   opacity: 1;
@@ -227,6 +243,9 @@
   font-weight: 700;
   line-height: normal;
   padding: 25px 50px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr {
   display: flex;
@@ -516,11 +535,21 @@
     opacity: 1;
     transition: all 1s ease;
   }
-  .mc_ctr .header_ctr .header_redline {
+  .mc_ctr .header_ctr .header_q_ctr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+  }
+  .mc_ctr .header_ctr .header_q_ctr .header_q_txt {
+    font-size: 20px;
+    text-align: center;
+  }
+  .mc_ctr .header_ctr .header_q_ctr .header_q_txt .header_redline {
     display: inline-block;
     position: relative;
   }
-  .mc_ctr .header_ctr .header_redline::before {
+  .mc_ctr .header_ctr .header_q_ctr .header_q_txt .header_redline::before {
     content: "";
     display: block;
     position: absolute;
@@ -530,10 +559,20 @@
     height: 20px;
     background: url("../../../public/images/mark_line_red.png") no-repeat center/contain;
   }
-  .mc_ctr .header_ctr .header_option {
-    position: relative;
+  .mc_ctr .header_ctr .header_option_ctr {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 40px;
+    padding: 0 20px;
   }
-  .mc_ctr .header_ctr .header_option::before {
+  .mc_ctr .header_ctr .header_option_ctr .header_option {
+    position: relative;
+    width: calc(50% - 10px);
+  }
+  .mc_ctr .header_ctr .header_option_ctr .header_option::before {
     content: "";
     display: block;
     position: absolute;
@@ -542,7 +581,7 @@
     bottom: -5px;
     border: 1.5px solid #3e3e3e;
   }
-  .mc_ctr .header_ctr .header_option input[type=radio] {
+  .mc_ctr .header_ctr .header_option_ctr .header_option input[type=radio] {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -550,7 +589,7 @@
     left: 0;
     opacity: 0;
   }
-  .mc_ctr .header_ctr .header_option input[type=radio]:checked + .option_label::before {
+  .mc_ctr .header_ctr .header_option_ctr .header_option input[type=radio]:checked + .option_label::before {
     content: "";
     display: block;
     position: absolute;
@@ -559,11 +598,11 @@
     bottom: -5px;
     border: 1.5px solid #f31d1e;
   }
-  .mc_ctr .header_ctr .header_option .option_label {
-    font-size: 30px;
+  .mc_ctr .header_ctr .header_option_ctr .header_option .option_label {
+    font-size: 18px;
     font-weight: 600;
   }
-  .mc_ctr .header_ctr .header_option:hover::before {
+  .mc_ctr .header_ctr .header_option_ctr .header_option:hover::before {
     content: "";
     display: block;
     position: absolute;
@@ -643,21 +682,22 @@
     background: linear-gradient(138deg, rgba(0, 0, 0, 0.3) -1.05%, rgba(0, 0, 0, 0.02) 16.64%, rgba(0, 0, 0, 0.3) 41.01%, rgba(0, 0, 0, 0.3) 49.79%, rgba(0, 0, 0, 0.03) 74.76%, rgba(0, 0, 0, 0.3) 94.49%, rgba(0, 0, 0, 0.03) 99.89%, rgba(0, 0, 0, 0.12) 108.76%);
     border: 2px solid #3f3f3f;
     width: 100%;
-    min-height: 100vh;
     border-radius: 20px 20px 0 0;
   }
   .mc_ctr .lc_ctr.inactive {
     position: relative;
-    top: -50px;
+    top: -60px;
   }
   .mc_ctr .lc_ctr.inactive .lc_wrapper {
     opacity: 0;
     transition: all 1s ease;
   }
   .mc_ctr .lc_ctr.active {
-    position: relative;
-    top: 60px;
+    margin-top: 60px;
+    position: sticky;
     animation: goUp 1s ease;
+    height: 100vh;
+    overflow-y: visible;
   }
   .mc_ctr .lc_ctr.active .lc_wrapper {
     opacity: 1;
@@ -670,11 +710,14 @@
     justify-content: space-between;
     align-items: center;
     color: #d1d1d1;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    padding: 25px 50px;
+    padding: 25px 20px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_txt {
+    font-size: 12px;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr {
     display: flex;
@@ -833,7 +876,7 @@
   .mc_ctr .lc_ctr .lc_wrapper .lc_empty_ctr .lc_empty_title {
     position: relative;
     text-align: center;
-    font-size: 28px;
+    font-size: 20px;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_empty_ctr .lc_empty_title span::before {
     content: "";

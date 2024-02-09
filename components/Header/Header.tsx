@@ -90,14 +90,14 @@ export default function Header({
         step >= 1 ? 'active static' : 'absolute top-0'
       }`}
     >
-      <div className='flex justify-between items-center px-[39px] '>
+      <div className='header_q_ctr'>
         <Image
           src={ArrowLeftRed}
           alt='ArrowLeftRed'
           className='h-[20px] w-[10px] cursor-pointer'
           onClick={handleBack}
         />
-        <p className='text-[32px] text-right'>
+        <p className='header_q_txt'>
           {handleFormatQuestion(
             questions[
               firstFetch === true
@@ -118,9 +118,7 @@ export default function Header({
           </span>
         </p>
       </div>
-      <div
-        className={`flex flex-wrap ${'flex-row justify-evenly items-center'}`}
-      >
+      <div className={`header_option_ctr`}>
         {questions[
           firstFetch === true
             ? 0

@@ -51,7 +51,7 @@ export default function ListCar({
     <div className={`lc_ctr ${step >= 1 ? 'active' : 'inactive'}`}>
       <div className='lc_wrapper'>
         <div className='lc_filters'>
-          <div>
+          <div className='lc_filters_txt'>
             {cars.length === 1 ? `${cars.length} Car` : `${cars.length} Cars`}{' '}
             Match
           </div>
@@ -73,7 +73,7 @@ export default function ListCar({
           </div>
         </div>
         {tab === 1 ? (
-          <div className='grid grid-cols-4 gap-[70px] px-[50px]'>
+          <div className='grid max-[480px]:grid-cols-1 max-[767px]:grid-cols-2  min-[768px]:grid-cols-4 gap-[70px] px-[50px]'>
             {cars.map(
               ({
                 brand,

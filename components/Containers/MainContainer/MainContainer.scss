@@ -17,7 +17,6 @@ $breakpoint-tablet: 768px;
     cover fixed;
   color: #d1d1d1;
   font-family: 'Manrope-Regular';
-
   .logo {
     position: absolute;
     top: 20px;
@@ -74,42 +73,73 @@ $breakpoint-tablet: 768px;
       opacity: 1;
       transition: all 1s ease;
     }
-    .header_redline {
-      display: inline-block;
-      position: relative;
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        bottom: -20px;
-        left: -30px;
-        width: 140%;
-        height: 20px;
-        background: url('../../../public/images/mark_line_red.png') no-repeat
-          center / contain;
+    .header_q_ctr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 39px;
+
+      .header_q_txt {
+        font-size: 32px;
+        text-align: right;
+        .header_redline {
+          display: inline-block;
+          position: relative;
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -20px;
+            left: -30px;
+            width: 140%;
+            height: 20px;
+            background: url('../../../public/images/mark_line_red.png')
+              no-repeat center / contain;
+          }
+        }
       }
     }
 
-    .header_option {
-      position: relative;
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        height: 0px;
-        width: 100%;
-        bottom: -5px;
-        border: 1.5px solid #3e3e3e;
-      }
+    .header_option_ctr {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      .header_option {
+        position: relative;
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          height: 0px;
+          width: 100%;
+          bottom: -5px;
+          border: 1.5px solid #3e3e3e;
+        }
 
-      input[type='radio'] {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        &:checked + .option_label::before {
+        input[type='radio'] {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          &:checked + .option_label::before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 0px;
+            width: 100%;
+            bottom: -5px;
+            border: 1.5px solid #f31d1e;
+          }
+        }
+
+        .option_label {
+          font-size: 30px;
+          font-weight: 600;
+        }
+
+        &:hover::before {
           content: '';
           display: block;
           position: absolute;
@@ -118,21 +148,6 @@ $breakpoint-tablet: 768px;
           bottom: -5px;
           border: 1.5px solid #f31d1e;
         }
-      }
-
-      .option_label {
-        font-size: 30px;
-        font-weight: 600;
-      }
-
-      &:hover::before {
-        content: '';
-        display: block;
-        position: absolute;
-        height: 0px;
-        width: 100%;
-        bottom: -5px;
-        border: 1.5px solid #f31d1e;
       }
     }
 
@@ -207,7 +222,6 @@ $breakpoint-tablet: 768px;
   }
 
   .lc_ctr {
-    // margin-top: 60px;
     background: linear-gradient(
       138deg,
       rgba(0, 0, 0, 0.3) -1.05%,
@@ -221,21 +235,22 @@ $breakpoint-tablet: 768px;
     );
     border: 2px solid #3f3f3f;
     width: 100%;
-    min-height: 100vh;
-    border-radius: 20px 20px 0 0;
 
+    border-radius: 20px 20px 0 0;
     &.inactive {
       position: relative;
-      top: -50px;
+      top: -60px;
       .lc_wrapper {
         opacity: 0;
         transition: all 1s ease;
       }
     }
     &.active {
-      position: relative;
-      top: 60px;
+      margin-top: 60px;
+      position: sticky;
       animation: goUp 1s ease;
+      height: 100vh;
+      overflow-y: visible;
       .lc_wrapper {
         opacity: 1;
         transition: all 1s ease;
@@ -255,6 +270,9 @@ $breakpoint-tablet: 768px;
         font-weight: 700;
         line-height: normal;
         padding: 25px 50px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
         .lc_filters_btn_ctr {
           display: flex;
           width: 70%;
@@ -584,42 +602,77 @@ $breakpoint-tablet: 768px;
         opacity: 1;
         transition: all 1s ease;
       }
-      .header_redline {
-        display: inline-block;
-        position: relative;
-        &::before {
-          content: '';
-          display: block;
-          position: absolute;
-          bottom: -20px;
-          left: -30px;
-          width: 140%;
-          height: 20px;
-          background: url('../../../public/images/mark_line_red.png') no-repeat
-            center / contain;
+      .header_q_ctr {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+        .header_q_txt {
+          font-size: 20px;
+          text-align: center;
+          .header_redline {
+            display: inline-block;
+            position: relative;
+            &::before {
+              content: '';
+              display: block;
+              position: absolute;
+              bottom: -20px;
+              left: -30px;
+              width: 140%;
+              height: 20px;
+              background: url('../../../public/images/mark_line_red.png')
+                no-repeat center / contain;
+            }
+          }
         }
       }
 
-      .header_option {
-        position: relative;
-        &::before {
-          content: '';
-          display: block;
-          position: absolute;
-          height: 0px;
-          width: 100%;
-          bottom: -5px;
-          border: 1.5px solid #3e3e3e;
-        }
+      .header_option_ctr {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 40px;
+        padding: 0 20px;
+        .header_option {
+          position: relative;
+          width: calc(50% - 10px);
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 0px;
+            width: 100%;
+            bottom: -5px;
+            border: 1.5px solid #3e3e3e;
+          }
 
-        input[type='radio'] {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          &:checked + .option_label::before {
+          input[type='radio'] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            &:checked + .option_label::before {
+              content: '';
+              display: block;
+              position: absolute;
+              height: 0px;
+              width: 100%;
+              bottom: -5px;
+              border: 1.5px solid #f31d1e;
+            }
+          }
+
+          .option_label {
+            font-size: 18px;
+            font-weight: 600;
+          }
+
+          &:hover::before {
             content: '';
             display: block;
             position: absolute;
@@ -628,21 +681,6 @@ $breakpoint-tablet: 768px;
             bottom: -5px;
             border: 1.5px solid #f31d1e;
           }
-        }
-
-        .option_label {
-          font-size: 30px;
-          font-weight: 600;
-        }
-
-        &:hover::before {
-          content: '';
-          display: block;
-          position: absolute;
-          height: 0px;
-          width: 100%;
-          bottom: -5px;
-          border: 1.5px solid #f31d1e;
         }
       }
 
@@ -717,7 +755,6 @@ $breakpoint-tablet: 768px;
     }
 
     .lc_ctr {
-      // margin-top: 60px;
       background: linear-gradient(
         138deg,
         rgba(0, 0, 0, 0.3) -1.05%,
@@ -731,21 +768,22 @@ $breakpoint-tablet: 768px;
       );
       border: 2px solid #3f3f3f;
       width: 100%;
-      min-height: 100vh;
-      border-radius: 20px 20px 0 0;
 
+      border-radius: 20px 20px 0 0;
       &.inactive {
         position: relative;
-        top: -50px;
+        top: -60px;
         .lc_wrapper {
           opacity: 0;
           transition: all 1s ease;
         }
       }
       &.active {
-        position: relative;
-        top: 60px;
+        margin-top: 60px;
+        position: sticky;
         animation: goUp 1s ease;
+        height: 100vh;
+        overflow-y: visible;
         .lc_wrapper {
           opacity: 1;
           transition: all 1s ease;
@@ -760,11 +798,14 @@ $breakpoint-tablet: 768px;
           justify-content: space-between;
           align-items: center;
           color: #d1d1d1;
-          font-size: 20px;
+          font-size: 16px;
           font-style: normal;
           font-weight: 700;
           line-height: normal;
-          padding: 25px 50px;
+          padding: 25px 20px;
+          .lc_filters_txt {
+            font-size: 12px;
+          }
           .lc_filters_btn_ctr {
             display: flex;
             width: 70%;
@@ -953,7 +994,7 @@ $breakpoint-tablet: 768px;
           .lc_empty_title {
             position: relative;
             text-align: center;
-            font-size: 28px;
+            font-size: 20px;
             span {
               &::before {
                 content: '';
