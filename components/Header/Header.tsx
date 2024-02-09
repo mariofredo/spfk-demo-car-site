@@ -91,12 +91,14 @@ export default function Header({
       }`}
     >
       <div className='header_q_ctr'>
-        <Image
-          src={ArrowLeftRed}
-          alt='ArrowLeftRed'
-          className='h-[20px] w-[10px] cursor-pointer'
-          onClick={handleBack}
-        />
+        <div className={`w-[20%] flex`}>
+          <Image
+            src={ArrowLeftRed}
+            alt='ArrowLeftRed'
+            className='h-[20px] w-[10px] cursor-pointer'
+            onClick={handleBack}
+          />
+        </div>
         <p className='header_q_txt'>
           {handleFormatQuestion(
             questions[
