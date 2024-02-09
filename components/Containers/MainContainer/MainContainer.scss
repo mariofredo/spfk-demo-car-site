@@ -367,6 +367,8 @@ $breakpoint-tablet: 768px;
 
       .lc_fc_ctr {
         min-width: 280px;
+        width: 280px;
+
         border-radius: 8.606px;
         border: 2px solid #3f3f3f;
         background: linear-gradient(
@@ -441,6 +443,8 @@ $breakpoint-tablet: 768px;
       }
 
       .lc_fc_ctr.selected {
+        min-width: 280px;
+        width: 280px;
         background: linear-gradient(
           140deg,
           rgba(217, 217, 217, 0.5) 31.46%,
@@ -611,6 +615,7 @@ $breakpoint-tablet: 768px;
         .header_q_txt {
           font-size: 20px;
           text-align: center;
+          width: 100%;
           .header_redline {
             display: inline-block;
             position: relative;
@@ -893,6 +898,7 @@ $breakpoint-tablet: 768px;
                 justify-content: center;
                 border-radius: 20px;
                 background: #040404;
+                font-size: 11px;
                 box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
                 padding: 5px 11px;
               }
@@ -900,8 +906,11 @@ $breakpoint-tablet: 768px;
           }
         }
 
+        .lc_fc_info_ctr {
+          display: none;
+        }
         .lc_fc_ctr {
-          min-width: 280px;
+          min-width: 100%;
           border-radius: 8.606px;
           border: 2px solid #3f3f3f;
           background: linear-gradient(
@@ -913,19 +922,19 @@ $breakpoint-tablet: 768px;
             rgba(255, 255, 255, 0.1) 93.75%,
             rgba(217, 217, 217, 0.2) 99.15%
           );
-          padding: 0 30px 20px;
+          padding: 0 10px 20px;
           color: #dbdbdb;
           .lc_fc_body {
             margin-top: -20px;
             .lc_fc_title {
               text-align: center;
-              font-size: 24px;
+              font-size: 15px;
               font-weight: 800;
-              line-height: 28px;
+              line-height: 16px;
             }
             .lc_fc_price {
               text-align: center;
-              font-size: 16px;
+              font-size: 9px;
               font-weight: 700;
               color: #ababab;
               margin: 8px 0 30px;
@@ -937,7 +946,7 @@ $breakpoint-tablet: 768px;
               align-items: center;
               .fc_list_item {
                 color: #fff;
-                font-size: 20px;
+                font-size: 12.5px;
                 font-weight: 500;
                 text-align: center;
                 width: 100%;
@@ -976,6 +985,10 @@ $breakpoint-tablet: 768px;
         }
 
         .lc_fc_ctr.selected {
+          width: 100%;
+
+          position: sticky;
+          top: 80px;
           background: linear-gradient(
             140deg,
             rgba(217, 217, 217, 0.5) 31.46%,

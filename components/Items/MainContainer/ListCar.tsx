@@ -102,8 +102,8 @@ export default function ListCar({
         ) : (
           <>
             {selectedCar ? (
-              <div className='flex gap-[40px]'>
-                <div className='py-[30px]'>
+              <div className='flex justify-center max-[480px]:gap-[20px] min-[481px]:gap-[40px] max-[480px]:px-[15px] min-[481px]:px-[20px]'>
+                <div className='py-[30px] lc_fc_info_ctr'>
                   <div className='lc_fc_ctr'>
                     <div className='lc_fc_body pt-[171px]'>
                       <div className='lc_fc_title'>CAR TYPE</div>
@@ -115,14 +115,14 @@ export default function ListCar({
                     </div>
                   </div>
                 </div>
-                <div className='py-[30px]'>
+                <div className='py-[30px] max-[767px]:w-[calc(50%-15px)] min-[768px]:w-[calc(50%-80px)]'>
                   <FinalCard
                     data={selectedCar.recommendation}
                     selected={true}
                   />
                 </div>
                 <div
-                  className={`flex w-[calc(100%-120px)] overflow-x-scroll flex-nowrap gap-[40px] py-[30px] ${
+                  className={`flex max-[767px]:w-[calc(50%-15px)] min-[768px]:w-[calc(100%-120px)] max-[767px]:overflow-y-visible min-[768px]:overflow-x-scroll max-[767px]:flex-wrap min-[768px]:flex-nowrap gap-[40px] py-[30px] min-h-screen ${
                     isDragging ? 'cursor-grabbing' : 'cursor-grab'
                   }`}
                   ref={containerRef}

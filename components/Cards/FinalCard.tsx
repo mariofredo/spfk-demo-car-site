@@ -10,7 +10,7 @@ export const FinalCard = ({
 }) => {
   return (
     <div className={`lc_fc_ctr ${selected && 'selected'}`}>
-      <div className='w-full h-[171px] flex items-center justify-center'>
+      <div className='w-full  flex items-center justify-center'>
         <Image
           className='relative top-[-25px]'
           width={200}

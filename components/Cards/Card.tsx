@@ -56,7 +56,7 @@ export const Card = ({
             >
               Compare{' '}
               <Image
-                className='ml-[15px] w-[20px] h-[20px]'
+                className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px]  min-[481px]:w-[20px] min-[481px]:h-[20px]'
                 src={AddCircle}
                 alt='addIcon'
               />
