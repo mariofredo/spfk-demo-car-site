@@ -837,6 +837,54 @@
     justify-content: center;
     align-items: center;
   }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    gap: 10px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr:first-child {
+    padding-bottom: 15px;
+    padding-top: 0px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr:last-child {
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr:last-child::before {
+    background: none;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr:nth-child(even) {
+    color: #ababab;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_spec {
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    width: 50%;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_spec_item {
+    width: 50%;
+    position: relative;
+    text-align: center;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_spec_item:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 90%;
+    bottom: -5px;
+    background: url(../../../public/images/final_card_line.png);
+  }
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_item {
     color: #fff;
     font-size: 12.5px;
