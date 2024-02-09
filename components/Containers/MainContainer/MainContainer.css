@@ -246,6 +246,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  border-radius: 20px 20px 0 0;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr {
   display: flex;
@@ -715,6 +716,7 @@
     font-weight: 700;
     line-height: normal;
     padding: 25px 20px;
+    border-radius: 20px 20px 0 0;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_txt {
     font-size: 12px;
