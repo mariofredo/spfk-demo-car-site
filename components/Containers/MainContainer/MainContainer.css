@@ -808,6 +808,7 @@
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr {
     min-width: 100%;
+    width: 100%;
     border-radius: 8.606px;
     border: 2px solid #3f3f3f;
     background: linear-gradient(140deg, rgba(217, 217, 217, 0.2) 31.46%, rgba(255, 255, 255, 0.1) 55.76%, rgba(217, 217, 217, 0.2) 69.76%, rgba(217, 217, 217, 0.2) 86.99%, rgba(255, 255, 255, 0.1) 93.75%, rgba(217, 217, 217, 0.2) 99.15%);
@@ -872,6 +873,7 @@
     color: #ababab;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr.selected {
+    min-width: 100%;
     width: 100%;
     position: sticky;
     top: 80px;
