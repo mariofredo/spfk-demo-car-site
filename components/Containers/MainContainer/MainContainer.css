@@ -224,7 +224,7 @@
   margin-top: 60px;
   position: sticky;
   animation: goUp 1s ease;
-  height: 100vh;
+  min-height: 100vh;
   overflow-y: visible;
 }
 .mc_ctr .lc_ctr.active .lc_wrapper {
@@ -764,23 +764,23 @@
     background: linear-gradient(106deg, rgba(217, 217, 217, 0.1) -0.44%, rgba(255, 255, 255, 0.2) 33.17%, rgba(217, 217, 217, 0.1) 52.52%, rgba(217, 217, 217, 0.1) 76.34%, rgba(255, 255, 255, 0.2) 85.69%, rgba(217, 217, 217, 0.1) 93.15%);
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body {
-    margin-top: -40px;
+    margin-top: -80px;
     padding: 0px 16px 10px;
     color: #dbdbdb;
     gap: 11px;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_title {
-    font-size: 24px;
+    font-size: 13px;
     font-weight: 800;
-    line-height: 28px;
+    line-height: 15px;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_type {
-    font-size: 16px;
+    font-size: 9px;
     font-weight: 300;
     padding: 11px 0;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_price {
-    font-size: 16px;
+    font-size: 9px;
     font-weight: 700;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_btn_ctr {

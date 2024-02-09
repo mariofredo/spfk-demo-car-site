@@ -38,7 +38,7 @@ export const Card = ({
           height={200}
           src={image}
           alt='CarOne'
-          className='relative top-[-30px] right-[-20px] w-[110%]  max-w-none'
+          className='relative max-[480px]:top-[-50px] min-[481px]:top-[-30px] right-[-20px] w-[110%]  max-w-none'
         />
       </div>
       <div className='lc_card_body'>

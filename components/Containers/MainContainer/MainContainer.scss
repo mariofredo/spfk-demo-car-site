@@ -249,7 +249,7 @@ $breakpoint-tablet: 768px;
       margin-top: 60px;
       position: sticky;
       animation: goUp 1s ease;
-      height: 100vh;
+      min-height: 100vh;
       overflow-y: visible;
       .lc_wrapper {
         opacity: 1;
@@ -862,22 +862,22 @@ $breakpoint-tablet: 768px;
             rgba(217, 217, 217, 0.1) 93.15%
           );
           .lc_card_body {
-            margin-top: -40px;
+            margin-top: -80px;
             padding: 0px 16px 10px;
             color: #dbdbdb;
             gap: 11px;
             .lc_card_title {
-              font-size: 24px;
+              font-size: 13px;
               font-weight: 800;
-              line-height: 28px;
+              line-height: 15px;
             }
             .lc_card_type {
-              font-size: 16px;
+              font-size: 9px;
               font-weight: 300;
               padding: 11px 0;
             }
             .lc_card_price {
-              font-size: 16px;
+              font-size: 9px;
               font-weight: 700;
             }
             .lc_card_btn_ctr {
