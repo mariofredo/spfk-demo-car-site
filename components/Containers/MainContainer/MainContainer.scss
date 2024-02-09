@@ -789,7 +789,7 @@ $breakpoint-tablet: 768px;
         margin-top: 60px;
         position: sticky;
         animation: goUp 1s ease;
-        height: 100vh;
+        min-height: 100vh;
         overflow-y: visible;
         .lc_wrapper {
           opacity: 1;

@@ -73,32 +73,40 @@ export default function ListCar({
           </div>
         </div>
         {tab === 1 ? (
-          <div className='grid max-[480px]:grid-cols-2 max-[767px]:grid-cols-2  min-[768px]:grid-cols-4 max-[480px]:gap-[25px]  min-[481px]:gap-[70px] max-[480px]:px-[20px] min-[481px]:px-[50px]'>
-            {cars.map(
-              ({
-                brand,
-                category,
-                name,
-                category_level_1_id,
-                category_level_2_id,
-                price,
-                spec,
-                image,
-              }: Car) => (
-                <Card
-                  key={category_level_2_id}
-                  brand={brand}
-                  category={category}
-                  name={name}
-                  category_level_1_id={category_level_1_id}
-                  category_level_2_id={category_level_2_id}
-                  price={price}
-                  spec={spec}
-                  image={image}
-                />
-              )
-            )}
-          </div>
+          cars.length > 0 ? (
+            <div className='grid max-[480px]:grid-cols-2 max-[767px]:grid-cols-2  min-[768px]:grid-cols-4 max-[480px]:gap-[25px]  min-[481px]:gap-[70px] max-[480px]:px-[20px] min-[481px]:px-[50px]'>
+              {cars.map(
+                ({
+                  brand,
+                  category,
+                  name,
+                  category_level_1_id,
+                  category_level_2_id,
+                  price,
+                  spec,
+                  image,
+                }: Car) => (
+                  <Card
+                    key={category_level_2_id}
+                    brand={brand}
+                    category={category}
+                    name={name}
+                    category_level_1_id={category_level_1_id}
+                    category_level_2_id={category_level_2_id}
+                    price={price}
+                    spec={spec}
+                    image={image}
+                  />
+                )
+              )}
+            </div>
+          ) : (
+            <div className='lc_empty_ctr'>
+              <div className='lc_empty_title'>
+                <span>No Car Matches</span>
+              </div>
+            </div>
+          )
         ) : (
           <>
             {selectedCar ? (

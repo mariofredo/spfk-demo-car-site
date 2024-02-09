@@ -701,7 +701,7 @@
     margin-top: 60px;
     position: sticky;
     animation: goUp 1s ease;
-    height: 100vh;
+    min-height: 100vh;
     overflow-y: visible;
   }
   .mc_ctr .lc_ctr.active .lc_wrapper {
