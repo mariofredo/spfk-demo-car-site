@@ -1,11 +1,12 @@
 'use client';
 import {Card, FinalCard} from '@/components';
 import {useCar} from '@/context/carContext';
-import {Car, SelectedCar, SelectedCarItem} from '@/types/car';
+import {Car, SelectedCarItem} from '@/types/car';
+import {useRouter} from 'next/navigation';
 import React, {
   Dispatch,
   SetStateAction,
-  useEffect,
+  useCallback,
   useRef,
   useState,
 } from 'react';
@@ -17,13 +18,26 @@ export default function ListCar({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) {
-  const arr = [1, 2, 3, 4, 5, 6, 7];
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const {cars, tab, setTab, selectedCar} = useCar();
-
+  const {
+    cars,
+    tab,
+    setTab,
+    selectedCar,
+    setCars,
+    setQuestionNum,
+    setAnsweredQuestion,
+    setFirstFetch,
+    setFinish,
+    answeredQuestion,
+    questionNum,
+    finish,
+    firstFetch,
+  } = useCar();
+  const router = useRouter();
   const handleMouseDown = (e: React.MouseEvent) => {
     if (containerRef.current) {
       setIsDragging(true);
@@ -44,9 +58,16 @@ export default function ListCar({
   const handleMouseUp = () => {
     setIsDragging(false);
   };
-  // useEffect(() => {
-  //   console.log(cars, 'cars');
-  // }, [cars]);
+  const handleReset = useCallback(async () => {
+    setStep(0);
+    setCars([]);
+    setQuestionNum(0);
+    setAnsweredQuestion([]);
+    setFirstFetch(true);
+    setFinish(false);
+    setTab(1);
+  }, [cars, step, answeredQuestion, questionNum, finish, firstFetch, tab]);
+
   return (
     <div className={`lc_ctr ${step >= 1 ? 'active' : 'inactive'}`}>
       <div className='lc_wrapper'>
@@ -103,7 +124,18 @@ export default function ListCar({
           ) : (
             <div className='lc_empty_ctr'>
               <div className='lc_empty_title'>
-                <span>No Car Matches</span>
+                I'm sorry you can't find the car of your choice yet.
+                <br />
+                <span>Maybe you would like to try again ? </span>
+                <br />
+              </div>
+              <div
+                className='lc_empty_reset'
+                onClick={() => {
+                  window.location.reload()
+                }}
+              >
+                Reset
               </div>
             </div>
           )

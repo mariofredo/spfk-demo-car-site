@@ -6,6 +6,14 @@
     transform: translateY(0);
   }
 }
+@keyframes goDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50%);
+  }
+}
 .mc_ctr {
   min-height: 100vh;
   max-height: 100vh;
@@ -404,6 +412,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 20px;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_empty_ctr .lc_empty_title {
   position: relative;
@@ -419,6 +428,14 @@
   width: 80%;
   height: 20px;
   background: url("../../../public/images/mark_line_red.png") no-repeat center/contain;
+}
+.mc_ctr .lc_ctr .lc_wrapper .lc_empty_ctr .lc_empty_reset {
+  color: #f31d1e;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: 1.5px solid #f31d1e;
 }
 .mc_ctr .mdl_bd {
   position: fixed;
