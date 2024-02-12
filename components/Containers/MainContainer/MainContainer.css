@@ -854,6 +854,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr {
     display: flex;
@@ -862,17 +863,6 @@
     width: 100%;
     color: #fff;
     gap: 10px;
-  }
-  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr:first-child {
-    padding-bottom: 15px;
-    padding-top: 0px;
-  }
-  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr:last-child {
-    padding-bottom: 15px;
-    padding-top: 15px;
-  }
-  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr:last-child::before {
-    background: none;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_ctr:nth-child(even) {
     color: #ababab;
@@ -892,14 +882,19 @@
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_spec_item {
     width: 50%;
     position: relative;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_spec_item .fc_list_spec_item_text {
+    width: 100%;
     text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_spec_item:before {
     content: "";
     display: block;
     position: absolute;
     height: 3px;
-    width: 90%;
+    width: 100%;
     bottom: -5px;
     background: url(../../../public/images/final_card_line.png);
   }

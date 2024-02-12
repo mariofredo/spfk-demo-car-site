@@ -52,7 +52,9 @@ export const FinalCard = ({
             viewportWidth < 768 && selected ? (
               <div className='fc_list_ctr'>
                 <div className='fc_list_spec'>{item.spec_name}</div>
-                <div className='fc_list_spec_item'>{item.content}</div>
+                <div className='fc_list_spec_item'>
+                  <div className='fc_list_spec_item_text'>{item.content}</div>
+                </div>
               </div>
             ) : (
               <div className='fc_list_item'>{item.content}</div>

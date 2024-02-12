@@ -963,6 +963,7 @@ $breakpoint-tablet: 768px;
               flex-direction: column;
               justify-content: center;
               align-items: center;
+              gap: 15px;
               .fc_list_ctr {
                 display: flex;
                 justify-content: space-between;
@@ -970,17 +971,6 @@ $breakpoint-tablet: 768px;
                 width: 100%;
                 color: #fff;
                 gap: 10px;
-                &:first-child {
-                  padding-bottom: 15px;
-                  padding-top: 0px;
-                }
-                &:last-child {
-                  padding-bottom: 15px;
-                  padding-top: 15px;
-                  &::before {
-                    background: none;
-                  }
-                }
                 &:nth-child(even) {
                   color: #ababab;
                 }
@@ -1000,16 +990,19 @@ $breakpoint-tablet: 768px;
               .fc_list_spec_item {
                 width: 50%;
                 position: relative;
-                text-align: center;
-
+                .fc_list_spec_item_text {
+                  width: 100%;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                }
                 &:before {
                   content: '';
                   display: block;
                   position: absolute;
                   height: 3px;
-                  width: 90%;
+                  width: 100%;
                   bottom: -5px;
-
                   background: url(../../../public/images/final_card_line.png);
                 }
               }
