@@ -16,7 +16,6 @@
 }
 .mc_ctr {
   min-height: 100vh;
-  max-height: 100vh;
   width: 100%;
   position: relative;
   background: #000 url(../../../public/images/opening_bg.png) no-repeat bottom/cover fixed;
@@ -227,13 +226,13 @@
 .mc_ctr .lc_ctr.inactive .lc_wrapper {
   opacity: 0;
   transition: all 1s ease;
+  min-height: 60px;
 }
 .mc_ctr .lc_ctr.active {
   margin-top: 60px;
   position: sticky;
   animation: goUp 1s ease;
   min-height: 100vh;
-  overflow-y: visible;
 }
 .mc_ctr .lc_ctr.active .lc_wrapper {
   opacity: 1;
@@ -426,13 +425,14 @@
   content: "";
   display: block;
   position: absolute;
-  bottom: -20px;
+  bottom: -30px;
   right: -30px;
   width: calc(80% - 30px);
   height: 20px;
   background: url("../../../public/images/mark_line_red.png") no-repeat center/contain;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_empty_ctr .lc_empty_reset {
+  margin-top: 20px;
   color: #f31d1e;
   cursor: pointer;
   font-size: 20px;
@@ -483,7 +483,6 @@
 @media (max-width: 768px) {
   .mc_ctr {
     min-height: 100vh;
-    max-height: 100vh;
     width: 100%;
     position: relative;
     background: #000 url(../../../public/images/opening_bg.png) no-repeat bottom/cover fixed;
@@ -722,7 +721,6 @@
     position: sticky;
     animation: goUp 1s ease;
     min-height: 100vh;
-    overflow-y: visible;
   }
   .mc_ctr .lc_ctr.active .lc_wrapper {
     opacity: 1;
@@ -968,13 +966,14 @@
     content: "";
     display: block;
     position: absolute;
-    bottom: -20px;
+    bottom: -30px;
     right: -30px;
     width: calc(80% - 30px);
     height: 20px;
     background: url("../../../public/images/mark_line_red.png") no-repeat center/contain;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_empty_ctr .lc_empty_reset {
+    margin-top: 20px;
     color: #f31d1e;
     cursor: pointer;
     font-size: 16px;

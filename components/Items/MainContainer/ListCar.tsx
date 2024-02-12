@@ -58,7 +58,7 @@ export default function ListCar({
   const handleMouseUp = () => {
     setIsDragging(false);
   };
-  const handleReset = useCallback(async () => {
+  const handleReset = useCallback(() => {
     setStep(0);
     setCars([]);
     setQuestionNum(0);
@@ -132,7 +132,11 @@ export default function ListCar({
               <div
                 className='lc_empty_reset'
                 onClick={() => {
-                  window.location.reload()
+                  window.scrollTo({
+                    behavior: 'smooth',
+                    top: 0,
+                  });
+                  handleReset();
                 }}
               >
                 Reset

@@ -41,14 +41,14 @@ export default function MainContainer() {
   return (
     <div
       className={`mc_ctr  ${
-        step >= 1 ? 'overflow-y-auto cursor-pointer' : 'overflow-y-hidden'
+        step >= 1 ? 'cursor-pointer' : 'max-h-screen overflow-hidden'
       }`}
       onClick={() => {
         if (step !== 1 && isSubmitFirstStep) setStep(1);
       }}
     >
       <Image
-        className={`logo ${step === 0 ? 'active' : 'inactive'} `}
+        className={`logo ${step == 0 ? 'active' : 'inactive'} `}
         src={theme === 'dark' ? Mitsubishi : MitsubishiLight}
         alt='Mitsubishi'
       />
@@ -57,11 +57,10 @@ export default function MainContainer() {
         className={`btn_reset ${step >= 1 ? 'active' : 'inactive'}`}
         onClick={handleReset}
       ></button>
-      {step === 0 && <DreamCar setStep={setStep} />}
+      {step === 0 && <DreamCar />}
       {!isSubmitFirstStep && (
         <ModalForm setIsSubmitFirstStep={setIsSubmitFirstStep} />
       )}
-
       <Header step={step} setStep={setStep} />
       <ListCar step={step} setStep={setStep} />
     </div>
