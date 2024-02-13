@@ -140,7 +140,7 @@ export default function ListCar({
                 )}
               </div>
             ) : (
-              <div className='grid max-[480px]:grid-cols-2 max-[767px]:grid-cols-2  min-[768px]:grid-cols-4 max-[480px]:gap-[25px]  min-[481px]:gap-[70px] max-[480px]:px-[20px] min-[481px]:px-[50px]'>
+              <div className='grid max-[480px]:grid-cols-2 max-[767px]:grid-cols-2  min-[768px]:grid-cols-4 max-[480px]:gap-[25px]  min-[481px]:gap-[70px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px]'>
                 {cars.map(
                   ({
                     brand,
