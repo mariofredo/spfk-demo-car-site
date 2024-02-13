@@ -81,7 +81,11 @@ export const FinalCard = ({
           {data.specs.map((item) =>
             viewportWidth < 768 && selected ? (
               <div className='fc_list_ctr'>
-                <div className='fc_list_spec'>{item.spec_name}</div>
+                <div className='fc_list_spec'>
+                  <p title={item.spec_name} className='fc_list_spec_text'>
+                    {item.spec_name}
+                  </p>
+                </div>
                 <div className='fc_list_spec_item'>
                   <p title={item.content} className='fc_list_spec_item_text'>
                     {item.content}

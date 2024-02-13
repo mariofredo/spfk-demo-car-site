@@ -1113,6 +1113,14 @@ $breakpoint-tablet: 768px;
                 padding-bottom: 15px;
                 padding-top: 15px;
                 width: 30%;
+                .fc_list_spec_text {
+                  width: 100%;
+                  text-align: left;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 1;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                }
               }
               .fc_list_spec_item {
                 width: 70%;

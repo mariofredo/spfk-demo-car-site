@@ -192,7 +192,7 @@ export default function ListCar({
         ) : (
           <>
             {selectedCar ? (
-              <div className='flex justify-center max-[480px]:gap-[20px] min-[481px]:gap-[40px] max-[480px]:px-[15px] min-[481px]:px-[20px]'>
+              <div className='flex justify-center max-[480px]:gap-[10px] min-[481px]:gap-[40px] max-[480px]:px-[0px] min-[481px]:px-[20px]'>
                 <div className='py-[30px] lc_fc_info_ctr'>
                   <div className='lc_fc_ctr'>
                     <div className='lc_fc_body pt-[134px]'>

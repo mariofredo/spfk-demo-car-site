@@ -998,6 +998,14 @@
     padding-top: 15px;
     width: 30%;
   }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_spec .fc_list_spec_text {
+    width: 100%;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_spec_item {
     width: 70%;
     position: relative;
