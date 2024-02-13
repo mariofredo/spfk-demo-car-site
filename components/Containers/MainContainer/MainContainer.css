@@ -18,9 +18,18 @@
   min-height: 100vh;
   width: 100%;
   position: relative;
-  background: #000 url(../../../public/images/opening_bg.png) no-repeat bottom/cover fixed;
   color: #d1d1d1;
   font-family: "Manrope-Regular";
+}
+.mc_ctr::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000 url("../../../public/images/opening_bg.png") no-repeat bottom/cover;
 }
 .mc_ctr .logo {
   position: absolute;
@@ -570,9 +579,18 @@
     min-height: 100vh;
     width: 100%;
     position: relative;
-    background: #000 url(../../../public/images/opening_bg.png) no-repeat bottom/cover fixed;
     color: #d1d1d1;
     font-family: "Manrope-Regular";
+  }
+  .mc_ctr::before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000 url("../../../public/images/opening_bg.png") no-repeat bottom/cover;
   }
   .mc_ctr .logo {
     opacity: 0;
