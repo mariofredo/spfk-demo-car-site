@@ -106,38 +106,8 @@ export default function ListCar({
           cars.length > 0 ? (
             finish ? (
               <div
-                className={`w-full flex  flex-nowrap px-[20px] pb-[20px] gap-[20px] overflow-x-scroll `}
+                className={`w-full flex  flex-nowrap px-[20px] py-[20px] gap-[20px] overflow-x-scroll `}
               >
-                {cars.map(
-                  ({
-                    brand,
-                    category,
-                    name,
-                    category_level_1_id,
-                    category_level_2_id,
-                    price,
-                    spec,
-                    image,
-                  }: Car) => (
-                    <FinalCard
-                      data={{
-                        company_brand_name: brand,
-                        image,
-                        category_level_1_name: category,
-                        category_level_2_name: name,
-                        category_level_1_id,
-                        category_level_2_id,
-                        price,
-                        specs: spec.map(({content, name}) => ({
-                          content: content,
-                          spec_name: name,
-                        })),
-                      }}
-                      isCompare={false}
-                      selected={false}
-                    />
-                  )
-                )}
                 {cars.map(
                   ({
                     brand,

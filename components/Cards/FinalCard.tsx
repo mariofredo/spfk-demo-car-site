@@ -55,9 +55,9 @@ export const FinalCard = ({
         !isCompare ? 'carlist' : ''
       }`}
     >
-      <div className='w-full  flex items-center justify-center'>
+      <div className='w-full  max-[767px]:h-[120px] min-[768px]:h-[130px]  flex items-center justify-center'>
         <Image
-          className='relative top-[-25px] h-[130px]'
+          className='relative top-[-25px] '
           width={200}
           height={120}
           src={data.image}
