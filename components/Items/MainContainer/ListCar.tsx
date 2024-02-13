@@ -106,8 +106,38 @@ export default function ListCar({
           cars.length > 0 ? (
             finish ? (
               <div
-                className={`w-full flex justify-center flex-nowrap px-[20px] pb-[20px] gap-[20px] `}
+                className={`w-full flex  flex-nowrap px-[20px] pb-[20px] gap-[20px] overflow-x-scroll `}
               >
+                {cars.map(
+                  ({
+                    brand,
+                    category,
+                    name,
+                    category_level_1_id,
+                    category_level_2_id,
+                    price,
+                    spec,
+                    image,
+                  }: Car) => (
+                    <FinalCard
+                      data={{
+                        company_brand_name: brand,
+                        image,
+                        category_level_1_name: category,
+                        category_level_2_name: name,
+                        category_level_1_id,
+                        category_level_2_id,
+                        price,
+                        specs: spec.map(({content, name}) => ({
+                          content: content,
+                          spec_name: name,
+                        })),
+                      }}
+                      isCompare={false}
+                      selected={false}
+                    />
+                  )
+                )}
                 {cars.map(
                   ({
                     brand,
@@ -195,7 +225,7 @@ export default function ListCar({
               <div className='flex justify-center max-[480px]:gap-[20px] min-[481px]:gap-[40px] max-[480px]:px-[15px] min-[481px]:px-[20px]'>
                 <div className='py-[30px] lc_fc_info_ctr'>
                   <div className='lc_fc_ctr'>
-                    <div className='lc_fc_body pt-[171px]'>
+                    <div className='lc_fc_body pt-[134px]'>
                       <div className='lc_fc_title'>CAR TYPE</div>
                       <div className='lc_fc_list_ctr mt-[85px]'>
                         {selectedCar.recommendation.specs.map((item) => (
@@ -205,7 +235,7 @@ export default function ListCar({
                     </div>
                   </div>
                 </div>
-                <div className='py-[30px] max-[767px]:w-[calc(50%-15px)] min-[768px]:w-[calc(50%-80px)]'>
+                <div className='py-[30px] max-[767px]:w-[calc(50%-15px)] '>
                   <FinalCard
                     data={selectedCar.recommendation}
                     selected={true}
@@ -213,7 +243,7 @@ export default function ListCar({
                   />
                 </div>
                 <div
-                  className={`flex max-[767px]:w-[calc(50%-15px)] min-[768px]:w-[calc(100%-120px)] max-[767px]:overflow-y-visible min-[768px]:overflow-x-scroll max-[767px]:flex-wrap min-[768px]:flex-nowrap gap-[40px] py-[30px] min-h-screen ${
+                  className={`flex max-[767px]:w-[calc(50%-15px)] min-[768px]:w-[calc(100%-120px)] max-[767px]:overflow-y-visible min-[768px]:overflow-x-scroll max-[767px]:flex-wrap min-[768px]:flex-nowrap gap-[40px] py-[30px]  ${
                     isDragging ? 'cursor-grabbing' : 'cursor-grab'
                   }`}
                   ref={containerRef}

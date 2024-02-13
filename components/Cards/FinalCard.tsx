@@ -50,12 +50,16 @@ export const FinalCard = ({
   }, []);
 
   return (
-    <div className={`lc_fc_ctr ${selected ? 'selected' : ''}`}>
+    <div
+      className={`lc_fc_ctr ${selected ? 'selected' : ''}${
+        !isCompare ? 'carlist' : ''
+      }`}
+    >
       <div className='w-full  flex items-center justify-center'>
         <Image
-          className='relative top-[-25px]'
+          className='relative top-[-25px] h-[130px]'
           width={200}
-          height={200}
+          height={120}
           src={data.image}
           alt='CarOne'
         />
@@ -79,11 +83,15 @@ export const FinalCard = ({
               <div className='fc_list_ctr'>
                 <div className='fc_list_spec'>{item.spec_name}</div>
                 <div className='fc_list_spec_item'>
-                  <div className='fc_list_spec_item_text'>{item.content}</div>
+                  <p title={item.content} className='fc_list_spec_item_text'>
+                    {item.content}
+                  </p>
                 </div>
               </div>
             ) : (
-              <div className='fc_list_item'>{item.content}</div>
+              <p title={item.content} className='fc_list_item'>
+                <span className='fc_list_item_text'> {item.content}</span>
+              </p>
             )
           )}
         </div>
