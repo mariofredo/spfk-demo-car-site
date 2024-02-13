@@ -21,7 +21,7 @@ export interface SelectedCarItem {
   category_level_2_id: number;
   category_level_2_name: string;
   image: string;
-  price: number;
+  price: string;
   specs: {
     spec_name: string;
     content: string;

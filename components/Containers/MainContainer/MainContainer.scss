@@ -82,10 +82,10 @@ $breakpoint-tablet: 768px;
     }
     .header_q_ctr {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 0px 39px;
-
+      gap: 20px;
       .header_q_txt {
         font-size: 32px;
         text-align: right;
@@ -97,8 +97,8 @@ $breakpoint-tablet: 768px;
             display: block;
             position: absolute;
             bottom: -20px;
-            left: -30px;
-            width: 140%;
+            left: 0px;
+            width: 100%;
             height: 20px;
             background: url('../../../public/images/mark_line_red.png')
               no-repeat center / contain;
@@ -111,6 +111,7 @@ $breakpoint-tablet: 768px;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      margin-top: 20px;
       .header_option {
         position: relative;
         &::before {
@@ -301,6 +302,7 @@ $breakpoint-tablet: 768px;
                 border: 1.5px solid #f31d1e;
               }
             }
+
             &::before {
               content: '';
               display: block;
@@ -311,15 +313,32 @@ $breakpoint-tablet: 768px;
               left: 0;
               border: 1.5px solid #3e3e3e;
             }
-            &:hover::before {
-              content: '';
-              display: block;
-              position: absolute;
-              height: 0px;
-              width: 90%;
-              bottom: -5px;
-              left: 0;
-              border: 1.5px solid #f31d1e;
+            &.carlist {
+              &:hover::before {
+                content: '';
+                display: block;
+                position: absolute;
+                height: 0px;
+                width: 90%;
+                bottom: -5px;
+                left: 0;
+                border: 1.5px solid #f31d1e;
+              }
+            }
+            &.finish {
+              &:hover::before {
+                content: '';
+                display: block;
+                position: absolute;
+                height: 0px;
+                width: 90%;
+                bottom: -5px;
+                left: 0;
+                border: 1.5px solid #f31d1e;
+              }
+            }
+            &.unfinish {
+              color: #3e3e3e;
             }
           }
         }
@@ -448,6 +467,20 @@ $breakpoint-tablet: 768px;
               }
             }
           }
+          .lc_fc_card_btn_ctr {
+            display: flex;
+            justify-content: center;
+            margin-top: 11px;
+            .lc_fc_card_btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 20px;
+              background: #040404;
+              box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+              padding: 5px 11px;
+            }
+          }
         }
       }
 
@@ -510,7 +543,7 @@ $breakpoint-tablet: 768px;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.88);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -541,6 +574,51 @@ $breakpoint-tablet: 768px;
         padding: 10px;
         background: #ababab;
         border-radius: 10px;
+      }
+    }
+    .mdl_text_ctr {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 500px;
+      color: #fff;
+      background: url('../../../public/images/bg_mdl_text.png') no-repeat center;
+
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+      .mdl_text_title {
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        position: relative;
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: -20px;
+          left: 20px;
+          width: 200px;
+          height: 20px;
+          background: url('../../../public/images/mark_line_red.png') no-repeat
+            center / contain;
+        }
+      }
+      .mdl_btn_ctr {
+        display: flex;
+        justify-content: flex-end;
+        .mdl_btn_outline_red {
+          margin-top: 10px;
+          padding: 5px 30px;
+          color: #f31d1e;
+          border: 1.5px solid #f31d1e;
+          border-radius: 10px;
+        }
+      }
+
+      .mdl_text_body {
+        font-size: 16px;
+        font-weight: 500;
       }
     }
   }
@@ -628,13 +706,16 @@ $breakpoint-tablet: 768px;
       }
       .header_q_ctr {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        padding: 0px 10px;
+        gap: 20px;
+        position: relative;
+        width: 100%;
         .header_q_txt {
           font-size: 20px;
           text-align: center;
-          width: 100%;
+          width: calc(100% - 20px);
+          padding: 0 20px;
           .header_redline {
             display: inline-block;
             position: relative;
@@ -643,8 +724,8 @@ $breakpoint-tablet: 768px;
               display: block;
               position: absolute;
               bottom: -20px;
-              left: -30px;
-              width: 140%;
+              left: 0px;
+              width: 100%;
               height: 20px;
               background: url('../../../public/images/mark_line_red.png')
                 no-repeat center / contain;
@@ -839,6 +920,11 @@ $breakpoint-tablet: 768px;
               width: 50%;
               text-align: left;
               position: relative;
+              &:disabled {
+                opacity: 0.5;
+                color: #3e3e3e;
+                cursor: not-allowed;
+              }
               &.active {
                 &::before {
                   content: '';

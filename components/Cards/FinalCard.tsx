@@ -2,14 +2,36 @@
 import {useEffect, useState} from 'react';
 import Image from 'next/image';
 import {SelectedCarItem} from '@/types/car';
+import {AddCircle} from '@/public/images';
+import {useCar} from '@/context';
 export const FinalCard = ({
   data,
   selected,
+  isCompare,
 }: {
   data: SelectedCarItem;
   selected: boolean;
+  isCompare: boolean;
 }) => {
+  const {setSelectedCar, setTab} = useCar();
   const [viewportWidth, setViewportWidth] = useState<number>(0);
+  const handleGetListComparison = async (category_level_2_id: number) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/comparison-list`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({category_level_2_id}),
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      setSelectedCar(data.data);
+      setTab(2);
+    }
+  };
   useEffect(() => {
     function handleResize() {
       setViewportWidth(window.innerWidth);
@@ -26,9 +48,7 @@ export const FinalCard = ({
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  useEffect(() => {
-    console.log(viewportWidth, 'viewportWidth');
-  }, [viewportWidth]);
+
   return (
     <div className={`lc_fc_ctr ${selected ? 'selected' : ''}`}>
       <div className='w-full  flex items-center justify-center'>
@@ -44,6 +64,12 @@ export const FinalCard = ({
         <div className='lc_fc_title'>
           {data.company_brand_name} <br />
           {data.category_level_1_name}
+          {!isCompare && (
+            <>
+              <br />
+              {data.category_level_2_name}
+            </>
+          )}
         </div>
         <div className='lc_fc_price'>{data.price}</div>
 
@@ -61,6 +87,21 @@ export const FinalCard = ({
             )
           )}
         </div>
+        {!isCompare && (
+          <div className='lc_fc_card_btn_ctr'>
+            <button
+              className='lc_fc_card_btn'
+              onClick={() => handleGetListComparison(data.category_level_2_id)}
+            >
+              Compare{' '}
+              <Image
+                className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px]  min-[481px]:w-[20px] min-[481px]:h-[20px]'
+                src={AddCircle}
+                alt='addIcon'
+              />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

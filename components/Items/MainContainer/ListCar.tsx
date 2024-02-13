@@ -14,9 +14,11 @@ import React, {
 export default function ListCar({
   step,
   setStep,
+  setShowModalText,
 }: {
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
+  setShowModalText: Dispatch<SetStateAction<boolean>>;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -78,16 +80,23 @@ export default function ListCar({
           </div>
           <div className='lc_filters_btn_ctr'>
             <button
-              className={`lc_filters_btn ${tab === 1 ? 'active' : 'inactive'}`}
+              className={`lc_filters_btn ${
+                tab === 1 ? 'active' : 'inactive'
+              } carlist`}
               onClick={() => setTab(1)}
               disabled={step < 1}
             >
               Car list
             </button>
             <button
-              className={`lc_filters_btn ${tab === 2 ? 'active' : 'inactive'}`}
-              onClick={() => setTab(2)}
-              disabled={step < 1}
+              className={`lc_filters_btn 
+              ${finish === true ? 'finish' : 'unfinish'}
+              ${tab === 2 ? 'active' : 'inactive'} 
+              `}
+              onClick={() => {
+                if (finish) setTab(2);
+                else setShowModalText(true);
+              }}
             >
               Compare cars
             </button>
@@ -95,32 +104,69 @@ export default function ListCar({
         </div>
         {tab === 1 ? (
           cars.length > 0 ? (
-            <div className='grid max-[480px]:grid-cols-2 max-[767px]:grid-cols-2  min-[768px]:grid-cols-4 max-[480px]:gap-[25px]  min-[481px]:gap-[70px] max-[480px]:px-[20px] min-[481px]:px-[50px]'>
-              {cars.map(
-                ({
-                  brand,
-                  category,
-                  name,
-                  category_level_1_id,
-                  category_level_2_id,
-                  price,
-                  spec,
-                  image,
-                }: Car) => (
-                  <Card
-                    key={category_level_2_id}
-                    brand={brand}
-                    category={category}
-                    name={name}
-                    category_level_1_id={category_level_1_id}
-                    category_level_2_id={category_level_2_id}
-                    price={price}
-                    spec={spec}
-                    image={image}
-                  />
-                )
-              )}
-            </div>
+            finish ? (
+              <div
+                className={`w-full flex justify-center flex-nowrap px-[20px] pb-[20px] gap-[20px] `}
+              >
+                {cars.map(
+                  ({
+                    brand,
+                    category,
+                    name,
+                    category_level_1_id,
+                    category_level_2_id,
+                    price,
+                    spec,
+                    image,
+                  }: Car) => (
+                    <FinalCard
+                      data={{
+                        company_brand_name: brand,
+                        image,
+                        category_level_1_name: category,
+                        category_level_2_name: name,
+                        category_level_1_id,
+                        category_level_2_id,
+                        price,
+                        specs: spec.map(({content, name}) => ({
+                          content: content,
+                          spec_name: name,
+                        })),
+                      }}
+                      isCompare={false}
+                      selected={false}
+                    />
+                  )
+                )}
+              </div>
+            ) : (
+              <div className='grid max-[480px]:grid-cols-2 max-[767px]:grid-cols-2  min-[768px]:grid-cols-4 max-[480px]:gap-[25px]  min-[481px]:gap-[70px] max-[480px]:px-[20px] min-[481px]:px-[50px]'>
+                {cars.map(
+                  ({
+                    brand,
+                    category,
+                    name,
+                    category_level_1_id,
+                    category_level_2_id,
+                    price,
+                    spec,
+                    image,
+                  }: Car) => (
+                    <Card
+                      key={category_level_2_id}
+                      brand={brand}
+                      category={category}
+                      name={name}
+                      category_level_1_id={category_level_1_id}
+                      category_level_2_id={category_level_2_id}
+                      price={price}
+                      spec={spec}
+                      image={image}
+                    />
+                  )
+                )}
+              </div>
+            )
           ) : (
             <div className='lc_empty_ctr'>
               <div className='lc_empty_title'>
@@ -163,6 +209,7 @@ export default function ListCar({
                   <FinalCard
                     data={selectedCar.recommendation}
                     selected={true}
+                    isCompare={true}
                   />
                 </div>
                 <div
@@ -177,7 +224,11 @@ export default function ListCar({
                 >
                   {selectedCar.competitor.map(
                     (selectedCar: SelectedCarItem) => (
-                      <FinalCard data={selectedCar} selected={false} />
+                      <FinalCard
+                        data={selectedCar}
+                        selected={false}
+                        isCompare={true}
+                      />
                     )
                   )}
                 </div>

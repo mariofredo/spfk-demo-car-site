@@ -1,10 +1,10 @@
-import {useCar} from '@/context/carContext';
+import {useCar} from '@/context';
 import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
-export default function ModalForm({
+export const ModalForm = ({
   setIsSubmitFirstStep,
 }: {
   setIsSubmitFirstStep: Dispatch<SetStateAction<boolean>>;
-}) {
+}) => {
   const {setQuestions} = useCar();
   const [payload, setPayload] = useState({
     company_brand: '',
@@ -120,4 +120,4 @@ export default function ModalForm({
       </div>
     </div>
   );
-}
+};

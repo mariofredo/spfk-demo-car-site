@@ -9,10 +9,11 @@ import Header from '@/components/Header/Header';
 import ListCar from '@/components/Items/MainContainer/ListCar';
 import {useTheme} from '@/context/themeContext';
 import {useCar} from '@/context/carContext';
-import ModalForm from '@/components/Modal/ModalForm/ModalForm';
+import {ModalForm, ModalText} from '@/components';
 export default function MainContainer() {
   const [step, setStep] = useState(0);
   const [isSubmitFirstStep, setIsSubmitFirstStep] = useState(false);
+  const [showModalText, setShowModalText] = useState(false);
   const {
     cars,
     setCars,
@@ -36,7 +37,17 @@ export default function MainContainer() {
     setFirstFetch(true);
     setFinish(false);
     setTab(1);
-  }, [cars, step, answeredQuestion, questionNum, finish, firstFetch, tab]);
+    setIsSubmitFirstStep(false);
+  }, [
+    cars,
+    step,
+    answeredQuestion,
+    questionNum,
+    finish,
+    firstFetch,
+    tab,
+    isSubmitFirstStep,
+  ]);
 
   return (
     <div
@@ -61,8 +72,13 @@ export default function MainContainer() {
       {!isSubmitFirstStep && (
         <ModalForm setIsSubmitFirstStep={setIsSubmitFirstStep} />
       )}
+      {showModalText && <ModalText setShowModalText={setShowModalText} />}
       <Header step={step} setStep={setStep} />
-      <ListCar step={step} setStep={setStep} />
+      <ListCar
+        step={step}
+        setStep={setStep}
+        setShowModalText={setShowModalText}
+      />
     </div>
   );
 }

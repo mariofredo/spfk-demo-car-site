@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import {Dispatch, SetStateAction, useCallback, useEffect} from 'react';
+import {Dispatch, SetStateAction, use, useCallback, useEffect} from 'react';
 import {ArrowLeftRed} from '@/public/images';
 import {useCar} from '@/context/carContext';
 
@@ -27,12 +27,15 @@ export default function Header({
     setSelectedCar,
     setTab,
   } = useCar();
+
   const handleFormatQuestion = (question: string, isMarkedRed: boolean) => {
     if (question) {
-      if (isMarkedRed) return question.split(' ').slice(-3).join(' ');
-      else {
+      if (isMarkedRed) {
+        return question.split(' ').slice(-4).join(' ');
+      } else {
         const arrSplit = question.split(' ');
-        return arrSplit.slice(0, arrSplit.length - 3).join(' ');
+
+        return arrSplit.slice(0, arrSplit.length - 4).join(' ');
       }
     }
   };
@@ -86,12 +89,16 @@ export default function Header({
 
   return (
     <div
-      className={`grid md:grid-rows-2 md:grid-cols-1 lg:grid-rows-1 lg:grid-cols-2 pt-[106px] header_ctr ${
+      className={`grid ${
+        finish
+          ? 'md:grid-rows-1 md:grid-cols-1 lg:grid-rows-1 lg:grid-cols-1'
+          : 'md:grid-rows-2 md:grid-cols-1 lg:grid-rows-1 lg:grid-cols-2'
+      } pt-[106px] header_ctr ${
         step >= 1 ? 'active static' : 'absolute top-0'
       }`}
     >
       <div className='header_q_ctr'>
-        <div className={`w-[20%] flex`}>
+        <div className={`w-[20px] absolute left-[20px]`}>
           <Image
             src={ArrowLeftRed}
             alt='ArrowLeftRed'
@@ -100,85 +107,100 @@ export default function Header({
           />
         </div>
         <p className='header_q_txt'>
-          {handleFormatQuestion(
-            questions[
-              firstFetch === true
-                ? 0
-                : questions.findIndex((el) => el.id == questionNum)
-            ]?.content,
-            false
-          )}{' '}
+          {finish
+            ? "Congratulation! Here's your"
+            : handleFormatQuestion(
+                questions[
+                  firstFetch === true
+                    ? 0
+                    : questions.findIndex((el) => el.id == questionNum)
+                ]?.content,
+                false
+              )}{' '}
           <span className='header_redline'>
-            {handleFormatQuestion(
-              questions[
-                firstFetch === true
-                  ? 0
-                  : questions.findIndex((el) => el.id == questionNum)
-              ]?.content,
-              true
-            )}
+            {finish
+              ? 'recommended car:'
+              : handleFormatQuestion(
+                  questions[
+                    firstFetch === true
+                      ? 0
+                      : questions.findIndex((el) => el.id == questionNum)
+                  ]?.content,
+                  true
+                )}
           </span>
         </p>
       </div>
-      <div className={`header_option_ctr`}>
-        {questions[
-          firstFetch === true
-            ? 0
-            : questions.findIndex((el) => el.id == questionNum)
-        ]?.result_answers.map(({tag, id, next_question_id}) => (
-          <div className='header_option' key={id}>
-            <input
-              id={tag}
-              type='radio'
-              name='option'
-              value={tag}
-              onClick={() => {
-                if (next_question_id !== 0) {
-                  if (firstFetch) {
-                    setFirstFetch(false);
-                    setAnsweredQuestion((prev) => [
-                      ...prev,
-                      {
-                        id,
-                        next_question_id,
-                        current_question_id: questions[0].id,
-                      },
-                    ]);
-                    setQuestionNum(next_question_id);
+
+      {!finish && (
+        <div className={`header_option_ctr`}>
+          {questions[
+            firstFetch === true
+              ? 0
+              : questions.findIndex((el) => el.id == questionNum)
+          ]?.result_answers.map(({tag, id, next_question_id}) => (
+            <div className='header_option' key={id}>
+              <input
+                id={tag}
+                type='radio'
+                name='option'
+                value={tag}
+                onClick={() => {
+                  if (next_question_id !== 0) {
+                    if (firstFetch) {
+                      setFirstFetch(false);
+                      setAnsweredQuestion((prev) => [
+                        ...prev,
+                        {
+                          id,
+                          next_question_id,
+                          current_question_id: questions[0].id,
+                        },
+                      ]);
+                      setQuestionNum(next_question_id);
+                    } else {
+                      setAnsweredQuestion((prev) => [
+                        ...prev,
+                        {
+                          id,
+                          next_question_id,
+                          current_question_id: questionNum,
+                        },
+                      ]);
+                      setQuestionNum(next_question_id);
+                    }
                   } else {
-                    setAnsweredQuestion((prev) => [
-                      ...prev,
-                      {id, next_question_id, current_question_id: questionNum},
-                    ]);
-                    setQuestionNum(next_question_id);
+                    if (finish) {
+                      setAnsweredQuestion((prev) => {
+                        const data = [...prev];
+                        data[data.length - 1] = {
+                          id,
+                          next_question_id,
+                          current_question_id: questionNum,
+                        };
+                        return data;
+                      });
+                    } else {
+                      setFinish(true);
+                      setAnsweredQuestion((prev) => [
+                        ...prev,
+                        {
+                          id,
+                          next_question_id,
+                          current_question_id: questionNum,
+                        },
+                      ]);
+                    }
                   }
-                } else {
-                  if (finish) {
-                    setAnsweredQuestion((prev) => {
-                      const data = [...prev];
-                      data[data.length - 1] = {
-                        id,
-                        next_question_id,
-                        current_question_id: questionNum,
-                      };
-                      return data;
-                    });
-                  } else {
-                    setFinish(true);
-                    setAnsweredQuestion((prev) => [
-                      ...prev,
-                      {id, next_question_id, current_question_id: questionNum},
-                    ]);
-                  }
-                }
-              }}
-            />
-            <label htmlFor={tag} className='option_label'>
-              {tag}
-            </label>
-          </div>
-        ))}
-      </div>
+                }}
+              />
+              <label htmlFor={tag} className='option_label'>
+                {tag}
+              </label>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

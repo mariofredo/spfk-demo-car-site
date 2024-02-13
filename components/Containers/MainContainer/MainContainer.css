@@ -77,9 +77,10 @@
 }
 .mc_ctr .header_ctr .header_q_ctr {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0px 39px;
+  gap: 20px;
 }
 .mc_ctr .header_ctr .header_q_ctr .header_q_txt {
   font-size: 32px;
@@ -94,8 +95,8 @@
   display: block;
   position: absolute;
   bottom: -20px;
-  left: -30px;
-  width: 140%;
+  left: 0px;
+  width: 100%;
   height: 20px;
   background: url("../../../public/images/mark_line_red.png") no-repeat center/contain;
 }
@@ -103,6 +104,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 20px;
 }
 .mc_ctr .header_ctr .header_option_ctr .header_option {
   position: relative;
@@ -284,7 +286,7 @@
   left: 0;
   border: 1.5px solid #3e3e3e;
 }
-.mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn:hover::before {
+.mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn.carlist:hover::before {
   content: "";
   display: block;
   position: absolute;
@@ -293,6 +295,19 @@
   bottom: -5px;
   left: 0;
   border: 1.5px solid #f31d1e;
+}
+.mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn.finish:hover::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 0px;
+  width: 90%;
+  bottom: -5px;
+  left: 0;
+  border: 1.5px solid #f31d1e;
+}
+.mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn.unfinish {
+  color: #3e3e3e;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr {
   border-radius: 8.606px;
@@ -398,6 +413,20 @@
 .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_list_ctr .fc_list_item:nth-child(even) {
   color: #ababab;
 }
+.mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_card_btn_ctr {
+  display: flex;
+  justify-content: center;
+  margin-top: 11px;
+}
+.mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body .lc_fc_card_btn_ctr .lc_fc_card_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: #040404;
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+  padding: 5px 11px;
+}
 .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr.selected {
   min-width: 280px;
   width: 280px;
@@ -446,7 +475,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.88);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -478,6 +507,48 @@
   padding: 10px;
   background: #ababab;
   border-radius: 10px;
+}
+.mc_ctr .mdl_bd .mdl_text_ctr {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 500px;
+  color: #fff;
+  background: url("../../../public/images/bg_mdl_text.png") no-repeat center;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+.mc_ctr .mdl_bd .mdl_text_ctr .mdl_text_title {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+}
+.mc_ctr .mdl_bd .mdl_text_ctr .mdl_text_title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  width: 200px;
+  height: 20px;
+  background: url("../../../public/images/mark_line_red.png") no-repeat center/contain;
+}
+.mc_ctr .mdl_bd .mdl_text_ctr .mdl_btn_ctr {
+  display: flex;
+  justify-content: flex-end;
+}
+.mc_ctr .mdl_bd .mdl_text_ctr .mdl_btn_ctr .mdl_btn_outline_red {
+  margin-top: 10px;
+  padding: 5px 30px;
+  color: #f31d1e;
+  border: 1.5px solid #f31d1e;
+  border-radius: 10px;
+}
+.mc_ctr .mdl_bd .mdl_text_ctr .mdl_text_body {
+  font-size: 16px;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
@@ -560,14 +631,17 @@
   }
   .mc_ctr .header_ctr .header_q_ctr {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0px 10px;
+    gap: 20px;
+    position: relative;
+    width: 100%;
   }
   .mc_ctr .header_ctr .header_q_ctr .header_q_txt {
     font-size: 20px;
     text-align: center;
-    width: 100%;
+    width: calc(100% - 20px);
+    padding: 0 20px;
   }
   .mc_ctr .header_ctr .header_q_ctr .header_q_txt .header_redline {
     display: inline-block;
@@ -578,8 +652,8 @@
     display: block;
     position: absolute;
     bottom: -20px;
-    left: -30px;
-    width: 140%;
+    left: 0px;
+    width: 100%;
     height: 20px;
     background: url("../../../public/images/mark_line_red.png") no-repeat center/contain;
   }
@@ -751,6 +825,11 @@
     width: 50%;
     text-align: left;
     position: relative;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn:disabled {
+    opacity: 0.5;
+    color: #3e3e3e;
+    cursor: not-allowed;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn.active::before {
     content: "";
