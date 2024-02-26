@@ -1,16 +1,19 @@
 'use client';
-
-import './MainContainer.css';
-import React, {useCallback, useState} from 'react';
-import {Mitsubishi, MitsubishiLight} from '@/public/images';
+import {useCallback, useState} from 'react';
+import {Mitsubishi} from '@/public/images';
 import Image from 'next/image';
-import DreamCar from '@/components/Items/MainContainer/DreamCar';
-import Header from '@/components/Header/Header';
-import ListCar from '@/components/Items/MainContainer/ListCar';
-import {useTheme} from '@/context/themeContext';
+import {
+  DreamCar,
+  ListCar,
+  Header,
+  ModalForm,
+  ModalText,
+  Sidebar,
+} from '@/components';
 import {useCar} from '@/context/carContext';
-import {ModalForm, ModalText} from '@/components';
-export default function MainContainer() {
+import './MainContainer.css';
+
+export const MainContainer = () => {
   const [step, setStep] = useState(0);
   const [isSubmitFirstStep, setIsSubmitFirstStep] = useState(false);
   const [showModalText, setShowModalText] = useState(false);
@@ -27,40 +30,53 @@ export default function MainContainer() {
     finish,
     setTab,
     tab,
+    uniqueId,
+    setUniqueId,
+    companyBrand,
+    setCompanyBrand,
+    questionBatch,
+    setQuestionBatch,
+    question,
+    setQuestion,
   } = useCar();
-  const {theme} = useTheme();
   const handleReset = useCallback(() => {
     setStep(0);
     setCars([]);
+    setQuestion({data: {content: '', id: 0}, choices: []});
     setQuestionNum(0);
     setAnsweredQuestion([]);
     setFirstFetch(true);
     setFinish(false);
     setTab(1);
     setIsSubmitFirstStep(false);
+    setUniqueId('');
+    setCompanyBrand('');
+    setQuestionBatch(0);
   }, [
     cars,
     step,
+    question,
     answeredQuestion,
     questionNum,
     finish,
     firstFetch,
     tab,
     isSubmitFirstStep,
+    questionBatch,
+    uniqueId,
+    companyBrand,
   ]);
 
   return (
     <div
-      className={`mc_ctr  ${
-        step >= 1 ? 'cursor-pointer' : 'max-h-screen overflow-hidden'
-      }`}
+      className={`mc_ctr  ${step >= 1 ? '' : 'max-h-screen overflow-hidden'}`}
       onClick={() => {
         if (step !== 1 && isSubmitFirstStep) setStep(1);
       }}
     >
       <Image
         className={`logo ${step == 0 ? 'active' : 'inactive'} `}
-        src={theme === 'dark' ? Mitsubishi : MitsubishiLight}
+        src={Mitsubishi}
         alt='Mitsubishi'
       />
 
@@ -69,16 +85,26 @@ export default function MainContainer() {
         onClick={handleReset}
       ></button>
       {step === 0 && <DreamCar />}
+      {step === 1 && (
+        <div className='relative w-full grid grid-cols-10 pt-[90px]'>
+          <div className='col-span-4'>
+            <Sidebar />
+          </div>
+          <div className='col-span-6'>
+            <ListCar
+              step={step}
+              setStep={setStep}
+              setShowModalText={setShowModalText}
+            />
+          </div>
+        </div>
+      )}
+
       {!isSubmitFirstStep && (
         <ModalForm setIsSubmitFirstStep={setIsSubmitFirstStep} />
       )}
-      {showModalText && <ModalText setShowModalText={setShowModalText} />}
-      <Header step={step} setStep={setStep} />
-      <ListCar
-        step={step}
-        setStep={setStep}
-        setShowModalText={setShowModalText}
-      />
+      {/* {showModalText && <ModalText setShowModalText={setShowModalText} />} */}
+      {/* <Header step={step} setStep={setStep} /> */}
     </div>
   );
-}
+};

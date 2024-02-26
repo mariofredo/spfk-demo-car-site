@@ -1,16 +1,32 @@
+import {Car} from '.';
+
+export interface ApiResponseQuestion {
+  u_id?: any;
+  bottom_limit: number;
+  top_limit: number;
+  question: {content: string; id: number};
+  choices: Choice[];
+  recommendations: Car[];
+}
+
 export interface Question {
-  result_answers: {
-    tag: string;
+  data: {
+    content: string;
     id: number;
-    question_id: number;
-    next_question_id: number;
-  }[];
-  content: string;
-  id: number;
+  };
+  choices: Choice[];
+}
+
+export interface Choice {
+  answer_id: number;
+  tag: string;
+  tag_id: number;
 }
 
 export interface AnsweredData {
   id: number;
-  next_question_id: number;
-  current_question_id: number;
+  content: string;
+  choices: Choice[];
+  answer_id: number;
+  tag: string;
 }

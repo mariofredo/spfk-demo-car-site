@@ -5,32 +5,12 @@ export const ModalForm = ({
 }: {
   setIsSubmitFirstStep: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const {setQuestions} = useCar();
-  const [payload, setPayload] = useState({
-    company_brand: '',
-    batch: '',
-  });
+  const {companyBrand, setCompanyBrand, questionBatch, setQuestionBatch} =
+    useCar();
+
   const [listBatch, setListBatch] = useState<{batch: number}[]>([]);
   const [listBrand, setListBrand] = useState<{id: number; name: string}[]>([]);
-  const getQuestions = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/question-list`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      }
-    );
-    if (response.ok) {
-      const data = await response.json();
-      if (data.code === 200) {
-        setQuestions(data.data);
-        setIsSubmitFirstStep(true);
-      }
-    }
-  };
+
   const getQuestionBatchList = async (company_brand_id: number) => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/question-batch-list`,
@@ -63,9 +43,8 @@ export const ModalForm = ({
     getBrandList();
   }, []);
   useEffect(() => {
-    if (payload.company_brand)
-      getQuestionBatchList(parseInt(payload.company_brand));
-  }, [payload.company_brand]);
+    if (companyBrand) getQuestionBatchList(parseInt(companyBrand));
+  }, [companyBrand]);
   return (
     <div className='mdl_bd'>
       <div className='mdl_form_ctr'>
@@ -75,9 +54,9 @@ export const ModalForm = ({
             name='company_brand'
             id='selectBrand'
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setPayload({...payload, [e.target.name]: e.target.value})
+              setCompanyBrand(e.target.value)
             }
-            value={payload.company_brand}
+            value={companyBrand}
           >
             <option value='' disabled>
               Choose Your Brand
@@ -95,12 +74,12 @@ export const ModalForm = ({
             name='batch'
             id='selectBrand'
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setPayload({...payload, [e.target.name]: e.target.value})
+              setQuestionBatch(parseInt(e.target.value))
             }
-            value={payload.batch}
-            disabled={!payload.company_brand}
+            value={questionBatch}
+            disabled={!companyBrand}
           >
-            <option value='' disabled>
+            <option value='0' disabled>
               Choose Your Question Set
             </option>
             {listBatch.map((key) => (
@@ -112,8 +91,8 @@ export const ModalForm = ({
         </div>
         <button
           className='mdl_form_btn'
-          disabled={!payload.batch || !payload.company_brand}
-          onClick={() => getQuestions()}
+          disabled={!questionBatch || !companyBrand}
+          onClick={() => setIsSubmitFirstStep(true)}
         >
           Submit
         </button>

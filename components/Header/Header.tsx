@@ -1,16 +1,16 @@
 'use client';
 import Image from 'next/image';
-import {Dispatch, SetStateAction, use, useCallback, useEffect} from 'react';
+import {Dispatch, SetStateAction, useCallback, useEffect} from 'react';
 import {ArrowLeftRed} from '@/public/images';
 import {useCar} from '@/context/carContext';
 
-export default function Header({
+export const Header = ({
   step,
   setStep,
 }: {
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
-}) {
+}) => {
   const {
     cars,
     setCars,
@@ -203,4 +203,4 @@ export default function Header({
       )}
     </div>
   );
-}
+};

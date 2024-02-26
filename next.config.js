@@ -4,9 +4,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'aifred.superfk.co',
+        hostname: 'laravel4.isysedge.com',
         port: '',
-        pathname: '/api/**',
+        pathname: '/**',
       },
     ],
   },

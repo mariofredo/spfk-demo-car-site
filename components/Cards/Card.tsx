@@ -3,7 +3,7 @@ import {AddCircle, CarInfo} from '@/public/images';
 import {Car} from '@/types/car';
 import {useCar} from '@/context/carContext';
 export const Card = ({
-  brand,
+  brand_name,
   category,
   name,
   category_level_1_id,
@@ -11,6 +11,8 @@ export const Card = ({
   price,
   spec,
   image,
+  category_level_1_name,
+  id,
 }: Car) => {
   const {cars, setSelectedCar, setTab, finish} = useCar();
   const handleGetListComparison = async (category_level_2_id: number) => {
@@ -36,15 +38,15 @@ export const Card = ({
         <Image
           width={200}
           height={200}
-          src={image}
+          src={`${process.env.NEXT_PUBLIC_API_URL}/${image}`}
           alt='CarOne'
           className='relative max-[480px]:top-[-50px] min-[481px]:top-[-30px] right-[-20px] w-[110%]  max-w-none'
         />
       </div>
       <div className='lc_card_body'>
         <div className='lc_card_title'>
-          {brand} <br />
-          {category}
+          {brand_name} <br />
+          {category_level_1_name}
         </div>
         <div className='lc_card_type'>{name}</div>
         <div className='lc_card_price'>{price}</div>

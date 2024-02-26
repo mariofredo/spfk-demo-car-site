@@ -78,7 +78,7 @@ export const FinalCard = ({
         <div className='lc_fc_price'>{data.price}</div>
 
         <div className='lc_fc_list_ctr'>
-          {data.specs.map((item) =>
+          {/* {data.specs.map((item) =>
             viewportWidth < 768 && selected ? (
               <div className='fc_list_ctr'>
                 <div className='fc_list_spec'>
@@ -97,7 +97,7 @@ export const FinalCard = ({
                 <span className='fc_list_item_text'> {item.content}</span>
               </p>
             )
-          )}
+          )} */}
         </div>
         {!isCompare && (
           <div className='lc_fc_card_btn_ctr'>

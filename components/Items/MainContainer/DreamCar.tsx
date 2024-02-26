@@ -1,6 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
-
-export default function DreamCar() {
+export const DreamCar = () => {
   return (
     <div className='dc_ctr'>
       <div className={`relative`}>
@@ -10,4 +8,4 @@ export default function DreamCar() {
       </div>
     </div>
   );
-}
+};

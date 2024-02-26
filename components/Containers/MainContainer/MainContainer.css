@@ -56,9 +56,11 @@
 .mc_ctr .btn_reset.active {
   opacity: 1;
   transition: all 1s ease;
+  z-index: 1;
 }
 .mc_ctr .btn_reset.inactive {
   opacity: 0;
+  z-index: -1;
   transition: all 1s ease;
 }
 .mc_ctr .redline {
@@ -226,13 +228,10 @@
 }
 .mc_ctr .lc_ctr {
   background: linear-gradient(138deg, rgba(0, 0, 0, 0.3) -1.05%, rgba(0, 0, 0, 0.02) 16.64%, rgba(0, 0, 0, 0.3) 41.01%, rgba(0, 0, 0, 0.3) 49.79%, rgba(0, 0, 0, 0.03) 74.76%, rgba(0, 0, 0, 0.3) 94.49%, rgba(0, 0, 0, 0.03) 99.89%, rgba(0, 0, 0, 0.12) 108.76%);
-  border: 2px solid #3f3f3f;
   width: 100%;
-  border-radius: 20px 20px 0 0;
 }
 .mc_ctr .lc_ctr.inactive {
   position: relative;
-  top: -60px;
 }
 .mc_ctr .lc_ctr.inactive .lc_wrapper {
   opacity: 0;
@@ -240,9 +239,7 @@
   min-height: 60px;
 }
 .mc_ctr .lc_ctr.active {
-  margin-top: 60px;
   position: sticky;
-  animation: goUp 1s ease;
   min-height: 100vh;
 }
 .mc_ctr .lc_ctr.active .lc_wrapper {
@@ -250,7 +247,6 @@
   transition: all 1s ease;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_filters {
-  background: #212121;
   margin-bottom: 50px;
   display: flex;
   justify-content: space-between;
@@ -261,7 +257,6 @@
   font-weight: 700;
   line-height: normal;
   padding: 25px 50px;
-  position: sticky;
   top: 0;
   z-index: 100;
   border-radius: 20px 20px 0 0;
@@ -271,7 +266,7 @@
   width: 70%;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn {
-  width: 50%;
+  width: 100%;
   text-align: left;
   position: relative;
 }
@@ -280,8 +275,8 @@
   display: block;
   position: absolute;
   height: 0px;
-  width: 90%;
-  bottom: -5px;
+  width: 100%;
+  bottom: -10px;
   left: 0;
   border: 1.5px solid #f31d1e;
 }
@@ -294,16 +289,6 @@
   bottom: -5px;
   left: 0;
   border: 1.5px solid #3e3e3e;
-}
-.mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn.carlist:hover::before {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 0px;
-  width: 90%;
-  bottom: -5px;
-  left: 0;
-  border: 1.5px solid #f31d1e;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn.finish:hover::before {
   content: "";
@@ -576,12 +561,7 @@
 
 @media (max-width: 768px) {
   .mc_ctr {
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
     background: #000 url(../../../public/images/opening_bg.png) no-repeat bottom/cover fixed;
-    color: #d1d1d1;
-    font-family: "Manrope-Regular";
   }
   .mc_ctr .logo {
     opacity: 0;
@@ -836,6 +816,7 @@
     line-height: normal;
     padding: 25px 20px;
     border-radius: 20px 20px 0 0;
+    position: static;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_txt {
     font-size: 12px;

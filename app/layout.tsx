@@ -1,8 +1,8 @@
 import type {Metadata} from 'next';
 import {Inter} from 'next/font/google';
+import {CarContextProvider} from '@/context/carContext';
 import '@/public/fonts/fontstyle.css';
 import './globals.css';
-import {CarContextProvider} from '@/context/carContext';
 
 const inter = Inter({subsets: ['latin']});
 

@@ -1,5 +1,5 @@
 'use client';
-import MainContainer from '@/components/Containers/MainContainer/MainContainer';
+import {MainContainer} from '@/components';
 
 export default function Home() {
   return <MainContainer />;

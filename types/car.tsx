@@ -1,10 +1,12 @@
 export interface Car {
-  brand: string;
+  brand_name: string;
   category: string;
-  name: string;
   price: string;
+  name: string;
+  category_level_1_name: string;
   category_level_1_id: number;
   category_level_2_id: number;
+  id: string;
   spec: {id: number; name: string; content: string}[];
   image: string;
 }
@@ -22,8 +24,8 @@ export interface SelectedCarItem {
   category_level_2_name: string;
   image: string;
   price: string;
-  specs: {
-    spec_name: string;
-    content: string;
-  }[];
+  // specs: {
+  //   spec_name: string;
+  //   content: string;
+  // }[];
 }
