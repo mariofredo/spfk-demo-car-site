@@ -15,7 +15,7 @@
   height: 100%;
   border-radius: 0px 40px 0px 0px;
   border: 1.35px solid #585858;
-  padding: 20px 100px 80px;
+  padding: 20px 70px 80px;
   display: flex;
   flex-direction: column;
   gap: 75px;
@@ -36,6 +36,23 @@
   height: 40px;
   border-radius: 14px;
   background: #2f2f2f;
+  padding: 4px;
+  .sb_pb_fill {
+    height: 100%;
+    background: linear-gradient(90deg, #910707 17.16%, #f31d1e 113.73%);
+    border-radius: 14px;
+    transition: ease-in-out 4s forwards;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      text-wrap: nowrap;
+      height: 40px;
+    }
+  }
 }
 
 .sb_title {
@@ -68,6 +85,22 @@
   }
 }
 
+.sb_btn_save_result {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: #040404;
+  font-size: 22px;
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+  padding: 6px 11px;
+  gap: 20px;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
 .sb_answer_list {
   display: flex;
   flex-direction: column;

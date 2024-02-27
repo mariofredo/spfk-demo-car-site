@@ -404,8 +404,8 @@ $breakpoint-md: 1024px;
       }
 
       .lc_fc_ctr {
-        min-width: 280px;
-        width: 280px;
+        min-width: 240px;
+        width: 100%;
         min-height: 700px;
         border-radius: 8.606px;
         border: 2px solid #3f3f3f;
@@ -418,7 +418,7 @@ $breakpoint-md: 1024px;
           rgba(255, 255, 255, 0.1) 93.75%,
           rgba(217, 217, 217, 0.2) 99.15%
         );
-        padding: 0 30px 20px;
+        padding: 0 20px 20px;
         color: #dbdbdb;
         .lc_fc_body {
           margin-top: -20px;
@@ -509,8 +509,8 @@ $breakpoint-md: 1024px;
       }
 
       .lc_fc_ctr.selected {
-        min-width: 280px;
-        width: 280px;
+        min-width: 240px;
+        width: 240px;
         background: linear-gradient(
           140deg,
           rgba(217, 217, 217, 0.5) 31.46%,
@@ -558,91 +558,6 @@ $breakpoint-md: 1024px;
           padding: 5px 10px;
           border: 1.5px solid #f31d1e;
         }
-      }
-    }
-  }
-  .mdl_bd {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.88);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
-    color: #3e3e3e;
-    .mdl_form_ctr {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 500px;
-      background: #d6d6d6;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px;
-
-      gap: 20px;
-      .mdl_form_input_ctr {
-        display: flex;
-        gap: 20px;
-        flex-direction: column;
-        select {
-          padding: 10px 15px;
-        }
-      }
-      .mdl_form_btn {
-        padding: 10px;
-        background: #ababab;
-        border-radius: 10px;
-      }
-    }
-    .mdl_text_ctr {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 500px;
-      color: #fff;
-      background: url('../../../public/images/bg_mdl_text.png') no-repeat center;
-
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px;
-      .mdl_text_title {
-        font-size: 20px;
-        font-weight: 400;
-        text-align: center;
-        position: relative;
-        &::before {
-          content: '';
-          display: block;
-          position: absolute;
-          bottom: -20px;
-          left: 20px;
-          width: 200px;
-          height: 20px;
-          background: url('../../../public/images/mark_line_red.png') no-repeat
-            center / contain;
-        }
-      }
-      .mdl_btn_ctr {
-        display: flex;
-        justify-content: flex-end;
-        .mdl_btn_outline_red {
-          margin-top: 10px;
-          padding: 5px 30px;
-          color: #f31d1e;
-          border: 1.5px solid #f31d1e;
-          border-radius: 10px;
-        }
-      }
-
-      .mdl_text_body {
-        font-size: 16px;
-        font-weight: 500;
       }
     }
   }
@@ -1233,43 +1148,6 @@ $breakpoint-md: 1024px;
             padding: 2.5px 8px;
             border: 1.5px solid #f31d1e;
           }
-        }
-      }
-    }
-    .mdl_bd {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 5;
-      color: #3e3e3e;
-      .mdl_form_ctr {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        z-index: 10;
-        max-width: 500px;
-        background: #d6d6d6;
-        border-radius: 10px;
-        padding: 20px;
-        gap: 20px;
-        .mdl_form_input_ctr {
-          display: flex;
-          gap: 20px;
-          flex-direction: column;
-          select {
-            padding: 10px 15px;
-          }
-        }
-        .mdl_form_btn {
-          padding: 10px;
-          background: #ababab;
-          border-radius: 10px;
         }
       }
     }

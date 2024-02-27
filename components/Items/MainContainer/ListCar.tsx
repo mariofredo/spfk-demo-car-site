@@ -15,10 +15,12 @@ export const ListCar = ({
   step,
   setStep,
   setShowModalText,
+  setShowModalCompare,
 }: {
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
   setShowModalText: Dispatch<SetStateAction<boolean>>;
+  setShowModalCompare: Dispatch<SetStateAction<boolean>>;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -70,6 +72,16 @@ export const ListCar = ({
     setTab(1);
   }, [cars, step, answeredQuestion, questionNum, finish, firstFetch, tab]);
 
+  const dummyData: SelectedCarItem = {
+    company_brand_name: 'Toyota',
+    image: 'https://www.toyota.astra.co.id/assets/images/avanza.png',
+    category_level_1_name: 'MPV',
+    category_level_2_name: 'Avanza',
+    category_level_1_id: 1,
+    category_level_2_id: 1,
+    price: '200000000',
+  };
+
   return (
     <div className={`lc_ctr ${step >= 1 ? 'active' : 'inactive'}`}>
       <div className='lc_wrapper'>
@@ -106,9 +118,9 @@ export const ListCar = ({
           cars.length > 0 ? (
             finish ? (
               <div
-                className={`w-full flex  flex-nowrap px-[20px] py-[20px] gap-[20px] overflow-x-scroll `}
+                className={`grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-2 max-[480px]:gap-[25px] min-[481px]:gap-[40px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px]`}
               >
-                {/* {cars.map(
+                {cars.map(
                   ({
                     brand_name,
                     category,
@@ -125,21 +137,22 @@ export const ListCar = ({
                       data={{
                         company_brand_name: brand_name,
                         image,
-                        category_level_1_name: category,
+                        category_level_1_name: category_level_1_name,
                         category_level_2_name: name,
                         category_level_1_id,
                         category_level_2_id,
                         price,
-                        specs: spec.map(({content, name}) => ({
-                          content: content,
-                          spec_name: name,
-                        })),
+                        // specs: spec.map(({content, name}) => ({
+                        //   content: content,
+                        //   spec_name: name,
+                        // })),
                       }}
                       isCompare={false}
                       selected={false}
+                      setShowModalCompare={setShowModalCompare}
                     />
                   )
-                )} */}
+                )}
               </div>
             ) : (
               <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[40px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px]'>
@@ -198,7 +211,7 @@ export const ListCar = ({
         ) : (
           <>
             {selectedCar ? (
-              <div className='flex justify-center max-[480px]:gap-[10px] min-[481px]:gap-[40px] max-[480px]:px-[0px] min-[481px]:px-[20px]'>
+              <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[20px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px]'>
                 <div className='py-[30px] lc_fc_info_ctr'>
                   <div className='lc_fc_ctr'>
                     <div className='lc_fc_body pt-[134px]'>
@@ -207,6 +220,14 @@ export const ListCar = ({
                         {/* {selectedCar.recommendation.specs.map((item) => (
                           <div className='fc_list_item'>{item.spec_name}</div>
                         ))} */}
+                        <div className='fc_list_item'>
+                          <span>Body Type</span>
+                        </div>
+                        <div className='fc_list_item'>Passenger</div>
+                        <div className='fc_list_item'>Suited Area</div>
+                        <div className='fc_list_item'>Driven By</div>
+                        <div className='fc_list_item'>Road Type</div>
+                        <div className='fc_list_item'>Primary Use</div>
                       </div>
                     </div>
                   </div>
@@ -216,10 +237,11 @@ export const ListCar = ({
                     data={selectedCar.recommendation}
                     selected={true}
                     isCompare={true}
+                    setShowModalCompare={setShowModalCompare}
                   />
                 </div>
                 <div
-                  className={`flex max-[768px]:w-[calc(50%-15px)] min-[769px]:w-[calc(100%-120px)] max-[768px]:overflow-y-visible min-[769px]:overflow-x-scroll max-[768px]:flex-wrap min-[769px]:flex-nowrap gap-[40px] py-[30px]  ${
+                  className={`flex  max-[768px]:overflow-y-visible min-[769px]:overflow-x-scroll max-[768px]:flex-wrap min-[769px]:flex-nowrap gap-[40px] py-[30px]  ${
                     isDragging ? 'cursor-grabbing' : 'cursor-grab'
                   }`}
                   ref={containerRef}
@@ -234,6 +256,7 @@ export const ListCar = ({
                         data={selectedCar}
                         selected={false}
                         isCompare={true}
+                        setShowModalCompare={setShowModalCompare}
                       />
                     )
                   )}

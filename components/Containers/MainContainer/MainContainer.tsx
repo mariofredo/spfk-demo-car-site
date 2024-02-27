@@ -9,6 +9,7 @@ import {
   ModalForm,
   ModalText,
   Sidebar,
+  ModalCompare,
 } from '@/components';
 import {useCar} from '@/context/carContext';
 import './MainContainer.css';
@@ -17,6 +18,7 @@ export const MainContainer = () => {
   const [step, setStep] = useState(0);
   const [isSubmitFirstStep, setIsSubmitFirstStep] = useState(false);
   const [showModalText, setShowModalText] = useState(false);
+  const [showModalCompare, setShowModalCompare] = useState(false);
   const {
     cars,
     setCars,
@@ -87,14 +89,15 @@ export const MainContainer = () => {
       {step === 0 && <DreamCar />}
       {step === 1 && (
         <div className='relative w-full grid grid-cols-10 pt-[90px]'>
-          <div className='col-span-4'>
+          <div className='col-span-3'>
             <Sidebar />
           </div>
-          <div className='col-span-6'>
+          <div className='col-span-7'>
             <ListCar
               step={step}
               setStep={setStep}
               setShowModalText={setShowModalText}
+              setShowModalCompare={setShowModalCompare}
             />
           </div>
         </div>
@@ -104,6 +107,9 @@ export const MainContainer = () => {
         <ModalForm setIsSubmitFirstStep={setIsSubmitFirstStep} />
       )}
       {/* {showModalText && <ModalText setShowModalText={setShowModalText} />} */}
+      {showModalCompare && (
+        <ModalCompare setShowModalCompare={setShowModalCompare} />
+      )}
       {/* <Header step={step} setStep={setStep} /> */}
     </div>
   );

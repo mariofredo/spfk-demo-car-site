@@ -1,9 +1,9 @@
-import {ChangeEvent, useCallback, useEffect} from 'react';
+import {ChangeEvent, useCallback, useEffect, useState} from 'react';
 import Image from 'next/image';
 import {ProgressBar, AnswerCard} from '@/components';
-import {ReturnBtn} from '@/public/images';
+import {DownloadCircle, ReturnBtn} from '@/public/images';
 import {useCar} from '@/context';
-import {AnsweredData, ApiResponseQuestion, Question} from '@/types';
+import {AnsweredData, ApiResponseQuestion} from '@/types';
 import './Sidebar.css';
 
 export const Sidebar = () => {
@@ -20,7 +20,7 @@ export const Sidebar = () => {
     finish,
     setFinish,
   } = useCar();
-
+  const [limit, setLimit] = useState({top: 0, bot: 0});
   const getCarRecommendations = async (arr: number[]) => {
     try {
       const response = await fetch(
@@ -54,6 +54,7 @@ export const Sidebar = () => {
             choices: data.choices,
           });
         }
+        setLimit({top: data.top_limit, bot: data.bottom_limit});
         setCars(data.recommendations);
       }
     } catch (error) {
@@ -79,10 +80,22 @@ export const Sidebar = () => {
     },
     [question.choices]
   );
+  const handleBack = useCallback(
+    (idx: number) => {
+      console.log(idx, answeredQuestion, 'idx');
+      setAnsweredQuestion((prev) => prev.slice(0, idx));
+    },
+    [answeredQuestion]
+  );
   return (
     <div className='sb_ctr'>
-      <ProgressBar />
-      <Image src={ReturnBtn} alt='return_button' className='sb_return_btn' />
+      <ProgressBar limit={limit} />
+      <Image
+        src={ReturnBtn}
+        alt='return_button'
+        className='sb_return_btn'
+        onClick={() => handleBack(answeredQuestion.length - 1)}
+      />
       <p className='sb_title'>Preferences</p>
       {answeredQuestion.length > 0 && (
         <div className='sb_answer_list'>
@@ -92,10 +105,15 @@ export const Sidebar = () => {
         </div>
       )}
       {finish ? (
-        <div className='sb_f_ctr'>
-          <p className='sb_f_big'>Congratulation!</p>
-          <p className='sb_f_small'>Here's your recommended car:</p>
-        </div>
+        <>
+          <div className='sb_f_ctr'>
+            <p className='sb_f_big'>Congratulation!</p>
+            <p className='sb_f_small'>Here's your recommended car:</p>
+          </div>
+          <button className='sb_btn_save_result'>
+            Save the Result <Image src={DownloadCircle} alt='download_circle' />
+          </button>
+        </>
       ) : (
         <div className='sb_q_ctr'>
           <div className='relative'>

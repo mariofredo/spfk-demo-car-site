@@ -11,3 +11,5 @@ export {default as CarInfo} from './car_info_icon.png';
 export {default as AddCircle} from './add_circle.png';
 export {default as MitsubishiLight} from './mitsubishi_light.png';
 export {default as ReturnBtn} from './return_btn.png';
+export {default as DownloadCircle} from './download_circle.png';
+export {default as CloseIcon} from './close_icon.png';

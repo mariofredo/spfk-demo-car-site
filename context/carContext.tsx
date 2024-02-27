@@ -76,8 +76,38 @@ export function CarContextProvider({children}: {children: React.ReactNode}) {
   const [finish, setFinish] = useState<boolean>(false);
   const [selectedCar, setSelectedCar] = useState<
     SelectedCar | null | undefined
-  >(null);
-  const [tab, setTab] = useState<number>(1);
+  >({
+    recommendation: {
+      company_brand_name: 'Toyota',
+      image: 'uploads/category_level_2/glx-4x4-mt-1707019268.png',
+      category_level_1_name: 'MPV',
+      category_level_2_name: 'Avanza',
+      category_level_1_id: 1,
+      category_level_2_id: 1,
+      price: '200000000',
+    },
+    competitor: [
+      {
+        company_brand_name: 'Toyota',
+        image: 'uploads/category_level_2/glx-4x4-mt-1707019268.png',
+        category_level_1_name: 'MPV',
+        category_level_2_name: 'Avanza',
+        category_level_1_id: 1,
+        category_level_2_id: 1,
+        price: '200000000',
+      },
+      {
+        company_brand_name: 'Toyota',
+        image: 'uploads/category_level_2/glx-4x4-mt-1707019268.png',
+        category_level_1_name: 'MPV',
+        category_level_2_name: 'Avanza',
+        category_level_1_id: 1,
+        category_level_2_id: 1,
+        price: '200000000',
+      },
+    ],
+  });
+  const [tab, setTab] = useState<number>(2);
   const [companyBrand, setCompanyBrand] = useState<string>('');
   const [questionBatch, setQuestionBatch] = useState<number>(0);
   const [uniqueId, setUniqueId] = useState<string>('');

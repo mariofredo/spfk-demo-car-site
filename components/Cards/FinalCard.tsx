@@ -1,5 +1,5 @@
 'use client';
-import {useEffect, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import Image from 'next/image';
 import {SelectedCarItem} from '@/types/car';
 import {AddCircle} from '@/public/images';
@@ -8,10 +8,12 @@ export const FinalCard = ({
   data,
   selected,
   isCompare,
+  setShowModalCompare,
 }: {
   data: SelectedCarItem;
   selected: boolean;
   isCompare: boolean;
+  setShowModalCompare: Dispatch<SetStateAction<boolean>>;
 }) => {
   const {setSelectedCar, setTab} = useCar();
   const [viewportWidth, setViewportWidth] = useState<number>(0);
@@ -55,12 +57,12 @@ export const FinalCard = ({
         !isCompare ? 'carlist' : ''
       }`}
     >
-      <div className='w-full  max-[767px]:h-[120px] min-[768px]:h-[130px]  flex items-center justify-center'>
+      <div className='w-full max-[767px]:h-[120px] min-[768px]:h-[130px]  flex items-center justify-center'>
         <Image
-          className='relative top-[-25px] '
-          width={200}
+          className='relative top-[-25px] w-full'
+          width={400}
           height={120}
-          src={data.image}
+          src={`${process.env.NEXT_PUBLIC_API_URL}/${data.image}`}
           alt='CarOne'
         />
       </div>
@@ -98,12 +100,33 @@ export const FinalCard = ({
               </p>
             )
           )} */}
+          <p title={'LALALA'} className='fc_list_item'>
+            <span className='fc_list_item_text'> {'LALALA'}</span>
+          </p>
+          <p title={'LALALA'} className='fc_list_item'>
+            <span className='fc_list_item_text'> {'LALALA'}</span>
+          </p>
+          <p title={'LALALA'} className='fc_list_item'>
+            <span className='fc_list_item_text'> {'LALALA'}</span>
+          </p>
+          <p title={'LALALA'} className='fc_list_item'>
+            <span className='fc_list_item_text'> {'LALALA'}</span>
+          </p>
+          <p title={'LALALA'} className='fc_list_item'>
+            <span className='fc_list_item_text'> {'LALALA'}</span>
+          </p>
+          <p title={'LALALA'} className='fc_list_item'>
+            <span className='fc_list_item_text'> {'LALALA'}</span>
+          </p>
         </div>
         {!isCompare && (
           <div className='lc_fc_card_btn_ctr'>
             <button
               className='lc_fc_card_btn'
-              onClick={() => handleGetListComparison(data.category_level_2_id)}
+              onClick={() => {
+                // handleGetListComparison(data.category_level_2_id);
+                setShowModalCompare(true);
+              }}
             >
               Compare{' '}
               <Image

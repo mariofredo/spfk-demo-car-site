@@ -1,5 +1,5 @@
 import {Dispatch, SetStateAction} from 'react';
-
+import '../Modal.css';
 export const ModalText = ({
   setShowModalText,
 }: {

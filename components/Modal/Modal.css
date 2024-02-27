@@ -1,0 +1,304 @@
+.mdl_bd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  color: #3e3e3e;
+}
+.mdl_bd .mdl_form_ctr {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 500px;
+  background: #d6d6d6;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  gap: 20px;
+}
+.mdl_bd .mdl_form_ctr .mdl_form_input_ctr {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.mdl_bd .mdl_form_ctr .mdl_form_input_ctr select {
+  padding: 10px 15px;
+}
+.mdl_bd .mdl_form_ctr .mdl_form_btn {
+  padding: 10px;
+  background: #ababab;
+  border-radius: 10px;
+}
+.mdl_bd .mdl_text_ctr {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 500px;
+  color: #fff;
+  background: url("../../public/images/bg_mdl_text.png") no-repeat center;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+.mdl_bd .mdl_text_ctr .mdl_text_title {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+}
+.mdl_bd .mdl_text_ctr .mdl_text_title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  width: 200px;
+  height: 20px;
+  background: url("../../public/images/mark_line_red.png") no-repeat center/contain;
+}
+.mdl_bd .mdl_text_ctr .mdl_btn_ctr {
+  display: flex;
+  justify-content: flex-end;
+}
+.mdl_bd .mdl_text_ctr .mdl_btn_ctr .mdl_btn_outline_red {
+  margin-top: 10px;
+  padding: 5px 30px;
+  color: #f31d1e;
+  border: 1.5px solid #f31d1e;
+  border-radius: 10px;
+}
+.mdl_bd .mdl_text_ctr .mdl_text_body {
+  font-size: 16px;
+  font-weight: 500;
+}
+.mdl_bd .mdl_compare_ctr {
+  background: rgba(18, 18, 18, 0.8);
+  border-radius: 16px;
+  height: 90vh;
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  overflow-y: scroll;
+  color: #fff;
+  position: relative;
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_title {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: right;
+  margin-bottom: 80px;
+  margin-top: 112px;
+  color: #fff;
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_list .mdl_spec_item {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: right;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  height: 80px;
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_list .mdl_spec_item .fc_list_item_text {
+  display: -webkit-box;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  left: 0;
+  transform: translateY(-50%);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_list .mdl_spec_item:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 90%;
+  bottom: -5px;
+  background: url(../../public/images/final_card_line.png);
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_list .mdl_spec_item:first-child {
+  padding-bottom: 15px;
+  padding-top: 0px;
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_list .mdl_spec_item:last-child {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_list .mdl_spec_item:last-child::before {
+  background: none;
+}
+.mdl_bd .mdl_compare_ctr .mdl_spec_list .mdl_spec_item:nth-child(even) {
+  color: #ababab;
+}
+.mdl_bd .mdl_compare_ctr .why_text {
+  font-size: 20px;
+  font-family: "Manrope-Light";
+  color: #fff;
+}
+.mdl_bd .mdl_compare_ctr .why_text span {
+  font-family: "Manrope-Bold";
+}
+.mdl_bd .mdl_card {
+  width: 100%;
+  min-height: 700px;
+  border-radius: 8.606px;
+  border: 2px solid #3f3f3f;
+  background: linear-gradient(140deg, rgba(217, 217, 217, 0.2) 31.46%, rgba(255, 255, 255, 0.1) 55.76%, rgba(217, 217, 217, 0.2) 69.76%, rgba(217, 217, 217, 0.2) 86.99%, rgba(255, 255, 255, 0.1) 93.75%, rgba(217, 217, 217, 0.2) 99.15%);
+  padding: 0 20px 20px;
+  color: #dbdbdb;
+}
+.mdl_bd .mdl_card.selected {
+  border: 2px solid #f31d1e;
+}
+.mdl_bd .mdl_card .mdl_fc_body {
+  margin-top: 20px;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_price {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ababab;
+  margin: 8px 0 30px;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_list_ctr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_list_ctr .fc_list_item {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  height: 80px;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_list_ctr .fc_list_item .fc_list_item_text {
+  display: -webkit-box;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  left: 0;
+  transform: translateY(-50%);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_list_ctr .fc_list_item:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 90%;
+  bottom: -5px;
+  background: url(../../public/images/final_card_line.png);
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_list_ctr .fc_list_item:first-child {
+  padding-bottom: 15px;
+  padding-top: 0px;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_list_ctr .fc_list_item:last-child {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_list_ctr .fc_list_item:last-child::before {
+  background: none;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_list_ctr .fc_list_item:nth-child(even) {
+  color: #ababab;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_card_btn_ctr {
+  display: flex;
+  justify-content: center;
+  margin-top: 11px;
+}
+.mdl_bd .mdl_card .mdl_fc_body .mdl_fc_card_btn_ctr .mdl_fc_card_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: #040404;
+  box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+  padding: 5px 11px;
+}
+.mdl_bd .mdl_card .card_why_text {
+  font-size: 20px;
+  font-family: "Manrope-Light";
+  color: white;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .mdl_bd {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    color: #3e3e3e;
+  }
+  .mdl_bd .mdl_form_ctr {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+    max-width: 500px;
+    background: #d6d6d6;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 20px;
+  }
+  .mdl_bd .mdl_form_ctr .mdl_form_input_ctr {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+  }
+  .mdl_bd .mdl_form_ctr .mdl_form_input_ctr select {
+    padding: 10px 15px;
+  }
+  .mdl_bd .mdl_form_ctr .mdl_form_btn {
+    padding: 10px;
+    background: #ababab;
+    border-radius: 10px;
+  }
+}/*# sourceMappingURL=Modal.css.map */

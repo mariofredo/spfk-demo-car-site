@@ -1,5 +1,6 @@
 import {useCar} from '@/context';
 import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import '../Modal.css';
 export const ModalForm = ({
   setIsSubmitFirstStep,
 }: {
