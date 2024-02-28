@@ -190,7 +190,7 @@ export const ListCar = ({
         ) : (
           <>
             {selectedCar ? (
-              <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[20px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px]'>
+              <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[20px] min-[769px]:gap-[10px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px]'>
                 <div className='py-[30px] lc_fc_info_ctr'>
                   <div className='lc_fc_ctr spec'>
                     <div className='lc_fc_body pt-[138px]'>
@@ -211,7 +211,7 @@ export const ListCar = ({
                     </div>
                   </div>
                 </div>
-                <div className='py-[30px] max-[768px]:w-[calc(50%-15px)] '>
+                <div className='py-[30px] max-[768px]:w-[calc(50%-15px)] flex justify-center'>
                   <FinalCard
                     data={selectedCar.recommendation}
                     selected={true}
