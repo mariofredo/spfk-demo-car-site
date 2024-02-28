@@ -1,5 +1,11 @@
 'use client';
-import {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import {SelectedCarItem} from '@/types/car';
 import {AddCircle} from '@/public/images';
@@ -31,9 +37,16 @@ export const FinalCard = ({
     if (response.ok) {
       const data = await response.json();
       setSelectedCar(data.data);
-      setTab(2);
+      // setTab(2);
     }
   };
+  const handleOpenModalCompare = useCallback(
+    async (id: number) => {
+      await handleGetListComparison(id);
+      await setShowModalCompare(true);
+    },
+    [selected]
+  );
   useEffect(() => {
     function handleResize() {
       setViewportWidth(window.innerWidth);
@@ -100,18 +113,12 @@ export const FinalCard = ({
               </p>
             )
           )}
-          {/* <p title={'LALALA'} className='fc_list_item'>
-            <span className='fc_list_item_text'> {'LALALA'}</span>
-          </p> */}
         </div>
         {!isCompare && (
           <div className='lc_fc_card_btn_ctr'>
             <button
               className='lc_fc_card_btn'
-              onClick={() => {
-                handleGetListComparison(data.category_level_2_id);
-                setShowModalCompare(true);
-              }}
+              onClick={() => handleOpenModalCompare(data.category_level_2_id)}
             >
               Compare{' '}
               <Image

@@ -98,18 +98,6 @@ export const ListCar = ({
             >
               Car list
             </button>
-            {/* <button
-              className={`lc_filters_btn 
-              ${finish === true ? 'finish' : 'unfinish'}
-              ${tab === 2 ? 'active' : 'inactive'} 
-              `}
-              onClick={() => {
-                if (finish) setTab(2);
-                else setShowModalText(true);
-              }}
-            >
-              Compare cars
-            </button> */}
           </div>
         </div>
         {tab === 1 ? (
