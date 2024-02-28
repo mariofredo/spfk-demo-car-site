@@ -93,26 +93,11 @@ export const FinalCard = ({
         <div className='lc_fc_price'>{data.price}</div>
 
         <div className='lc_fc_list_ctr'>
-          {data.specs.map((item) =>
-            viewportWidth < 768 && selected ? (
-              <div className='fc_list_ctr'>
-                <div className='fc_list_spec'>
-                  <p title={item.spec_name} className='fc_list_spec_text'>
-                    {item.spec_name}
-                  </p>
-                </div>
-                <div className='fc_list_spec_item'>
-                  <p title={item.content} className='fc_list_spec_item_text'>
-                    {item.content}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <p title={item.content} className='fc_list_item'>
-                <span className='fc_list_item_text'> {item.content}</span>
-              </p>
-            )
-          )}
+          {data.specs.map((item) => (
+            <p title={item.content} className='fc_list_item'>
+              <span className='fc_list_item_text'> {item.content}</span>
+            </p>
+          ))}
         </div>
         {!isCompare && (
           <div className='lc_fc_card_btn_ctr'>

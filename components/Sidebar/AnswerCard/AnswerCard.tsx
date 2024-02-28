@@ -1,5 +1,5 @@
 import {AnsweredData, Question} from '@/types';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 export const AnswerCard = ({data, idx}: {data: AnsweredData; idx: number}) => {
   const [selected, setSelected] = useState({
@@ -7,8 +7,19 @@ export const AnswerCard = ({data, idx}: {data: AnsweredData; idx: number}) => {
     tag: data.tag,
   });
   const [expand, setExpand] = useState<boolean>(false);
+  const [appear, setAppear] = useState<boolean>(false);
+  useEffect(() => {
+    setAppear(true);
+  }, []);
   return (
-    <div className='sb_ac_ctr' onClick={() => setExpand(!expand)}>
+    <div
+      className={`sb_ac_ctr ${appear ? 'appear' : ''} ${
+        expand ? 'expand' : 'not_expand'
+      }`}
+      onMouseEnter={() => !expand && setExpand(true)}
+      onMouseLeave={() => expand && setExpand(false)}
+      // onClick={() => setExpand(!expand)}
+    >
       <div className='left'>Q{idx}</div>
       <div className='right'>
         {!expand && <div className='selected_option'>{selected.tag}</div>}

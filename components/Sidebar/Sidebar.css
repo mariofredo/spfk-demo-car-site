@@ -31,16 +31,8 @@
   height: 100%;
   background: linear-gradient(90deg, #910707 17.16%, #f31d1e 113.73%);
   border-radius: 14px;
-  transition: ease-in-out 4s forwards;
+  transition: 0.5s ease-in-out;
   position: relative;
-}
-.sb_pb_ctr .sb_pb_fill::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  text-wrap: nowrap;
-  height: 40px;
 }
 
 .sb_title {
@@ -97,6 +89,19 @@
 .sb_answer_list .sb_ac_ctr {
   display: flex;
   width: 100%;
+  opacity: 0;
+}
+.sb_answer_list .sb_ac_ctr.appear {
+  transition: 1s ease-in-out;
+  opacity: 1;
+}
+.sb_answer_list .sb_ac_ctr.expand {
+  overflow: hidden;
+  transition: 4s ease-in-out;
+  max-height: 800px;
+}
+.sb_answer_list .sb_ac_ctr.not_expand {
+  max-height: 50px;
 }
 .sb_answer_list .sb_ac_ctr .left {
   width: 20%;
@@ -139,6 +144,7 @@
   left: 0;
   top: 0;
   z-index: 10;
+  cursor: pointer;
 }
 .sb_answer_list .sb_ac_ctr .right .list_option input[type=radio]:checked + label::before {
   content: "";
@@ -215,8 +221,12 @@
   left: 0;
   top: 0;
   z-index: 10;
+  cursor: pointer;
 }
 .sb_q_ctr .sb_btn_ctr input[type=radio]:checked + .sb_btn_txt::before {
+  background: #f31d1e;
+}
+.sb_q_ctr .sb_btn_ctr input[type=radio]:hover + .sb_btn_txt::before {
   background: #f31d1e;
 }
 .sb_q_ctr .sb_btn_ctr .sb_btn_txt {
