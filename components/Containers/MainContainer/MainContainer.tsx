@@ -5,7 +5,6 @@ import Image from 'next/image';
 import {
   DreamCar,
   ListCar,
-  Header,
   ModalForm,
   ModalText,
   Sidebar,
@@ -106,11 +105,10 @@ export const MainContainer = () => {
       {!isSubmitFirstStep && (
         <ModalForm setIsSubmitFirstStep={setIsSubmitFirstStep} />
       )}
-      {/* {showModalText && <ModalText setShowModalText={setShowModalText} />} */}
+
       {showModalCompare && (
         <ModalCompare setShowModalCompare={setShowModalCompare} />
       )}
-      {/* <Header step={step} setStep={setStep} /> */}
     </div>
   );
 };

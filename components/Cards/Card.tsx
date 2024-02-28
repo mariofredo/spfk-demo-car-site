@@ -7,15 +7,13 @@ export const Card = ({
   category,
   name,
   category_level_1_id,
-  category_level_2_id,
+  id,
   price,
-  spec,
   image,
   category_level_1_name,
-  id,
 }: Car) => {
   const {cars, setSelectedCar, setTab, finish} = useCar();
-  const handleGetListComparison = async (category_level_2_id: number) => {
+  const handleGetListComparison = async (id: number) => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/comparison-list`,
       {
@@ -23,7 +21,7 @@ export const Card = ({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({category_level_2_id}),
+        body: JSON.stringify({id}),
       }
     );
     if (response.ok) {
@@ -54,7 +52,7 @@ export const Card = ({
           {finish && (
             <button
               className='lc_card_btn'
-              onClick={() => handleGetListComparison(category_level_2_id)}
+              onClick={() => handleGetListComparison(id)}
             >
               Compare{' '}
               <Image
