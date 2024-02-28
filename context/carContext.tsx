@@ -24,8 +24,8 @@ interface CarCtxProps {
   setFirstFetch: Dispatch<SetStateAction<boolean>>;
   finish: boolean;
   setFinish: Dispatch<SetStateAction<boolean>>;
-  selectedCar: SelectedCar | null | undefined;
-  setSelectedCar: Dispatch<SetStateAction<SelectedCar | null | undefined>>;
+  selectedCar: SelectedCar;
+  setSelectedCar: Dispatch<SetStateAction<SelectedCar>>;
   tab: number;
   setTab: Dispatch<SetStateAction<number>>;
   companyBrand: string;
@@ -34,6 +34,8 @@ interface CarCtxProps {
   setQuestionBatch: Dispatch<SetStateAction<number>>;
   uniqueId: string;
   setUniqueId: Dispatch<SetStateAction<string>>;
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 const CarContext = createContext<CarCtxProps>({
@@ -49,7 +51,19 @@ const CarContext = createContext<CarCtxProps>({
   setFirstFetch: () => {},
   finish: false,
   setFinish: () => {},
-  selectedCar: null,
+  selectedCar: {
+    competitor: [],
+    recommendation: {
+      category_level_1_id: 0,
+      category_level_1_name: '',
+      category_level_2_id: 0,
+      category_level_2_name: '',
+      company_brand_name: '',
+      image: '',
+      price: '',
+      specs: [],
+    },
+  },
   setSelectedCar: () => {},
   tab: 1,
   setTab: () => {},
@@ -59,6 +73,8 @@ const CarContext = createContext<CarCtxProps>({
   setQuestionBatch: () => {},
   uniqueId: '',
   setUniqueId: () => {},
+  loading: false,
+  setLoading: () => {},
 });
 
 export function CarContextProvider({children}: {children: React.ReactNode}) {
@@ -74,43 +90,24 @@ export function CarContextProvider({children}: {children: React.ReactNode}) {
   const [questionNum, setQuestionNum] = useState<number>(0);
   const [firstFetch, setFirstFetch] = useState<boolean>(true);
   const [finish, setFinish] = useState<boolean>(false);
-  const [selectedCar, setSelectedCar] = useState<
-    SelectedCar | null | undefined
-  >({
+  const [selectedCar, setSelectedCar] = useState<SelectedCar>({
     recommendation: {
-      company_brand_name: 'Toyota',
-      image: 'uploads/category_level_2/glx-4x4-mt-1707019268.png',
-      category_level_1_name: 'MPV',
-      category_level_2_name: 'Avanza',
-      category_level_1_id: 1,
-      category_level_2_id: 1,
-      price: '200000000',
+      company_brand_name: '',
+      category_level_1_id: 0,
+      category_level_1_name: '',
+      category_level_2_id: 0,
+      category_level_2_name: '',
+      image: '',
+      price: '',
+      specs: [],
     },
-    competitor: [
-      {
-        company_brand_name: 'Toyota',
-        image: 'uploads/category_level_2/glx-4x4-mt-1707019268.png',
-        category_level_1_name: 'MPV',
-        category_level_2_name: 'Avanza',
-        category_level_1_id: 1,
-        category_level_2_id: 1,
-        price: '200000000',
-      },
-      {
-        company_brand_name: 'Toyota',
-        image: 'uploads/category_level_2/glx-4x4-mt-1707019268.png',
-        category_level_1_name: 'MPV',
-        category_level_2_name: 'Avanza',
-        category_level_1_id: 1,
-        category_level_2_id: 1,
-        price: '200000000',
-      },
-    ],
+    competitor: [],
   });
-  const [tab, setTab] = useState<number>(2);
+  const [tab, setTab] = useState<number>(1);
   const [companyBrand, setCompanyBrand] = useState<string>('');
   const [questionBatch, setQuestionBatch] = useState<number>(0);
   const [uniqueId, setUniqueId] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const ctx = {
     cars,
     setCars,
@@ -134,6 +131,8 @@ export function CarContextProvider({children}: {children: React.ReactNode}) {
     setQuestionBatch,
     uniqueId,
     setUniqueId,
+    loading,
+    setLoading,
   };
   return <CarContext.Provider value={ctx}>{children}</CarContext.Provider>;
 }

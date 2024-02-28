@@ -89,10 +89,10 @@ export const MainContainer = () => {
       {step === 0 && <DreamCar />}
       {step === 1 && (
         <div className='relative w-full grid grid-cols-10 pt-[90px]'>
-          <div className='col-span-3'>
+          <div className={tab === 1 ? 'col-span-4' : 'col-span-3'}>
             <Sidebar />
           </div>
-          <div className='col-span-7'>
+          <div className={tab === 1 ? 'col-span-6' : 'col-span-7'}>
             <ListCar
               step={step}
               setStep={setStep}

@@ -19,10 +19,12 @@ export const Sidebar = () => {
     setUniqueId,
     finish,
     setFinish,
+    setLoading,
   } = useCar();
   const [limit, setLimit] = useState({top: 0, bot: 0});
   const getCarRecommendations = async (arr: number[]) => {
     try {
+      setLoading(true);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/recommendations`,
         {
@@ -43,7 +45,6 @@ export const Sidebar = () => {
         const data: ApiResponseQuestion = res.data;
         if (data.u_id) setUniqueId(data.u_id);
         if (!data.question) {
-          console.log('finish');
           setFinish(true);
         } else {
           setQuestion({
@@ -57,6 +58,7 @@ export const Sidebar = () => {
         setLimit({top: data.top_limit, bot: data.bottom_limit});
         setCars(data.recommendations);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }

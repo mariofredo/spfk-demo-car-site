@@ -13,3 +13,4 @@ export {default as MitsubishiLight} from './mitsubishi_light.png';
 export {default as ReturnBtn} from './return_btn.png';
 export {default as DownloadCircle} from './download_circle.png';
 export {default as CloseIcon} from './close_icon.png';
+export {default as Loading} from './loading_bar.gif';

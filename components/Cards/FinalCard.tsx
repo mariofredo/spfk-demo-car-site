@@ -80,7 +80,7 @@ export const FinalCard = ({
         <div className='lc_fc_price'>{data.price}</div>
 
         <div className='lc_fc_list_ctr'>
-          {/* {data.specs.map((item) =>
+          {data.specs.map((item) =>
             viewportWidth < 768 && selected ? (
               <div className='fc_list_ctr'>
                 <div className='fc_list_spec'>
@@ -99,32 +99,17 @@ export const FinalCard = ({
                 <span className='fc_list_item_text'> {item.content}</span>
               </p>
             )
-          )} */}
-          <p title={'LALALA'} className='fc_list_item'>
+          )}
+          {/* <p title={'LALALA'} className='fc_list_item'>
             <span className='fc_list_item_text'> {'LALALA'}</span>
-          </p>
-          <p title={'LALALA'} className='fc_list_item'>
-            <span className='fc_list_item_text'> {'LALALA'}</span>
-          </p>
-          <p title={'LALALA'} className='fc_list_item'>
-            <span className='fc_list_item_text'> {'LALALA'}</span>
-          </p>
-          <p title={'LALALA'} className='fc_list_item'>
-            <span className='fc_list_item_text'> {'LALALA'}</span>
-          </p>
-          <p title={'LALALA'} className='fc_list_item'>
-            <span className='fc_list_item_text'> {'LALALA'}</span>
-          </p>
-          <p title={'LALALA'} className='fc_list_item'>
-            <span className='fc_list_item_text'> {'LALALA'}</span>
-          </p>
+          </p> */}
         </div>
         {!isCompare && (
           <div className='lc_fc_card_btn_ctr'>
             <button
               className='lc_fc_card_btn'
               onClick={() => {
-                // handleGetListComparison(data.category_level_2_id);
+                handleGetListComparison(data.category_level_2_id);
                 setShowModalCompare(true);
               }}
             >

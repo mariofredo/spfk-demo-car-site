@@ -31,6 +31,9 @@
   height: 100vh;
   background: #000 url("../../../public/images/opening_bg.png") no-repeat bottom/cover;
 }
+.mc_ctr .loading_bar {
+  width: 100%;
+}
 .mc_ctr .logo {
   position: absolute;
   top: 20px;
@@ -350,6 +353,20 @@
   background: linear-gradient(140deg, rgba(217, 217, 217, 0.2) 31.46%, rgba(255, 255, 255, 0.1) 55.76%, rgba(217, 217, 217, 0.2) 69.76%, rgba(217, 217, 217, 0.2) 86.99%, rgba(255, 255, 255, 0.1) 93.75%, rgba(217, 217, 217, 0.2) 99.15%);
   padding: 0 20px 20px;
   color: #dbdbdb;
+}
+.mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr.spec {
+  background: none;
+  border: none;
+}
+.mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr.spec .lc_fc_body .lc_fc_title {
+  text-align: right;
+}
+.mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr.spec .lc_fc_body .lc_fc_list_ctr {
+  justify-content: flex-end;
+}
+.mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr.spec .lc_fc_body .lc_fc_list_ctr .fc_list_item {
+  text-align: right;
+  justify-content: flex-end;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body {
   margin-top: -20px;

@@ -1,7 +1,9 @@
 'use client';
 import {Card, FinalCard} from '@/components';
 import {useCar} from '@/context/carContext';
+import {Loading} from '@/public/images';
 import {Car, SelectedCarItem} from '@/types';
+import Image from 'next/image';
 import {useRouter} from 'next/navigation';
 import React, {
   Dispatch,
@@ -40,6 +42,8 @@ export const ListCar = ({
     questionNum,
     finish,
     firstFetch,
+    loading,
+    setLoading,
   } = useCar();
   const router = useRouter();
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -71,24 +75,18 @@ export const ListCar = ({
     setFinish(false);
     setTab(1);
   }, [cars, step, answeredQuestion, questionNum, finish, firstFetch, tab]);
-
-  const dummyData: SelectedCarItem = {
-    company_brand_name: 'Toyota',
-    image: 'https://www.toyota.astra.co.id/assets/images/avanza.png',
-    category_level_1_name: 'MPV',
-    category_level_2_name: 'Avanza',
-    category_level_1_id: 1,
-    category_level_2_id: 1,
-    price: '200000000',
-  };
-
   return (
     <div className={`lc_ctr ${step >= 1 ? 'active' : 'inactive'}`}>
       <div className='lc_wrapper'>
         <div className='lc_filters'>
           <div className='lc_filters_txt'>
-            {cars.length === 1 ? `${cars.length} Car` : `${cars.length} Cars`}{' '}
-            Match
+            {loading ? (
+              <Image src={Loading} className='loading_bar' alt='loading' />
+            ) : cars.length === 1 ? (
+              `${cars.length} Car Match`
+            ) : (
+              `${cars.length} Cars Match`
+            )}
           </div>
           <div className='lc_filters_btn_ctr'>
             <button
@@ -126,9 +124,8 @@ export const ListCar = ({
                     category,
                     name,
                     category_level_1_id,
-                    category_level_2_id,
                     price,
-                    spec,
+                    specs,
                     image,
                     id,
                     category_level_1_name,
@@ -140,12 +137,9 @@ export const ListCar = ({
                         category_level_1_name: category_level_1_name,
                         category_level_2_name: name,
                         category_level_1_id,
-                        category_level_2_id,
+                        category_level_2_id: id,
                         price,
-                        // specs: spec.map(({content, name}) => ({
-                        //   content: content,
-                        //   spec_name: name,
-                        // })),
+                        specs,
                       }}
                       isCompare={false}
                       selected={false}
@@ -162,22 +156,19 @@ export const ListCar = ({
                     category,
                     name,
                     category_level_1_id,
-                    category_level_2_id,
                     price,
-                    spec,
                     image,
                     id,
                     category_level_1_name,
                   }: Car) => (
                     <Card
-                      key={category_level_2_id}
+                      key={id}
                       brand_name={brand_name}
                       category={category}
                       name={name}
                       category_level_1_id={category_level_1_id}
-                      category_level_2_id={category_level_2_id}
                       price={price}
-                      spec={spec}
+                      specs={[]}
                       image={image}
                       category_level_1_name={category_level_1_name}
                       id={id}
@@ -213,8 +204,8 @@ export const ListCar = ({
             {selectedCar ? (
               <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[20px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px]'>
                 <div className='py-[30px] lc_fc_info_ctr'>
-                  <div className='lc_fc_ctr'>
-                    <div className='lc_fc_body pt-[134px]'>
+                  <div className='lc_fc_ctr spec'>
+                    <div className='lc_fc_body pt-[138px]'>
                       <div className='lc_fc_title'>CAR TYPE</div>
                       <div className='lc_fc_list_ctr mt-[85px]'>
                         {/* {selectedCar.recommendation.specs.map((item) => (

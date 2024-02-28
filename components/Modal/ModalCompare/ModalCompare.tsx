@@ -3,13 +3,13 @@ import Image from 'next/image';
 import {useCar} from '@/context';
 
 import '../Modal.css';
-import {CloseIcon} from '@/public/images';
+import {AddCircle, CloseIcon} from '@/public/images';
 export const ModalCompare = ({
   setShowModalCompare,
 }: {
   setShowModalCompare: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const {cars} = useCar();
+  const {cars, setTab, selectedCar} = useCar();
   return (
     <div className='mdl_bd'>
       <div className='mdl_compare_ctr'>
@@ -20,184 +20,105 @@ export const ModalCompare = ({
           onClick={() => setShowModalCompare(false)}
         />
         <div className='grid grid-cols-4 gap-[20px]'>
-          <div className='col-span-1 pt-[60px]'>
+          <div className='col-span-1 pt-[60px] pb-[40px]'>
             <div className='mdl_spec'>
               <div className='mdl_spec_title'>CAR TYPE</div>
               <div className='mdl_spec_list'>
-                <div className='mdl_spec_item'>
-                  <span>Body Type</span>
-                </div>
-                <div className='mdl_spec_item'>Passenger</div>
-                <div className='mdl_spec_item'>Suited Area</div>
-                <div className='mdl_spec_item'>Driven By</div>
-                <div className='mdl_spec_item'>Road Type</div>
-                <div className='mdl_spec_item'>Primary Use</div>
+                {selectedCar?.recommendation.specs.map((item) => (
+                  <div className='mdl_spec_item'>
+                    <span>{item.spec_name}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-          <div className='col-span-1 pt-[60px]'>
+          <div className='col-span-1 pt-[60px] pb-[40px]'>
             <div className='mdl_card selected'>
               <div className='w-full max-[767px]:h-[120px] min-[768px]:h-[60px]  flex items-center justify-center'>
                 <Image
                   className='relative top-[-25px] w-full'
                   width={400}
                   height={120}
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/category_level_2/gls-cvt-1707191429.png`}
+                  src={selectedCar.recommendation.image}
                   alt='CarOne'
                 />
               </div>
               <div className='mdl_fc_body'>
                 <div className='mdl_fc_title'>
-                  {'Mitsubishi'} <br />
-                  {'Pajero Sport'}
+                  {selectedCar?.recommendation.company_brand_name} <br />
+                  {selectedCar?.recommendation.category_level_1_name}
                   <br />
-                  {'GLS 4x2 AT'}
+                  {selectedCar?.recommendation.category_level_2_name}
                 </div>
-                <div className='mdl_fc_price'>{'12312313123'}</div>
+                <div className='mdl_fc_price'>
+                  {selectedCar?.recommendation.price}
+                </div>
 
                 <div className='mdl_fc_list_ctr'>
-                  {/* {data.specs.map((item) =>
-            viewportWidth < 768 && selected ? (
-              <div className='fc_list_ctr'>
-                <div className='fc_list_spec'>
-                  <p title={item.spec_name} className='fc_list_spec_text'>
-                    {item.spec_name}
-                  </p>
+                  {selectedCar?.recommendation.specs.map((item) => (
+                    <p title={item.content} className='fc_list_item'>
+                      <span title={item.content} className='fc_list_item_text'>
+                        {' '}
+                        {item.content}
+                      </span>
+                    </p>
+                  ))}
                 </div>
-                <div className='fc_list_spec_item'>
-                  <p title={item.content} className='fc_list_spec_item_text'>
-                    {item.content}
-                  </p>
+
+                <div className='mdl_fc_card_btn_ctr'>
+                  <button
+                    className='mdl_fc_card_btn'
+                    onClick={() => {
+                      setTab(2);
+                      setShowModalCompare(false);
+                    }}
+                  >
+                    Compare
+                    <br />
+                    for more
+                    <Image
+                      className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px]  min-[481px]:w-[20px] min-[481px]:h-[20px]'
+                      src={AddCircle}
+                      alt='addIcon'
+                    />
+                  </button>
                 </div>
-              </div>
-            ) : (
-              <p title={item.content} className='fc_list_item'>
-                <span className='fc_list_item_text'> {item.content}</span>
-              </p>
-            )
-          )} */}
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                </div>
-                {/* {!isCompare && (
-                  <div className='mdl_fc_card_btn_ctr'>
-                    <button
-                      className='lc_fc_card_btn'
-                      onClick={() => {
-                        // handleGetListComparison(data.category_level_2_id);
-                        setShowModalCompare(true);
-                      }}
-                    >
-                      Compare{' '}
-                      <Image
-                        className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px]  min-[481px]:w-[20px] min-[481px]:h-[20px]'
-                        src={AddCircle}
-                        alt='addIcon'
-                      />
-                    </button>
-                  </div>
-                )} */}
               </div>
             </div>
           </div>
-          <div className='col-span-1 pt-[60px]'>
+          <div className='col-span-1 pt-[60px] pb-[40px]'>
             <div className='mdl_card '>
               <div className='w-full max-[767px]:h-[120px] min-[768px]:h-[60px]  flex items-center justify-center'>
                 <Image
                   className='relative top-[-25px] w-full'
                   width={400}
                   height={120}
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/category_level_2/gls-cvt-1707191429.png`}
+                  src={`${selectedCar.competitor[0].image}`}
                   alt='CarOne'
                 />
               </div>
               <div className='mdl_fc_body'>
                 <div className='mdl_fc_title'>
-                  {'Mitsubishi'} <br />
-                  {'Pajero Sport'}
+                  {selectedCar.competitor[0].company_brand_name} <br />
+                  {selectedCar.competitor[0].category_level_1_name}
                   <br />
-                  {'GLS 4x2 AT'}
+                  {selectedCar.competitor[0].category_level_2_name}
                 </div>
-                <div className='mdl_fc_price'>{'12312313123'}</div>
+                <div className='mdl_fc_price'>
+                  {selectedCar.competitor[0].price}
+                </div>
 
                 <div className='mdl_fc_list_ctr'>
-                  {/* {data.specs.map((item) =>
-            viewportWidth < 768 && selected ? (
-              <div className='fc_list_ctr'>
-                <div className='fc_list_spec'>
-                  <p title={item.spec_name} className='fc_list_spec_text'>
-                    {item.spec_name}
-                  </p>
+                  {selectedCar.competitor[0].specs.map((item) => (
+                    <p title={item.content} className='fc_list_item'>
+                      <span className='fc_list_item_text'> {item.content}</span>
+                    </p>
+                  ))}
                 </div>
-                <div className='fc_list_spec_item'>
-                  <p title={item.content} className='fc_list_spec_item_text'>
-                    {item.content}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <p title={item.content} className='fc_list_item'>
-                <span className='fc_list_item_text'> {item.content}</span>
-              </p>
-            )
-          )} */}
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                  <p title={'LALALA'} className='fc_list_item'>
-                    <span className='fc_list_item_text'> {'LALALA'}</span>
-                  </p>
-                </div>
-                {/* {!isCompare && (
-                  <div className='mdl_fc_card_btn_ctr'>
-                    <button
-                      className='lc_fc_card_btn'
-                      onClick={() => {
-                        // handleGetListComparison(data.category_level_2_id);
-                        setShowModalCompare(true);
-                      }}
-                    >
-                      Compare{' '}
-                      <Image
-                        className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px]  min-[481px]:w-[20px] min-[481px]:h-[20px]'
-                        src={AddCircle}
-                        alt='addIcon'
-                      />
-                    </button>
-                  </div>
-                )} */}
               </div>
             </div>
           </div>
-          <div className='col-span-1 pt-[60px]'>
+          <div className='col-span-1 pt-[60px] pb-[40px]'>
             <p className='why_text mb-[20px]'>
               Why <span>Pajero Sport?</span>
             </p>

@@ -35,6 +35,10 @@ $breakpoint-md: 1024px;
       bottom / cover;
   }
 
+  .loading_bar {
+    width: 100%;
+  }
+
   .logo {
     position: absolute;
     top: 20px;
@@ -420,6 +424,22 @@ $breakpoint-md: 1024px;
         );
         padding: 0 20px 20px;
         color: #dbdbdb;
+        &.spec {
+          background: none;
+          border: none;
+          .lc_fc_body {
+            .lc_fc_title {
+              text-align: right;
+            }
+            .lc_fc_list_ctr {
+              justify-content: flex-end;
+              .fc_list_item {
+                text-align: right;
+                justify-content: flex-end;
+              }
+            }
+          }
+        }
         .lc_fc_body {
           margin-top: -20px;
           .lc_fc_title {
