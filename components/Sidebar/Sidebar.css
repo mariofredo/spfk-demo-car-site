@@ -122,9 +122,13 @@
   justify-content: center;
 }
 .sb_answer_list .sb_ac_ctr .right .selected_option {
+  width: 100%;
   height: 100%;
   font-family: "Manrope-SemiBold";
   font-size: 21px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .sb_answer_list .sb_ac_ctr .right .sb_ac_q {
   color: #8f8f8f;
@@ -162,6 +166,8 @@
 .sb_answer_list .sb_ac_ctr .right .list_option label {
   position: relative;
   left: 30px;
+  width: calc(100% - 30px);
+  display: block;
 }
 .sb_answer_list .sb_ac_ctr .right .list_option label::before {
   content: "";

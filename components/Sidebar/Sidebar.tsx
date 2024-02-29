@@ -95,7 +95,7 @@ export const Sidebar = ({
   );
   const handleBack = useCallback(
     (idx: number) => {
-      console.log(idx, answeredQuestion, 'idx');
+      finish && setFinish(false);
       setAnsweredQuestion((prev) => prev.slice(0, idx));
     },
     [answeredQuestion]

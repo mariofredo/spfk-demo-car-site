@@ -107,7 +107,10 @@ export const MainContainer = () => {
       )}
 
       {showModalCompare && (
-        <ModalCompare setShowModalCompare={setShowModalCompare} />
+        <ModalCompare
+          setShowModalText={setShowModalText}
+          setShowModalCompare={setShowModalCompare}
+        />
       )}
       {showModalText && <ModalText setShowModalText={setShowModalText} />}
     </div>

@@ -3,10 +3,12 @@ import Image from 'next/image';
 import {useCar} from '@/context';
 
 import '../Modal.css';
-import {AddCircle, CloseIcon} from '@/public/images';
+import {AddCircle, CloseIcon, DownloadCircle} from '@/public/images';
 export const ModalCompare = ({
   setShowModalCompare,
+  setShowModalText,
 }: {
+  setShowModalText: Dispatch<SetStateAction<boolean>>;
   setShowModalCompare: Dispatch<SetStateAction<boolean>>;
 }) => {
   const {cars, setTab, selectedCar} = useCar();
@@ -119,17 +121,37 @@ export const ModalCompare = ({
             </div>
           </div>
           <div className='col-span-1 pt-[60px] pb-[40px]'>
-            <p className='why_text mb-[20px]'>
-              Why <span>Pajero Sport?</span>
-            </p>
-            <ul className='list-outside list-disc pl-[20px]'>
-              <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-              <li>
-                Consequuntur distinctio earum praesentium saepe accusamus minima
-                similique maxime iste ratione aperiam eos sunt, nostrum ut
-                voluptatum officiis necessitatibus excepturi molestias quae.
-              </li>
-            </ul>
+            <div className='relative h-full'>
+              <p className='why_text mb-[20px]'>
+                Why <span>Pajero Sport?</span>
+              </p>
+              <ul className='list-outside list-disc pl-[20px]'>
+                <li>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </li>
+                <li>
+                  Consequuntur distinctio earum praesentium saepe accusamus
+                  minima similique maxime iste ratione aperiam eos sunt, nostrum
+                  ut voluptatum officiis necessitatibus excepturi molestias
+                  quae.
+                </li>
+              </ul>
+              <div className='absolute bottom-0 right-0'>
+                <button
+                  className='mdl_fc_card_btn'
+                  onClick={() => {
+                    setShowModalText(true);
+                  }}
+                >
+                  Save the result
+                  <Image
+                    className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px]  min-[481px]:w-[20px] min-[481px]:h-[20px]'
+                    src={DownloadCircle}
+                    alt='DownloadCircle'
+                  />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

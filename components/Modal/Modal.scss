@@ -268,17 +268,6 @@
         bottom: -25px;
         left: 50%;
         transform: translateX(-50%);
-        .mdl_fc_card_btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 20px;
-          font-size: 14px;
-          line-height: 20px;
-          background: #040404;
-          box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
-          padding: 4px 24px;
-        }
       }
     }
     .card_why_text {
@@ -287,6 +276,17 @@
       color: #ffff;
       text-align: center;
     }
+  }
+  .mdl_fc_card_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    background: #040404;
+    box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+    padding: 8px 24px;
   }
 }
 
