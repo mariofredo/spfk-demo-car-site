@@ -48,32 +48,36 @@
     border-radius: 10px;
     padding: 20px;
     margin: 20px;
+    .mdl_text_input {
+      width: 100%;
+      padding: 10px 0px;
+      margin-bottom: 20px;
+      background: transparent;
+      border-bottom: 2px solid #f31d1e;
+      position: relative;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
     .mdl_text_title {
       font-size: 20px;
       font-weight: 400;
-      text-align: center;
+      text-align: left;
       position: relative;
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        bottom: -20px;
-        left: 20px;
-        width: 200px;
-        height: 20px;
-        background: url('../../public/images/mark_line_red.png') no-repeat
-          center / contain;
-      }
     }
     .mdl_btn_ctr {
       display: flex;
       justify-content: flex-end;
-      .mdl_btn_outline_red {
+      .mdl_btn_save {
         margin-top: 10px;
         padding: 5px 30px;
-        color: #f31d1e;
-        border: 1.5px solid #f31d1e;
+        color: #fff;
         border-radius: 10px;
+        display: flex;
+        align-items: center;
+        background: #040404;
+        box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
       }
     }
 

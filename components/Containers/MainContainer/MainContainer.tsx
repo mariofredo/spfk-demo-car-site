@@ -1,5 +1,5 @@
 'use client';
-import {useCallback, useState} from 'react';
+import {SetStateAction, useCallback, useState} from 'react';
 import {Mitsubishi} from '@/public/images';
 import Image from 'next/image';
 import {
@@ -89,7 +89,7 @@ export const MainContainer = () => {
       {step === 1 && (
         <div className='relative w-full grid grid-cols-10 pt-[90px]'>
           <div className={tab === 1 ? 'col-span-4' : 'col-span-3'}>
-            <Sidebar />
+            <Sidebar setShowModalText={setShowModalText} />
           </div>
           <div className={tab === 1 ? 'col-span-6' : 'col-span-7'}>
             <ListCar
@@ -109,6 +109,7 @@ export const MainContainer = () => {
       {showModalCompare && (
         <ModalCompare setShowModalCompare={setShowModalCompare} />
       )}
+      {showModalText && <ModalText setShowModalText={setShowModalText} />}
     </div>
   );
 };

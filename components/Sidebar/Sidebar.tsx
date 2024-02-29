@@ -1,4 +1,11 @@
-import {ChangeEvent, useCallback, useEffect, useState} from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import {ProgressBar, AnswerCard} from '@/components';
 import {DownloadCircle, ReturnBtn} from '@/public/images';
@@ -6,7 +13,11 @@ import {useCar} from '@/context';
 import {AnsweredData, ApiResponseQuestion} from '@/types';
 import './Sidebar.css';
 
-export const Sidebar = () => {
+export const Sidebar = ({
+  setShowModalText,
+}: {
+  setShowModalText: Dispatch<SetStateAction<boolean>>;
+}) => {
   const {
     setCars,
     companyBrand,
@@ -112,7 +123,10 @@ export const Sidebar = () => {
             <p className='sb_f_big'>Congratulation!</p>
             <p className='sb_f_small'>Here's your recommended car:</p>
           </div>
-          <button className='sb_btn_save_result'>
+          <button
+            className='sb_btn_save_result'
+            onClick={() => setShowModalText(true)}
+          >
             Save the Result <Image src={DownloadCircle} alt='download_circle' />
           </button>
         </>
