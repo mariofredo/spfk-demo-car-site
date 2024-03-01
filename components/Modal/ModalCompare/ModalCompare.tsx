@@ -11,7 +11,7 @@ export const ModalCompare = ({
   setShowModalText: Dispatch<SetStateAction<boolean>>;
   setShowModalCompare: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const {cars, setTab, selectedCar} = useCar();
+  const {answeredQuestion, setTab, selectedCar} = useCar();
   return (
     <div className='mdl_bd'>
       <div className='mdl_compare_ctr'>
@@ -123,18 +123,13 @@ export const ModalCompare = ({
           <div className='col-span-1 pt-[60px] pb-[40px]'>
             <div className='relative h-full'>
               <p className='why_text mb-[20px]'>
-                Why <span>Pajero Sport?</span>
+                Why{' '}
+                <span>{selectedCar.recommendation.category_level_1_name}?</span>
               </p>
               <ul className='list-outside list-disc pl-[20px]'>
-                <li>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </li>
-                <li>
-                  Consequuntur distinctio earum praesentium saepe accusamus
-                  minima similique maxime iste ratione aperiam eos sunt, nostrum
-                  ut voluptatum officiis necessitatibus excepturi molestias
-                  quae.
-                </li>
+                {answeredQuestion.map((data) => (
+                  <li key={data.id}>{data.tag}</li>
+                ))}
               </ul>
               <div className='absolute bottom-0 right-0'>
                 <button

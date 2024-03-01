@@ -1,17 +1,17 @@
 @keyframes goUp {
   0% {
-    transform: translateY(50%);
+    top: 75vh;
   }
   100% {
-    transform: translateY(0);
+    top: 10vh;
   }
 }
-@keyframes goDown {
+@keyframes goExtend {
   0% {
-    transform: translateY(0);
+    top: 10vh;
   }
   100% {
-    transform: translateY(50%);
+    top: 75vh;
   }
 }
 .mc_ctr {
@@ -237,9 +237,8 @@
   position: relative;
 }
 .mc_ctr .lc_ctr.inactive .lc_wrapper {
-  opacity: 0;
+  opacity: 1;
   transition: all 1s ease;
-  min-height: 60px;
 }
 .mc_ctr .lc_ctr.active {
   position: sticky;
@@ -248,6 +247,11 @@
 .mc_ctr .lc_ctr.active .lc_wrapper {
   opacity: 1;
   transition: all 1s ease;
+}
+.mc_ctr .lc_ctr .lc_wrapper {
+  opacity: 0;
+  transition: all 1s ease;
+  min-height: 60px;
 }
 .mc_ctr .lc_ctr .lc_wrapper .lc_filters {
   margin-bottom: 50px;
@@ -716,28 +720,29 @@
     font-size: 22px;
   }
   .mc_ctr .lc_ctr {
-    background: linear-gradient(138deg, rgba(0, 0, 0, 0.3) -1.05%, rgba(0, 0, 0, 0.02) 16.64%, rgba(0, 0, 0, 0.3) 41.01%, rgba(0, 0, 0, 0.3) 49.79%, rgba(0, 0, 0, 0.03) 74.76%, rgba(0, 0, 0, 0.3) 94.49%, rgba(0, 0, 0, 0.03) 99.89%, rgba(0, 0, 0, 0.12) 108.76%);
+    background: rgb(24, 24, 24);
     border: 2px solid #3f3f3f;
     width: 100%;
+    animation: goUp 1s ease forwards;
     border-radius: 20px 20px 0 0;
+    height: 85vh;
+    position: fixed;
+    left: 0;
+    min-height: auto;
   }
   .mc_ctr .lc_ctr.inactive {
-    position: relative;
-    top: -60px;
+    animation: goExtend 1s ease forwards;
   }
   .mc_ctr .lc_ctr.inactive .lc_wrapper {
-    opacity: 0;
+    opacity: 1;
     transition: all 1s ease;
-  }
-  .mc_ctr .lc_ctr.active {
-    margin-top: 60px;
-    position: sticky;
-    animation: goUp 1s ease;
-    min-height: 100vh;
   }
   .mc_ctr .lc_ctr.active .lc_wrapper {
     opacity: 1;
     transition: all 1s ease;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper {
+    opacity: 0;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_filters {
     background: #212121;
@@ -807,7 +812,7 @@
     background: linear-gradient(106deg, rgba(217, 217, 217, 0.1) -0.44%, rgba(255, 255, 255, 0.2) 33.17%, rgba(217, 217, 217, 0.1) 52.52%, rgba(217, 217, 217, 0.1) 76.34%, rgba(255, 255, 255, 0.2) 85.69%, rgba(217, 217, 217, 0.1) 93.15%);
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body {
-    margin-top: -80px;
+    margin-top: -40px;
     padding: 0px 16px 10px;
     color: #dbdbdb;
     gap: 11px;
@@ -856,7 +861,6 @@
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr.carlist {
     min-width: 50%;
     width: 100%;
-    max-width: 50%;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr .lc_fc_body {
     margin-top: -20px;
@@ -1023,5 +1027,150 @@
     border-radius: 10px;
     padding: 2.5px 8px;
     border: 1.5px solid #f31d1e;
+  }
+}
+@media (min-width: 1440px) {
+  .mc_ctr .lc_ctr {
+    background: rgb(24, 24, 24);
+    border: 2px solid #3f3f3f;
+    width: 100%;
+    animation: goUp 1s ease forwards;
+    border-radius: 20px 20px 0 0;
+    height: 85vh;
+    position: fixed;
+    left: 0;
+    min-height: auto;
+  }
+  .mc_ctr .lc_ctr.inactive {
+    animation: goExtend 1s ease forwards;
+  }
+  .mc_ctr .lc_ctr.inactive .lc_wrapper {
+    opacity: 1;
+    transition: all 1s ease;
+  }
+  .mc_ctr .lc_ctr.active .lc_wrapper {
+    opacity: 1;
+    transition: all 1s ease;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper {
+    opacity: 0;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters {
+    background: #212121;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #d1d1d1;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 25px 20px;
+    border-radius: 20px 20px 0 0;
+    position: static;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_txt {
+    font-size: 12px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr {
+    display: flex;
+    width: 70%;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn {
+    width: 50%;
+    text-align: left;
+    position: relative;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn:disabled {
+    opacity: 0.5;
+    color: #3e3e3e;
+    cursor: not-allowed;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn.active::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0px;
+    width: 90%;
+    bottom: -5px;
+    left: 0;
+    border: 1.5px solid #f31d1e;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0px;
+    width: 90%;
+    bottom: -5px;
+    left: 0;
+    border: 1.5px solid #3e3e3e;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn:hover::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0px;
+    width: 90%;
+    bottom: -5px;
+    left: 0;
+    border: 1.5px solid #f31d1e;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr {
+    border-radius: 8.606px;
+    border: 2px solid #3f3f3f;
+    background: linear-gradient(106deg, rgba(217, 217, 217, 0.1) -0.44%, rgba(255, 255, 255, 0.2) 33.17%, rgba(217, 217, 217, 0.1) 52.52%, rgba(217, 217, 217, 0.1) 76.34%, rgba(255, 255, 255, 0.2) 85.69%, rgba(217, 217, 217, 0.1) 93.15%);
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body {
+    margin-top: -10px;
+    padding: 0px 16px 10px;
+    color: #dbdbdb;
+    gap: 11px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 35px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_type {
+    font-size: 13px;
+    font-weight: 300;
+    padding: 11px 0;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_price {
+    font-size: 9px;
+    font-weight: 700;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_btn_ctr {
+    display: flex;
+    margin-top: 11px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_card_ctr .lc_card_body .lc_card_btn_ctr .lc_card_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: #040404;
+    font-size: 11px;
+    box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+    padding: 5px 11px;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_info_ctr {
+    display: none;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr {
+    min-width: 100%;
+    width: 100%;
+    min-height: 500px;
+    border-radius: 8.606px;
+    border: 2px solid #3f3f3f;
+    background: linear-gradient(140deg, rgba(217, 217, 217, 0.2) 31.46%, rgba(255, 255, 255, 0.1) 55.76%, rgba(217, 217, 217, 0.2) 69.76%, rgba(217, 217, 217, 0.2) 86.99%, rgba(255, 255, 255, 0.1) 93.75%, rgba(217, 217, 217, 0.2) 99.15%);
+    padding: 0 10px 20px;
+    color: #dbdbdb;
+  }
+  .mc_ctr .lc_ctr .lc_wrapper .lc_fc_ctr.carlist {
+    min-width: 50%;
+    width: 100%;
   }
 }/*# sourceMappingURL=MainContainer.css.map */

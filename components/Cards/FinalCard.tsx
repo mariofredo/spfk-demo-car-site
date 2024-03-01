@@ -10,6 +10,7 @@ import Image from 'next/image';
 import {SelectedCarItem} from '@/types/car';
 import {AddCircle} from '@/public/images';
 import {useCar} from '@/context';
+import {formatRupiah} from '@/utils';
 export const FinalCard = ({
   data,
   selected,
@@ -70,12 +71,12 @@ export const FinalCard = ({
         !isCompare ? 'carlist' : ''
       }`}
     >
-      <div className='w-full max-[767px]:h-[120px] min-[768px]:h-[130px]  flex items-center justify-center'>
+      <div className='w-full max-[768px]:h-[120px] min-[769px]:h-[171px]  flex items-center justify-center'>
         <Image
-          className='relative top-[-25px] w-full'
+          className='relative top-[-35px] w-full'
           width={400}
           height={120}
-          src={`${process.env.NEXT_PUBLIC_API_URL}/${data.image}`}
+          src={`${data.image}`}
           alt='CarOne'
         />
       </div>
@@ -90,8 +91,7 @@ export const FinalCard = ({
             </>
           )}
         </div>
-        <div className='lc_fc_price'>{data.price}</div>
-
+        <div className='lc_fc_price'>{formatRupiah(data.price)}</div>
         <div className='lc_fc_list_ctr'>
           {data.specs.map((item) => (
             <p title={item.content} className='fc_list_item'>

@@ -90,7 +90,7 @@
     background: rgba(18, 18, 18, 0.8);
     border-radius: 16px;
     height: 90vh;
-    width: 80%;
+    width: 85%;
     padding: 20px;
     display: flex;
     overflow-y: scroll;
@@ -100,7 +100,7 @@
       font-size: 24px;
       font-weight: 800;
       text-align: right;
-      margin-bottom: 80px;
+      margin-bottom: 112px;
       margin-top: 112px;
       color: #fff;
     }
@@ -196,6 +196,11 @@
         font-size: 24px;
         font-weight: 800;
         line-height: 28px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 115px;
       }
       .mdl_fc_price {
         text-align: center;
@@ -203,6 +208,9 @@
         font-weight: 700;
         color: #ababab;
         margin: 8px 0 30px;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        overflow: hidden;
       }
       .mdl_fc_list_ctr {
         display: flex;

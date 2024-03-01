@@ -75,7 +75,8 @@ export const Sidebar = ({
     }
   };
   useEffect(() => {
-    getCarRecommendations(answeredQuestion.map((data) => data.answer_id));
+    if (companyBrand && questionBatch)
+      getCarRecommendations(answeredQuestion.map((data) => data.answer_id));
   }, [answeredQuestion]);
 
   const handleAnswer = useCallback(

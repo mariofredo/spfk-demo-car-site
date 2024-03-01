@@ -72,7 +72,7 @@ export const MainContainer = () => {
     <div
       className={`mc_ctr  ${step >= 1 ? '' : 'max-h-screen overflow-hidden'}`}
       onClick={() => {
-        if (step !== 1 && isSubmitFirstStep) setStep(1);
+        if (step <= 1 && isSubmitFirstStep) setStep(1);
       }}
     >
       <Image
@@ -87,11 +87,19 @@ export const MainContainer = () => {
       ></button>
       {step === 0 && <DreamCar />}
       {step === 1 && (
-        <div className='relative w-full grid grid-cols-10 pt-[90px]'>
-          <div className={tab === 1 ? 'col-span-4' : 'col-span-3'}>
+        <div className='relative w-full min-[769px]:grid min-[769px]:grid-cols-10 pt-[90px]'>
+          <div
+            className={`${
+              tab === 1 ? 'min-[769px]:col-span-4' : 'min-[769px]:col-span-3'
+            }`}
+          >
             <Sidebar setShowModalText={setShowModalText} />
           </div>
-          <div className={tab === 1 ? 'col-span-6' : 'col-span-7'}>
+          <div
+            className={`${
+              tab === 1 ? 'min-[769px]:col-span-6' : 'min-[769px]:col-span-7'
+            }`}
+          >
             <ListCar
               step={step}
               setStep={setStep}

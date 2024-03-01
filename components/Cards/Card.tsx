@@ -2,12 +2,13 @@ import Image from 'next/image';
 import {AddCircle, CarInfo} from '@/public/images';
 import {Car} from '@/types/car';
 import {useCar} from '@/context/carContext';
+import {formatRupiah} from '@/utils';
 export const Card = ({
   brand_name,
   category,
-  name,
+  category_level_2_name,
   category_level_1_id,
-  id,
+  category_level_2_id,
   price,
   image,
   category_level_1_name,
@@ -36,7 +37,7 @@ export const Card = ({
         <Image
           width={200}
           height={200}
-          src={`${process.env.NEXT_PUBLIC_API_URL}/${image}`}
+          src={`${image}`}
           alt='CarOne'
           className='relative max-[480px]:top-[-50px] min-[481px]:top-[-30px] right-[-20px] w-[110%]  max-w-none'
         />
@@ -46,13 +47,13 @@ export const Card = ({
           {brand_name} <br />
           {category_level_1_name}
         </div>
-        <div className='lc_card_type'>{name}</div>
-        <div className='lc_card_price'>{price}</div>
+        <div className='lc_card_type'>{category_level_2_name}</div>
+        <div className='lc_card_price'>{formatRupiah(price)}</div>
         <div className='lc_card_btn_ctr'>
           {finish && (
             <button
               className='lc_card_btn'
-              onClick={() => handleGetListComparison(id)}
+              onClick={() => handleGetListComparison(category_level_2_id)}
             >
               Compare{' '}
               <Image

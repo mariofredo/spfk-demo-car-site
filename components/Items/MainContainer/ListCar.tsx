@@ -28,6 +28,7 @@ export const ListCar = ({
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [goUp, setGoUp] = useState(false);
   const {
     cars,
     tab,
@@ -76,9 +77,9 @@ export const ListCar = ({
     setTab(1);
   }, [cars, step, answeredQuestion, questionNum, finish, firstFetch, tab]);
   return (
-    <div className={`lc_ctr ${step >= 1 ? 'active' : 'inactive'}`}>
+    <div className={`lc_ctr ${!goUp ? 'active' : 'inactive'}`}>
       <div className='lc_wrapper'>
-        <div className='lc_filters'>
+        <div className='lc_filters' onClick={() => setGoUp(!goUp)}>
           <div className='lc_filters_txt'>
             {loading ? (
               <Image src={Loading} className='loading_bar' alt='loading' />
@@ -109,13 +110,12 @@ export const ListCar = ({
                 {cars.map(
                   ({
                     brand_name,
-                    category,
-                    name,
+                    category_level_2_name,
                     category_level_1_id,
                     price,
                     specs,
                     image,
-                    id,
+                    category_level_2_id,
                     category_level_1_name,
                   }: Car) => (
                     <FinalCard
@@ -123,9 +123,9 @@ export const ListCar = ({
                         company_brand_name: brand_name,
                         image,
                         category_level_1_name: category_level_1_name,
-                        category_level_2_name: name,
+                        category_level_2_name,
                         category_level_1_id,
-                        category_level_2_id: id,
+                        category_level_2_id,
                         price,
                         specs,
                       }}
@@ -142,24 +142,24 @@ export const ListCar = ({
                   ({
                     brand_name,
                     category,
-                    name,
+                    category_level_2_name,
                     category_level_1_id,
                     price,
                     image,
-                    id,
+                    category_level_2_id,
                     category_level_1_name,
                   }: Car) => (
                     <Card
-                      key={id}
+                      key={category_level_2_id}
                       brand_name={brand_name}
                       category={category}
-                      name={name}
+                      category_level_2_name={category_level_2_name}
                       category_level_1_id={category_level_1_id}
                       price={price}
                       specs={[]}
                       image={image}
                       category_level_1_name={category_level_1_name}
-                      id={id}
+                      category_level_2_id={category_level_2_id}
                     />
                   )
                 )}

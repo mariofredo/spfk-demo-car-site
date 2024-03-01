@@ -1,19 +1,17 @@
-$breakpoint-sm: 768px;
-$breakpoint-md: 1024px;
 @keyframes goUp {
   0% {
-    transform: translateY(50%);
+    top: 75vh;
   }
   100% {
-    transform: translateY(0);
+    top: 10vh;
   }
 }
-@keyframes goDown {
+@keyframes goExtend {
   0% {
-    transform: translateY(0);
+    top: 10vh;
   }
   100% {
-    transform: translateY(50%);
+    top: 75vh;
   }
 }
 
@@ -266,9 +264,8 @@ $breakpoint-md: 1024px;
     &.inactive {
       position: relative;
       .lc_wrapper {
-        opacity: 0;
+        opacity: 1;
         transition: all 1s ease;
-        min-height: 60px;
       }
     }
     &.active {
@@ -283,6 +280,9 @@ $breakpoint-md: 1024px;
     }
 
     .lc_wrapper {
+      opacity: 0;
+      transition: all 1s ease;
+      min-height: 60px;
       .lc_filters {
         margin-bottom: 50px;
         display: flex;
@@ -583,7 +583,7 @@ $breakpoint-md: 1024px;
   }
 }
 
-@media (max-width: $breakpoint-sm) {
+@media (max-width: 768px) {
   .mc_ctr {
     background: #000 url(../../../public/images/opening_bg.png) no-repeat bottom /
       cover fixed;
@@ -815,34 +815,24 @@ $breakpoint-md: 1024px;
     }
 
     .lc_ctr {
-      background: linear-gradient(
-        138deg,
-        rgba(0, 0, 0, 0.3) -1.05%,
-        rgba(0, 0, 0, 0.02) 16.64%,
-        rgba(0, 0, 0, 0.3) 41.01%,
-        rgba(0, 0, 0, 0.3) 49.79%,
-        rgba(0, 0, 0, 0.03) 74.76%,
-        rgba(0, 0, 0, 0.3) 94.49%,
-        rgba(0, 0, 0, 0.03) 99.89%,
-        rgba(0, 0, 0, 0.12) 108.76%
-      );
+      background: rgba(24, 24, 24, 1);
+
       border: 2px solid #3f3f3f;
       width: 100%;
-
+      animation: goUp 1s ease forwards;
       border-radius: 20px 20px 0 0;
+      height: 85vh;
+      position: fixed;
+      left: 0;
+      min-height: auto;
       &.inactive {
-        position: relative;
-        top: -60px;
+        animation: goExtend 1s ease forwards;
         .lc_wrapper {
-          opacity: 0;
+          opacity: 1;
           transition: all 1s ease;
         }
       }
       &.active {
-        margin-top: 60px;
-        position: sticky;
-        animation: goUp 1s ease;
-        min-height: 100vh;
         .lc_wrapper {
           opacity: 1;
           transition: all 1s ease;
@@ -850,6 +840,8 @@ $breakpoint-md: 1024px;
       }
 
       .lc_wrapper {
+        opacity: 0;
+
         .lc_filters {
           background: #212121;
           margin-bottom: 50px;
@@ -928,7 +920,7 @@ $breakpoint-md: 1024px;
             rgba(217, 217, 217, 0.1) 93.15%
           );
           .lc_card_body {
-            margin-top: -80px;
+            margin-top: -40px;
             padding: 0px 16px 10px;
             color: #dbdbdb;
             gap: 11px;
@@ -987,7 +979,7 @@ $breakpoint-md: 1024px;
           &.carlist {
             min-width: calc(50%);
             width: 100%;
-            max-width: calc(50%);
+            // max-width: calc(50%);
           }
           .lc_fc_body {
             margin-top: -20px;
@@ -1167,6 +1159,183 @@ $breakpoint-md: 1024px;
             border-radius: 10px;
             padding: 2.5px 8px;
             border: 1.5px solid #f31d1e;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .mc_ctr {
+    .lc_ctr {
+      background: rgba(24, 24, 24, 1);
+
+      border: 2px solid #3f3f3f;
+      width: 100%;
+      animation: goUp 1s ease forwards;
+      border-radius: 20px 20px 0 0;
+      height: 85vh;
+      position: fixed;
+      left: 0;
+      min-height: auto;
+      &.inactive {
+        animation: goExtend 1s ease forwards;
+        .lc_wrapper {
+          opacity: 1;
+          transition: all 1s ease;
+        }
+      }
+      &.active {
+        .lc_wrapper {
+          opacity: 1;
+          transition: all 1s ease;
+        }
+      }
+
+      .lc_wrapper {
+        opacity: 0;
+
+        .lc_filters {
+          background: #212121;
+          margin-bottom: 50px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: #d1d1d1;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          padding: 25px 20px;
+          border-radius: 20px 20px 0 0;
+          position: static;
+          .lc_filters_txt {
+            font-size: 12px;
+          }
+          .lc_filters_btn_ctr {
+            display: flex;
+            width: 70%;
+            .lc_filters_btn {
+              width: 50%;
+              text-align: left;
+              position: relative;
+              &:disabled {
+                opacity: 0.5;
+                color: #3e3e3e;
+                cursor: not-allowed;
+              }
+              &.active {
+                &::before {
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  height: 0px;
+                  width: 90%;
+                  bottom: -5px;
+                  left: 0;
+                  border: 1.5px solid #f31d1e;
+                }
+              }
+              &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                height: 0px;
+                width: 90%;
+                bottom: -5px;
+                left: 0;
+                border: 1.5px solid #3e3e3e;
+              }
+              &:hover::before {
+                content: '';
+                display: block;
+                position: absolute;
+                height: 0px;
+                width: 90%;
+                bottom: -5px;
+                left: 0;
+                border: 1.5px solid #f31d1e;
+              }
+            }
+          }
+        }
+
+        .lc_card_ctr {
+          border-radius: 8.606px;
+          border: 2px solid #3f3f3f;
+          background: linear-gradient(
+            106deg,
+            rgba(217, 217, 217, 0.1) -0.44%,
+            rgba(255, 255, 255, 0.2) 33.17%,
+            rgba(217, 217, 217, 0.1) 52.52%,
+            rgba(217, 217, 217, 0.1) 76.34%,
+            rgba(255, 255, 255, 0.2) 85.69%,
+            rgba(217, 217, 217, 0.1) 93.15%
+          );
+          .lc_card_body {
+            margin-top: -10px;
+            padding: 0px 16px 10px;
+            color: #dbdbdb;
+            gap: 11px;
+            .lc_card_title {
+              font-size: 28px;
+              font-weight: 800;
+              line-height: 35px;
+            }
+            .lc_card_type {
+              font-size: 13px;
+              font-weight: 300;
+              padding: 11px 0;
+            }
+            .lc_card_price {
+              font-size: 9px;
+              font-weight: 700;
+            }
+            .lc_card_btn_ctr {
+              display: flex;
+              // justify-content: flex-end;
+              margin-top: 11px;
+              .lc_card_btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 20px;
+                background: #040404;
+                font-size: 11px;
+                box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+                padding: 5px 11px;
+              }
+            }
+          }
+        }
+
+        .lc_fc_info_ctr {
+          display: none;
+        }
+        .lc_fc_ctr {
+          min-width: 100%;
+          width: 100%;
+          min-height: 500px;
+          border-radius: 8.606px;
+          border: 2px solid #3f3f3f;
+          background: linear-gradient(
+            140deg,
+            rgba(217, 217, 217, 0.2) 31.46%,
+            rgba(255, 255, 255, 0.1) 55.76%,
+            rgba(217, 217, 217, 0.2) 69.76%,
+            rgba(217, 217, 217, 0.2) 86.99%,
+            rgba(255, 255, 255, 0.1) 93.75%,
+            rgba(217, 217, 217, 0.2) 99.15%
+          );
+          padding: 0 10px 20px;
+          color: #dbdbdb;
+          &.carlist {
+            min-width: calc(50%);
+            width: 100%;
+            // max-width: calc(50%);
+          }
+          .lc_fc_body {
           }
         }
       }

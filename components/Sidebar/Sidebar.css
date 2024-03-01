@@ -254,4 +254,28 @@
   width: 100%;
   height: 2.5px;
   background: #3e3e3e;
+}
+
+@media (max-width: 768px) {
+  .sb_ctr {
+    background: transparent;
+    border-radius: 0px;
+    border: none;
+    min-height: auto;
+    gap: 40px;
+  }
+  .sb_q_ctr .sb_q_txt {
+    font-size: 22px;
+    line-height: 35px;
+  }
+  .sb_q_ctr .sb_q_num {
+    left: -35px;
+    font-size: 22px;
+  }
+  .sb_q_ctr .sb_btn_ctr {
+    margin-top: 40px;
+  }
+  .sb_q_ctr .sb_btn_ctr .sb_btn_txt {
+    font-size: 26px;
+  }
 }/*# sourceMappingURL=Sidebar.css.map */
