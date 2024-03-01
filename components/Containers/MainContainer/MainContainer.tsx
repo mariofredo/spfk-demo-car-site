@@ -68,10 +68,6 @@ export const MainContainer = () => {
     companyBrand,
   ]);
 
-  useEffect(() => {
-    console.log(step, 'step');
-  }, [step]);
-
   return (
     <div
       className={`mc_ctr  ${step >= 1 ? '' : 'max-h-screen overflow-hidden'}`}
