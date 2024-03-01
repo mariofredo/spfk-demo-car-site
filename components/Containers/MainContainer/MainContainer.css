@@ -1031,15 +1031,8 @@
 }
 @media (min-width: 1440px) {
   .mc_ctr .lc_ctr {
-    background: rgb(24, 24, 24);
-    border: 2px solid #3f3f3f;
+    background: none;
     width: 100%;
-    animation: goUp 1s ease forwards;
-    border-radius: 20px 20px 0 0;
-    height: 85vh;
-    position: fixed;
-    left: 0;
-    min-height: auto;
   }
   .mc_ctr .lc_ctr.inactive {
     animation: goExtend 1s ease forwards;
@@ -1056,7 +1049,7 @@
     opacity: 0;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_filters {
-    background: #212121;
+    background: none;
     margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
