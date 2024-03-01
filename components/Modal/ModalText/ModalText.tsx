@@ -1,27 +1,69 @@
-import {Dispatch, SetStateAction} from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import '../Modal.css';
-import {DownloadCircle} from '@/public/images';
+import {CloseIcon, DownloadCircle} from '@/public/images';
+import {useCar} from '@/context';
 export const ModalText = ({
   setShowModalText,
 }: {
   setShowModalText: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const {uniqueId} = useCar();
+  const [email, setEmail] = useState('');
+  const handleSendRecommendations = useCallback(async () => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/recommendations/save`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          u_id: uniqueId,
+        }),
+      }
+    );
+    if (response.ok) {
+      const {data} = await response.json();
+      if (data.code === 404) {
+        alert('Unique ID not found');
+      } else {
+        setShowModalText(false);
+      }
+    }
+  }, [email, uniqueId]);
   return (
-    <div className='mdl_bd' onClick={() => setShowModalText(false)}>
+    <div className='mdl_bd'>
       <div className='mdl_text_ctr'>
+        <Image
+          src={CloseIcon}
+          alt='close_icon'
+          className='w-[20px] h-[20px] absolute top-[10px] right-[10px] cursor-pointer'
+          onClick={() => setShowModalText(false)}
+        />
         <div className='mdl_text_title'>Enter Your Email Here</div>
         <input
           type='text'
+          name='email'
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
           className='mdl_text_input'
           placeholder='Enter your email here'
         />
         <div className='mdl_btn_ctr'>
-          <button className='mdl_btn_save'>
+          <button className='mdl_btn_save' onClick={handleSendRecommendations}>
             Save
             <Image
               src={DownloadCircle}
-              className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px]  min-[481px]:w-[17.5px] min-[481px]:h-[17.5px]'
+              className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px] min-[481px]:w-[17.5px] min-[481px]:h-[17.5px]'
               alt='save_btn'
             />
           </button>

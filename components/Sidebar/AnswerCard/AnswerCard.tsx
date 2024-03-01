@@ -1,7 +1,9 @@
+import {useCar} from '@/context';
 import {AnsweredData, Question} from '@/types';
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 export const AnswerCard = ({data, idx}: {data: AnsweredData; idx: number}) => {
+  const {answeredQuestion, setAnsweredQuestion, setTab, setFinish} = useCar();
   const [selected, setSelected] = useState({
     answer_id: data.answer_id,
     tag: data.tag,
@@ -11,6 +13,16 @@ export const AnswerCard = ({data, idx}: {data: AnsweredData; idx: number}) => {
   useEffect(() => {
     setAppear(true);
   }, []);
+  const handleChange = useCallback(
+    (idx: number) => {
+      setAnsweredQuestion((prev: AnsweredData[]) => {
+        const newQuestion = [...prev];
+        const newAnswer = newQuestion.slice(0, idx + 1);
+        return newAnswer;
+      });
+    },
+    [selected, answeredQuestion]
+  );
   return (
     <div
       className={`sb_ac_ctr ${appear ? 'appear' : ''} ${
@@ -20,7 +32,7 @@ export const AnswerCard = ({data, idx}: {data: AnsweredData; idx: number}) => {
       onMouseLeave={() => expand && setExpand(false)}
       // onClick={() => setExpand(!expand)}
     >
-      <div className='left'>Q{idx}</div>
+      <div className='left'>Q{idx + 1}</div>
       <div className='right'>
         {!expand && <div className='selected_option'>{selected.tag}</div>}
         {expand && (
@@ -35,12 +47,15 @@ export const AnswerCard = ({data, idx}: {data: AnsweredData; idx: number}) => {
                     id={`${key.tag_id}`}
                     checked={selected.answer_id === key.answer_id}
                     value={key.answer_id}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       setSelected({
                         answer_id: parseInt(e.target.value),
                         tag: key.tag,
-                      })
-                    }
+                      });
+                      handleChange(idx);
+                      setFinish(false);
+                      setTab(1);
+                    }}
                   />
                   <label htmlFor='ans_1'>{key.tag}</label>
                 </div>

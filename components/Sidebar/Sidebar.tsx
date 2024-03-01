@@ -31,6 +31,7 @@ export const Sidebar = ({
     finish,
     setFinish,
     setLoading,
+    setTab,
   } = useCar();
   const [limit, setLimit] = useState({top: 0, bot: 0});
   const getCarRecommendations = async (arr: number[]) => {
@@ -96,7 +97,8 @@ export const Sidebar = ({
   );
   const handleBack = useCallback(
     (idx: number) => {
-      finish && setFinish(false);
+      setFinish(false);
+      setTab(1);
       setAnsweredQuestion((prev) => prev.slice(0, idx));
     },
     [answeredQuestion]
@@ -114,7 +116,7 @@ export const Sidebar = ({
       {answeredQuestion.length > 0 && (
         <div className='sb_answer_list'>
           {answeredQuestion.map((data: AnsweredData, idx: number) => (
-            <AnswerCard key={data.id} data={data} idx={idx + 1} />
+            <AnswerCard key={data.id} data={data} idx={idx} />
           ))}
         </div>
       )}
