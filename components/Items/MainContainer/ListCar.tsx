@@ -77,9 +77,14 @@ export const ListCar = ({
     setTab(1);
   }, [cars, step, answeredQuestion, questionNum, finish, firstFetch, tab]);
   return (
-    <div className={`lc_ctr ${!goUp ? 'active' : 'inactive'}`}>
+    <div className={`lc_ctr ${step === 1 ? 'active' : 'inactive'}`}>
       <div className='lc_wrapper'>
-        <div className='lc_filters' onClick={() => setGoUp(!goUp)}>
+        <div
+          className='lc_filters'
+          onClick={() => {
+            // setGoUp(!goUp)
+          }}
+        >
           <div className='lc_filters_txt'>
             {loading ? (
               <Image src={Loading} className='loading_bar' alt='loading' />

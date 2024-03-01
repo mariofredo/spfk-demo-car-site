@@ -97,7 +97,7 @@
 }
 .sb_answer_list .sb_ac_ctr.expand {
   overflow: hidden;
-  transition: 4s ease-in-out;
+  transition: 2s ease-in-out;
   max-height: 800px;
 }
 .sb_answer_list .sb_ac_ctr.not_expand {

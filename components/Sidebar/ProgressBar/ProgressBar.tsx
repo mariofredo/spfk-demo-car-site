@@ -7,10 +7,11 @@ export const ProgressBar = ({limit}: {limit: {top: number; bot: number}}) => {
     setWidth((limit.bot / limit.top) * 100);
   }, [limit]);
   return (
-    <>
+    <div>
+      <div className='pl-[20px] pb-[10px]'>PROGRESS</div>
       <div className='sb_pb_ctr'>
         <div className='sb_pb_fill' style={{width: `${width}%`}}></div>
       </div>
-    </>
+    </div>
   );
 };

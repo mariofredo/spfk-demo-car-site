@@ -1,5 +1,5 @@
 'use client';
-import {SetStateAction, useCallback, useState} from 'react';
+import {SetStateAction, useCallback, useEffect, useState} from 'react';
 import {Mitsubishi} from '@/public/images';
 import Image from 'next/image';
 import {
@@ -40,7 +40,8 @@ export const MainContainer = () => {
     question,
     setQuestion,
   } = useCar();
-  const handleReset = useCallback(() => {
+  const handleReset = useCallback(async () => {
+    await setIsSubmitFirstStep(false);
     setStep(0);
     setCars([]);
     setQuestion({data: {content: '', id: 0}, choices: []});
@@ -49,7 +50,6 @@ export const MainContainer = () => {
     setFirstFetch(true);
     setFinish(false);
     setTab(1);
-    setIsSubmitFirstStep(false);
     setUniqueId('');
     setCompanyBrand('');
     setQuestionBatch(0);
@@ -68,6 +68,10 @@ export const MainContainer = () => {
     companyBrand,
   ]);
 
+  useEffect(() => {
+    console.log(step, 'step');
+  }, [step]);
+
   return (
     <div
       className={`mc_ctr  ${step >= 1 ? '' : 'max-h-screen overflow-hidden'}`}
@@ -83,7 +87,7 @@ export const MainContainer = () => {
 
       <button
         className={`btn_reset ${step >= 1 ? 'active' : 'inactive'}`}
-        onClick={handleReset}
+        onClick={() => handleReset()}
       ></button>
       {step === 0 && <DreamCar />}
       {step === 1 && (

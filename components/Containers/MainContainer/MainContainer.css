@@ -237,7 +237,7 @@
   position: relative;
 }
 .mc_ctr .lc_ctr.inactive .lc_wrapper {
-  opacity: 1;
+  opacity: 0;
   transition: all 1s ease;
 }
 .mc_ctr .lc_ctr.active {

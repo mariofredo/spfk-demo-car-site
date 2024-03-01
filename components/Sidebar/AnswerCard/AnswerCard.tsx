@@ -28,9 +28,9 @@ export const AnswerCard = ({data, idx}: {data: AnsweredData; idx: number}) => {
       className={`sb_ac_ctr ${appear ? 'appear' : ''} ${
         expand ? 'expand' : 'not_expand'
       }`}
-      onMouseEnter={() => !expand && setExpand(true)}
-      onMouseLeave={() => expand && setExpand(false)}
-      // onClick={() => setExpand(!expand)}
+      // onMouseEnter={() => !expand && setExpand(true)}
+      // onMouseLeave={() => expand && setExpand(false)}
+      onClick={() => setExpand(!expand)}
     >
       <div className='left'>Q{idx + 1}</div>
       <div className='right'>
@@ -43,7 +43,7 @@ export const AnswerCard = ({data, idx}: {data: AnsweredData; idx: number}) => {
                 <div key={key.tag_id} className='relative'>
                   <input
                     type='radio'
-                    name='ans'
+                    name={'ans_' + idx + 1}
                     id={`${key.tag_id}`}
                     checked={selected.answer_id === key.answer_id}
                     value={key.answer_id}
