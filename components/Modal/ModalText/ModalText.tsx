@@ -16,6 +16,7 @@ export const ModalText = ({
 }) => {
   const {uniqueId} = useCar();
   const [email, setEmail] = useState('');
+  const [isValid, setIsValid] = useState(false);
   const handleSendRecommendations = useCallback(async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/recommendations/save`,
@@ -39,6 +40,10 @@ export const ModalText = ({
       }
     }
   }, [email, uniqueId]);
+  const validateEmail = (email: string) => {
+    const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return pattern.test(email);
+  };
   return (
     <div className='mdl_bd'>
       <div className='mdl_text_ctr'>
@@ -52,14 +57,23 @@ export const ModalText = ({
         <input
           type='text'
           name='email'
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setEmail(e.target.value);
+            setIsValid(validateEmail(e.target.value));
+          }}
           className='mdl_text_input'
           placeholder='Enter your email here'
         />
         <div className='mdl_btn_ctr'>
-          <button className='mdl_btn_save' onClick={handleSendRecommendations}>
+          <button
+            className='mdl_btn_save'
+            onClick={() => {
+              console.log(isValid, 'isvalid');
+              console.log('clicked');
+              // handleSendRecommendations();
+            }}
+            disabled={!isValid}
+          >
             Save
             <Image
               src={DownloadCircle}

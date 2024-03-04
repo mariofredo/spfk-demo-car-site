@@ -79,6 +79,10 @@
   background: #040404;
   box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
 }
+.mdl_bd .mdl_text_ctr .mdl_btn_ctr .mdl_btn_save:disabled {
+  background: #3e3e3e;
+  box-shadow: none;
+}
 .mdl_bd .mdl_text_ctr .mdl_text_body {
   font-size: 16px;
   font-weight: 500;
