@@ -70,7 +70,9 @@ export const MainContainer = () => {
 
   return (
     <div
-      className={`mc_ctr  ${step >= 1 ? '' : 'max-h-screen overflow-hidden'}`}
+      className={`mc_ctr  ${
+        step >= 1 ? '' : 'max-h-screen overflow-hidden cursor-pointer'
+      }`}
       onClick={() => {
         if (step <= 1 && isSubmitFirstStep) setStep(1);
       }}
