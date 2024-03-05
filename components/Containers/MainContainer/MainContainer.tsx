@@ -83,13 +83,13 @@ export const MainContainer = () => {
         alt='Mitsubishi'
       />
 
-      <button
-        className={`btn_reset ${step >= 1 ? 'active' : 'inactive'}`}
-        onClick={() => handleReset()}
-      ></button>
       {step === 0 && <DreamCar />}
       {step === 1 && (
         <div className='relative w-full min-[769px]:grid min-[769px]:grid-cols-10 pt-[90px] max-[768px]:overflow-y-scroll max-[768px]:h-screen'>
+          <button
+            className={`btn_reset ${step >= 1 ? 'active' : 'inactive'}`}
+            onClick={() => handleReset()}
+          ></button>
           <div
             className={`${
               tab === 1 ? 'min-[769px]:col-span-4' : 'min-[769px]:col-span-3'
@@ -120,6 +120,7 @@ export const MainContainer = () => {
         <ModalCompare
           setShowModalText={setShowModalText}
           setShowModalCompare={setShowModalCompare}
+          handleReset={handleReset}
         />
       )}
       {showModalText && <ModalText setShowModalText={setShowModalText} />}

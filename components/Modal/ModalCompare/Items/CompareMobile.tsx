@@ -10,12 +10,14 @@ export const CompareMobile = ({
   setShowModalCompare,
   setShowModalText,
   answeredQuestion,
+  handleReset,
 }: {
   recommendation: SelectedCarItem;
   competitor: SelectedCarItem[];
   setShowModalCompare: Dispatch<SetStateAction<boolean>>;
   setShowModalText: Dispatch<SetStateAction<boolean>>;
   answeredQuestion: AnsweredData[];
+  handleReset: () => void;
 }) => {
   return (
     <>
@@ -25,7 +27,14 @@ export const CompareMobile = ({
         </div>
         <div className='mdl_compare_fltr_item flex justify-end gap-[20px]'>
           <button onClick={() => setShowModalCompare(false)}>Back</button>
-          <button>Reset</button>
+          <button
+            onClick={() => {
+              handleReset();
+              setShowModalCompare(false);
+            }}
+          >
+            Reset
+          </button>
         </div>
       </div>
       <div className='w-full grid grid-cols-2 pt-[40px]'>

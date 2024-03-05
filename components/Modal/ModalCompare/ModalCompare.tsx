@@ -8,9 +8,11 @@ import '../Modal.css';
 export const ModalCompare = ({
   setShowModalCompare,
   setShowModalText,
+  handleReset,
 }: {
   setShowModalText: Dispatch<SetStateAction<boolean>>;
   setShowModalCompare: Dispatch<SetStateAction<boolean>>;
+  handleReset: () => void;
 }) => {
   const {answeredQuestion, setTab, selectedCar} = useCar();
   const {width} = useScreen();
@@ -24,6 +26,7 @@ export const ModalCompare = ({
             competitor={selectedCar.competitor}
             setShowModalCompare={setShowModalCompare}
             setShowModalText={setShowModalText}
+            handleReset={handleReset}
           />
         ) : (
           <CompareDesktop
