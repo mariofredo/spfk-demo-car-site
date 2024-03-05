@@ -17,6 +17,7 @@ export const ModalText = ({
   const {uniqueId} = useCar();
   const [email, setEmail] = useState('');
   const [isValid, setIsValid] = useState(false);
+  const [isFinish, setIsFinish] = useState(false);
   const handleSendRecommendations = useCallback(async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/recommendations/save`,
@@ -36,7 +37,7 @@ export const ModalText = ({
       if (data.code === 404) {
         alert('Unique ID not found');
       } else {
-        setShowModalText(false);
+        setIsFinish(true);
       }
     }
   }, [email, uniqueId]);
@@ -53,33 +54,54 @@ export const ModalText = ({
           className='w-[20px] h-[20px] absolute top-[10px] right-[10px] cursor-pointer'
           onClick={() => setShowModalText(false)}
         />
-        <div className='mdl_text_title'>Enter Your Email Here</div>
-        <input
-          type='text'
-          name='email'
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            setEmail(e.target.value);
-            setIsValid(validateEmail(e.target.value));
-          }}
-          className='mdl_text_input'
-          placeholder='Enter your email here'
-        />
-        <div className='mdl_btn_ctr'>
-          <button
-            className='mdl_btn_save'
-            onClick={() => {
-              handleSendRecommendations();
-            }}
-            disabled={!isValid}
-          >
-            Save
-            <Image
-              src={DownloadCircle}
-              className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px] min-[481px]:w-[17.5px] min-[481px]:h-[17.5px]'
-              alt='save_btn'
+        {!isFinish ? (
+          <>
+            <div className='mdl_text_title'>Enter Your Email Here</div>
+            <input
+              type='text'
+              name='email'
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setEmail(e.target.value);
+                setIsValid(validateEmail(e.target.value));
+              }}
+              className='mdl_text_input'
+              placeholder='your email'
             />
-          </button>
-        </div>
+            <div className='mdl_btn_ctr'>
+              <button
+                className='mdl_btn_blck'
+                onClick={() => {
+                  handleSendRecommendations();
+                }}
+                disabled={!isValid}
+              >
+                Save
+                <Image
+                  src={DownloadCircle}
+                  className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px] min-[481px]:w-[17.5px] min-[481px]:h-[17.5px]'
+                  alt='save_btn'
+                />
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className='mdl_text_title text-center my-[20px]'>
+              Your result has been sent to your email!
+            </div>
+            <div className='flex justify-center mb-[20px]'>
+              <button
+                className='mdl_btn_blck'
+                onClick={() => {
+                  setShowModalText(false);
+                }}
+                disabled={!isValid}
+              >
+                Okay
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

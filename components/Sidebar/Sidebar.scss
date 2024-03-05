@@ -114,6 +114,7 @@ $breakpoint-md: 1024px;
       max-height: 800px;
     }
     &.not_expand {
+      transition: 2s ease-in-out;
       max-height: 50px;
     }
     .left {

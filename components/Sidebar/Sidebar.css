@@ -102,6 +102,7 @@
   max-height: 800px;
 }
 .sb_answer_list .sb_ac_ctr.not_expand {
+  transition: 2s ease-in-out;
   max-height: 50px;
 }
 .sb_answer_list .sb_ac_ctr .left {

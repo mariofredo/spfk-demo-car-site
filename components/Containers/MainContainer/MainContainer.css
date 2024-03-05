@@ -800,14 +800,15 @@
     position: sticky;
   }
   .lc_ctr .lc_wrapper .lc_filters .lc_filters_txt {
+    width: 50%;
     font-size: 12px;
   }
   .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr {
     display: flex;
-    width: 70%;
+    width: 50%;
   }
   .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn {
-    width: 50%;
+    width: 100%;
     text-align: left;
     position: relative;
   }
@@ -1111,7 +1112,7 @@
     width: 70%;
   }
   .mc_ctr .lc_ctr .lc_wrapper .lc_filters .lc_filters_btn_ctr .lc_filters_btn {
-    width: 50%;
+    width: 100%;
     text-align: left;
     position: relative;
   }

@@ -892,13 +892,14 @@
         border-radius: 20px 20px 0 0;
         position: sticky;
         .lc_filters_txt {
+          width: 50%;
           font-size: 12px;
         }
         .lc_filters_btn_ctr {
           display: flex;
-          width: 70%;
+          width: 50%;
           .lc_filters_btn {
-            width: 50%;
+            width: 100%;
             text-align: left;
             position: relative;
             &:disabled {
@@ -1246,7 +1247,7 @@
             display: flex;
             width: 70%;
             .lc_filters_btn {
-              width: 50%;
+              width: 100%;
               text-align: left;
               position: relative;
               &:disabled {
