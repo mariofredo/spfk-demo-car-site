@@ -42,8 +42,14 @@
 }
 .mdl_bd .mdl_form_ctr .mdl_form_btn {
   padding: 10px;
-  background: #ababab;
   border-radius: 10px;
+  background: #f31d1e;
+  color: #fff;
+  transition: 0.5s ease-in-out;
+}
+.mdl_bd .mdl_form_ctr .mdl_form_btn:disabled {
+  background: #ababab;
+  color: #040404;
 }
 .mdl_bd .mdl_text_ctr {
   position: relative;
@@ -328,8 +334,11 @@
   }
   .mdl_bd .mdl_form_ctr .mdl_form_btn {
     padding: 10px;
-    background: #ababab;
     border-radius: 10px;
+    background: #f31d1e;
+  }
+  .mdl_bd .mdl_form_ctr .mdl_form_btn:disabled {
+    background: #ababab;
   }
   .mdl_bd .mdl_compare_ctr {
     height: 100vh;
