@@ -90,6 +90,7 @@
   display: flex;
   width: 100%;
   opacity: 0;
+  cursor: pointer;
 }
 .sb_answer_list .sb_ac_ctr.appear {
   transition: 1s ease-in-out;
@@ -263,6 +264,8 @@
     border: none;
     min-height: auto;
     gap: 40px;
+    padding: 20px 70px 35vh;
+    overflow-y: scroll;
   }
   .sb_q_ctr .sb_q_txt {
     font-size: 22px;

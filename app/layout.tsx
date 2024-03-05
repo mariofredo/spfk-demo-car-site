@@ -1,8 +1,8 @@
 import type {Metadata} from 'next';
 import {Inter} from 'next/font/google';
-import {CarContextProvider} from '@/context/carContext';
 import '@/public/fonts/fontstyle.css';
 import './globals.css';
+import {CarContextProvider, ScreenContextProvider} from '@/context';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -15,7 +15,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <CarContextProvider>{children}</CarContextProvider>
+        <ScreenContextProvider>
+          <CarContextProvider>{children}</CarContextProvider>
+        </ScreenContextProvider>
       </body>
     </html>
   );

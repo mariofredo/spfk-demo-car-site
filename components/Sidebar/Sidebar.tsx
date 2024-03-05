@@ -9,7 +9,7 @@ import {
 import Image from 'next/image';
 import {ProgressBar, AnswerCard} from '@/components';
 import {DownloadCircle, ReturnBtn} from '@/public/images';
-import {useCar} from '@/context';
+import {useCar, useScreen} from '@/context';
 import {AnsweredData, ApiResponseQuestion} from '@/types';
 import './Sidebar.css';
 
@@ -33,6 +33,7 @@ export const Sidebar = ({
     setLoading,
     setTab,
   } = useCar();
+  const {width} = useScreen();
   const [limit, setLimit] = useState({top: 0, bot: 0});
   const getCarRecommendations = async (arr: number[]) => {
     try {
@@ -126,12 +127,15 @@ export const Sidebar = ({
             <p className='sb_f_big'>Congratulation!</p>
             <p className='sb_f_small'>Here's your recommended car:</p>
           </div>
-          <button
-            className='sb_btn_save_result'
-            onClick={() => setShowModalText(true)}
-          >
-            Save the Result <Image src={DownloadCircle} alt='download_circle' />
-          </button>
+          {width > 768 && (
+            <button
+              className='sb_btn_save_result'
+              onClick={() => setShowModalText(true)}
+            >
+              Save the Result{' '}
+              <Image src={DownloadCircle} alt='download_circle' />
+            </button>
+          )}
         </>
       ) : (
         <div className='sb_q_ctr'>

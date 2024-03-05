@@ -9,7 +9,7 @@ import {
 import Image from 'next/image';
 import {SelectedCarItem} from '@/types/car';
 import {AddCircle} from '@/public/images';
-import {useCar} from '@/context';
+import {useCar, useScreen} from '@/context';
 import {formatRupiah} from '@/utils';
 export const FinalCard = ({
   data,
@@ -23,7 +23,7 @@ export const FinalCard = ({
   setShowModalCompare: Dispatch<SetStateAction<boolean>>;
 }) => {
   const {setSelectedCar, setTab} = useCar();
-  const [viewportWidth, setViewportWidth] = useState<number>(0);
+  const {width} = useScreen();
   const handleGetListComparison = async (category_level_2_id: number) => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/comparison-list`,
@@ -48,22 +48,6 @@ export const FinalCard = ({
     },
     [selected]
   );
-  useEffect(() => {
-    function handleResize() {
-      setViewportWidth(window.innerWidth);
-    }
-
-    // Set initial viewport dimensions
-    handleResize();
-
-    // Add event listener to update viewport dimensions on window resize
-    window.addEventListener('resize', handleResize);
-
-    // Remove event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   return (
     <div
@@ -93,11 +77,22 @@ export const FinalCard = ({
         </div>
         <div className='lc_fc_price'>{formatRupiah(data.price)}</div>
         <div className='lc_fc_list_ctr'>
-          {data.specs.map((item) => (
-            <p title={item.content} className='fc_list_item'>
-              <span className='fc_list_item_text'> {item.content}</span>
-            </p>
-          ))}
+          {data.specs.map((item) =>
+            width < 768 && selected ? (
+              <div className='fc_list_ctr'>
+                <div className='fc_list_spec'>
+                  <span className='fc_list_spec_text'>{item.spec_name}</span>
+                </div>
+                <div className='fc_list_spec_item'>
+                  <span className='fc_list_spec_item_text'>{item.content}</span>
+                </div>
+              </div>
+            ) : (
+              <p title={item.content} className='fc_list_item'>
+                <span className='fc_list_item_text'> {item.content}</span>
+              </p>
+            )
+          )}
         </div>
         {!isCompare && (
           <div className='lc_fc_card_btn_ctr'>

@@ -103,6 +103,7 @@ $breakpoint-md: 1024px;
     display: flex;
     width: 100%;
     opacity: 0;
+    cursor: pointer;
     &.appear {
       transition: 1s ease-in-out;
       opacity: 1;
@@ -281,6 +282,8 @@ $breakpoint-md: 1024px;
     border: none;
     min-height: auto;
     gap: 40px;
+    padding: 20px 70px 35vh;
+    overflow-y: scroll;
   }
   .sb_q_ctr {
     .sb_q_txt {

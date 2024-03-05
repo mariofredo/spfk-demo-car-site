@@ -1,5 +1,6 @@
 'use client';
 import {Card, FinalCard} from '@/components';
+import {useScreen} from '@/context';
 import {useCar} from '@/context/carContext';
 import {Loading} from '@/public/images';
 import {Car, SelectedCarItem} from '@/types';
@@ -29,7 +30,8 @@ export const ListCar = ({
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [goUp, setGoUp] = useState(false);
+  const [goUp, setGoUp] = useState(true);
+  const [initial, setInitial] = useState(true);
   const {
     cars,
     tab,
@@ -47,6 +49,7 @@ export const ListCar = ({
     loading,
     setLoading,
   } = useCar();
+  const {width} = useScreen();
   const router = useRouter();
   const handleMouseDown = (e: React.MouseEvent) => {
     if (containerRef.current) {
@@ -77,13 +80,28 @@ export const ListCar = ({
     setFinish(false);
     setTab(1);
   }, [cars, step, answeredQuestion, questionNum, finish, firstFetch, tab]);
+  const handleAnimation = useCallback(
+    (width: number, step: number, goUp: boolean, initial: boolean) => {
+      if (width < 769) {
+        if (step === 1 && initial) {
+          return 'initial';
+        } else if (step === 1 && !goUp) return 'active';
+        else return 'inactive';
+      } else {
+        if (step === 1) return 'active';
+        else return 'inactive';
+      }
+    },
+    [width, step, goUp, initial]
+  );
   return (
-    <div className={`lc_ctr ${step === 1 ? 'active' : 'inactive'}`}>
+    <div className={`lc_ctr ${handleAnimation(width, step, goUp, initial)}`}>
       <div className='lc_wrapper'>
         <div
           className='lc_filters'
           onClick={() => {
-            // setGoUp(!goUp)
+            if (initial) setInitial(false);
+            setGoUp(!goUp);
           }}
         >
           <div className='lc_filters_txt'>

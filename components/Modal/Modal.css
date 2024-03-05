@@ -1,3 +1,11 @@
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .mdl_bd {
   position: fixed;
   top: 0;
@@ -323,5 +331,41 @@
     padding: 10px;
     background: #ababab;
     border-radius: 10px;
+  }
+  .mdl_bd .mdl_compare_ctr {
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    animation: slideInFromRight 0.5s ease-in-out forwards;
+  }
+  .mdl_bd .mdl_compare_ctr .mdl_compare_fltr {
+    display: flex;
+    background: rgb(28, 28, 28);
+    padding: 20px;
+    font-family: "Manrope-Bold";
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+  .mdl_bd .mdl_compare_ctr .mdl_compare_fltr .mdl_compare_fltr_item {
+    width: 50%;
+  }
+  .mdl_bd .mdl_compare_ctr .mdl_compare_fltr .mdl_compare_fltr_item button {
+    color: #f31d1e;
+  }
+  .mark_line_red {
+    position: relative;
+  }
+  .mark_line_red::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    border-bottom: 1.5px solid #f31d1e;
   }
 }/*# sourceMappingURL=Modal.css.map */

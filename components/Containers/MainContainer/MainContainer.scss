@@ -3,12 +3,21 @@
     top: 75vh;
   }
   100% {
-    top: 10vh;
+    top: 20vh;
   }
 }
-@keyframes goExtend {
+@keyframes goDown {
   0% {
-    top: 10vh;
+    top: 20vh;
+  }
+  100% {
+    top: 75vh;
+  }
+}
+
+@keyframes initialExtend {
+  0% {
+    top: 100vh;
   }
   100% {
     top: 75vh;
@@ -244,81 +253,104 @@
       font-size: 42px;
     }
   }
+}
+.lc_ctr {
+  background: linear-gradient(
+    138deg,
+    rgba(0, 0, 0, 0.3) -1.05%,
+    rgba(0, 0, 0, 0.02) 16.64%,
+    rgba(0, 0, 0, 0.3) 41.01%,
+    rgba(0, 0, 0, 0.3) 49.79%,
+    rgba(0, 0, 0, 0.03) 74.76%,
+    rgba(0, 0, 0, 0.3) 94.49%,
+    rgba(0, 0, 0, 0.03) 99.89%,
+    rgba(0, 0, 0, 0.12) 108.76%
+  );
+  // border: 2px solid #3f3f3f;
+  width: 100%;
 
-  .lc_ctr {
-    background: linear-gradient(
-      138deg,
-      rgba(0, 0, 0, 0.3) -1.05%,
-      rgba(0, 0, 0, 0.02) 16.64%,
-      rgba(0, 0, 0, 0.3) 41.01%,
-      rgba(0, 0, 0, 0.3) 49.79%,
-      rgba(0, 0, 0, 0.03) 74.76%,
-      rgba(0, 0, 0, 0.3) 94.49%,
-      rgba(0, 0, 0, 0.03) 99.89%,
-      rgba(0, 0, 0, 0.12) 108.76%
-    );
-    // border: 2px solid #3f3f3f;
-    width: 100%;
-
-    // border-radius: 20px 20px 0 0;
-    &.inactive {
-      position: relative;
-      .lc_wrapper {
-        opacity: 0;
-        transition: all 1s ease;
-      }
-    }
-    &.active {
-      position: sticky;
-      // animation: goUp 1s ease;
-      min-height: 100vh;
-      // overflow-y: visible;
-      .lc_wrapper {
-        opacity: 1;
-        transition: all 1s ease;
-      }
-    }
-
+  // border-radius: 20px 20px 0 0;
+  &.inactive {
+    position: relative;
     .lc_wrapper {
       opacity: 0;
       transition: all 1s ease;
-      min-height: 60px;
-      .lc_filters {
-        margin-bottom: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #d1d1d1;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        padding: 25px 50px;
-        // position: sticky;
-        top: 0;
-        z-index: 100;
-        border-radius: 20px 20px 0 0;
-        .lc_filters_btn_ctr {
-          display: flex;
-          width: 70%;
-          .lc_filters_btn {
-            width: 100%;
-            text-align: left;
-            position: relative;
-            &.active {
-              &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                height: 0px;
-                width: 100%;
-                bottom: -10px;
-                left: 0;
-                border: 1.5px solid #f31d1e;
-              }
-            }
+    }
+  }
+  &.active {
+    position: sticky;
+    // animation: goUp 1s ease;
+    min-height: 100vh;
+    // overflow-y: visible;
+    .lc_wrapper {
+      opacity: 1;
+      transition: all 1s ease;
+    }
+  }
 
+  .lc_wrapper {
+    opacity: 0;
+    transition: all 1s ease;
+    min-height: 60px;
+    .lc_filters {
+      margin-bottom: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #d1d1d1;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      padding: 25px 50px;
+      // position: sticky;
+      top: 0;
+      z-index: 100;
+      border-radius: 20px 20px 0 0;
+      .lc_filters_btn_ctr {
+        display: flex;
+        width: 70%;
+        .lc_filters_btn {
+          width: 100%;
+          text-align: left;
+          position: relative;
+          &.active {
             &::before {
+              content: '';
+              display: block;
+              position: absolute;
+              height: 0px;
+              width: 100%;
+              bottom: -10px;
+              left: 0;
+              border: 1.5px solid #f31d1e;
+            }
+          }
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 0px;
+            width: 90%;
+            bottom: -5px;
+            left: 0;
+            border: 1.5px solid #3e3e3e;
+          }
+          &.carlist {
+            // &:hover::before {
+            //   content: '';
+            //   display: block;
+            //   position: absolute;
+            //   height: 0px;
+            //   width: 90%;
+            //   bottom: -5px;
+            //   left: 0;
+            //   border: 1.5px solid #f31d1e;
+            // }
+          }
+          &.finish {
+            &:hover::before {
               content: '';
               display: block;
               position: absolute;
@@ -326,261 +358,238 @@
               width: 90%;
               bottom: -5px;
               left: 0;
-              border: 1.5px solid #3e3e3e;
+              border: 1.5px solid #f31d1e;
             }
-            &.carlist {
-              // &:hover::before {
-              //   content: '';
-              //   display: block;
-              //   position: absolute;
-              //   height: 0px;
-              //   width: 90%;
-              //   bottom: -5px;
-              //   left: 0;
-              //   border: 1.5px solid #f31d1e;
-              // }
-            }
-            &.finish {
-              &:hover::before {
-                content: '';
-                display: block;
-                position: absolute;
-                height: 0px;
-                width: 90%;
-                bottom: -5px;
-                left: 0;
-                border: 1.5px solid #f31d1e;
-              }
-            }
-            &.unfinish {
-              color: #3e3e3e;
-            }
+          }
+          &.unfinish {
+            color: #3e3e3e;
           }
         }
       }
+    }
 
-      .lc_card_ctr {
-        border-radius: 8.606px;
-        border: 2px solid #3f3f3f;
-        background: linear-gradient(
-          106deg,
-          rgba(217, 217, 217, 0.1) -0.44%,
-          rgba(255, 255, 255, 0.2) 33.17%,
-          rgba(217, 217, 217, 0.1) 52.52%,
-          rgba(217, 217, 217, 0.1) 76.34%,
-          rgba(255, 255, 255, 0.2) 85.69%,
-          rgba(217, 217, 217, 0.1) 93.15%
-        );
-        .lc_card_body {
-          margin-top: -40px;
-          padding: 0px 16px 10px;
-          color: #dbdbdb;
-          gap: 11px;
-          .lc_card_title {
-            font-size: 24px;
-            font-weight: 800;
-            line-height: 28px;
-          }
-          .lc_card_type {
-            font-size: 16px;
-            font-weight: 300;
-            padding: 11px 0;
-          }
-          .lc_card_price {
-            font-size: 16px;
-            font-weight: 700;
-          }
-          .lc_card_btn_ctr {
-            display: flex;
-            // justify-content: flex-end;
-            margin-top: 11px;
-            .lc_card_btn {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-radius: 20px;
-              background: #040404;
-              box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
-              padding: 5px 11px;
-            }
-          }
-        }
-      }
-
-      .lc_fc_ctr {
-        min-width: 240px;
-        width: 100%;
-        min-height: 700px;
-        border-radius: 8.606px;
-        border: 2px solid #3f3f3f;
-        background: linear-gradient(
-          140deg,
-          rgba(217, 217, 217, 0.2) 31.46%,
-          rgba(255, 255, 255, 0.1) 55.76%,
-          rgba(217, 217, 217, 0.2) 69.76%,
-          rgba(217, 217, 217, 0.2) 86.99%,
-          rgba(255, 255, 255, 0.1) 93.75%,
-          rgba(217, 217, 217, 0.2) 99.15%
-        );
-        padding: 0 20px 20px;
-        color: #dbdbdb;
-        &.spec {
-          background: none;
-          border: none;
-          .lc_fc_body {
-            .lc_fc_title {
-              text-align: right;
-            }
-            .lc_fc_list_ctr {
-              justify-content: flex-end;
-              .fc_list_item {
-                text-align: right;
-                justify-content: flex-end;
-              }
-            }
-          }
-        }
-        .lc_fc_body {
-          margin-top: -20px;
-          .lc_fc_title {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 800;
-            line-height: 28px;
-          }
-          .lc_fc_price {
-            text-align: center;
-            font-size: 16px;
-            font-weight: 700;
-            color: #ababab;
-            margin: 8px 0 30px;
-          }
-          .lc_fc_list_ctr {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            .fc_list_item {
-              color: #fff;
-              font-size: 20px;
-              font-weight: 500;
-              text-align: center;
-              width: 100%;
-              position: relative;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              padding-bottom: 15px;
-              padding-top: 15px;
-              height: 80px;
-              .fc_list_item_text {
-                display: -webkit-box;
-                position: absolute;
-                top: 50%;
-                width: 100%;
-                left: 0;
-                transform: translateY(-50%);
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-              }
-              &:before {
-                content: '';
-                display: block;
-                position: absolute;
-                height: 3px;
-                width: 90%;
-                bottom: -5px;
-
-                background: url(../../../public/images/final_card_line.png);
-              }
-              &:first-child {
-                padding-bottom: 15px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-bottom: 15px;
-                padding-top: 15px;
-                &::before {
-                  background: none;
-                }
-              }
-              &:nth-child(even) {
-                color: #ababab;
-              }
-            }
-          }
-          .lc_fc_card_btn_ctr {
-            display: flex;
-            justify-content: center;
-            margin-top: 11px;
-            .lc_fc_card_btn {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-radius: 20px;
-              background: #040404;
-              box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
-              padding: 5px 11px;
-            }
-          }
-        }
-      }
-
-      .lc_fc_ctr.selected {
-        min-width: 240px;
-        width: 240px;
-        background: linear-gradient(
-          140deg,
-          rgba(217, 217, 217, 0.5) 31.46%,
-          rgba(255, 255, 255, 0.2) 55.76%,
-          rgba(217, 217, 217, 0.5) 69.76%,
-          rgba(255, 255, 255, 0.2) 86.99%,
-          rgba(255, 255, 255, 0.2) 93.75%,
-          rgba(217, 217, 217, 0.5) 99.15%
-        );
-        border: 2px solid #f31d1e;
-      }
-      .lc_empty_ctr {
-        width: 100%;
-        height: 70vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 20px;
-        .lc_empty_title {
+    .lc_empty_ctr {
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      .lc_empty_title {
+        position: relative;
+        text-align: center;
+        font-size: 28px;
+        span {
           position: relative;
-          text-align: center;
-          font-size: 28px;
-          span {
-            position: relative;
-            &::before {
-              content: '';
-              display: block;
-              position: absolute;
-              bottom: -30px;
-              right: -30px;
-              width: calc(80% - 30px);
-              height: 20px;
-              background: url('../../../public/images/mark_line_red.png')
-                no-repeat center / contain;
-            }
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: calc(80% - 30px);
+            height: 20px;
+            background: url('../../../public/images/mark_line_red.png')
+              no-repeat center / contain;
           }
         }
-        .lc_empty_reset {
-          margin-top: 20px;
-          color: #f31d1e;
-          cursor: pointer;
-          font-size: 20px;
-          border-radius: 10px;
-          padding: 5px 10px;
-          border: 1.5px solid #f31d1e;
+      }
+      .lc_empty_reset {
+        margin-top: 20px;
+        color: #f31d1e;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 10px;
+        padding: 5px 10px;
+        border: 1.5px solid #f31d1e;
+      }
+    }
+  }
+}
+
+.lc_card_ctr {
+  border-radius: 8.606px;
+  border: 2px solid #3f3f3f;
+  background: linear-gradient(
+    106deg,
+    rgba(217, 217, 217, 0.1) -0.44%,
+    rgba(255, 255, 255, 0.2) 33.17%,
+    rgba(217, 217, 217, 0.1) 52.52%,
+    rgba(217, 217, 217, 0.1) 76.34%,
+    rgba(255, 255, 255, 0.2) 85.69%,
+    rgba(217, 217, 217, 0.1) 93.15%
+  );
+  .lc_card_body {
+    margin-top: -40px;
+    padding: 0px 16px 10px;
+    color: #dbdbdb;
+    gap: 11px;
+    .lc_card_title {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 28px;
+    }
+    .lc_card_type {
+      font-size: 16px;
+      font-weight: 300;
+      padding: 11px 0;
+    }
+    .lc_card_price {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .lc_card_btn_ctr {
+      display: flex;
+      // justify-content: flex-end;
+      margin-top: 11px;
+      .lc_card_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        background: #040404;
+        box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+        padding: 5px 11px;
+      }
+    }
+  }
+}
+
+.lc_fc_ctr {
+  min-width: 240px;
+  width: 100%;
+  min-height: 700px;
+  border-radius: 8.606px;
+  border: 2px solid #3f3f3f;
+  background: linear-gradient(
+    140deg,
+    rgba(217, 217, 217, 0.2) 31.46%,
+    rgba(255, 255, 255, 0.1) 55.76%,
+    rgba(217, 217, 217, 0.2) 69.76%,
+    rgba(217, 217, 217, 0.2) 86.99%,
+    rgba(255, 255, 255, 0.1) 93.75%,
+    rgba(217, 217, 217, 0.2) 99.15%
+  );
+  padding: 0 20px 20px;
+  color: #dbdbdb;
+  &.spec {
+    background: none;
+    border: none;
+    .lc_fc_body {
+      .lc_fc_title {
+        text-align: right;
+      }
+      .lc_fc_list_ctr {
+        justify-content: flex-end;
+        .fc_list_item {
+          text-align: right;
+          justify-content: flex-end;
         }
       }
     }
   }
+  .lc_fc_body {
+    margin-top: -20px;
+    .lc_fc_title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 28px;
+    }
+    .lc_fc_price {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ababab;
+      margin: 8px 0 30px;
+    }
+    .lc_fc_list_ctr {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .fc_list_item {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        height: 80px;
+        .fc_list_item_text {
+          display: -webkit-box;
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          left: 0;
+          transform: translateY(-50%);
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          height: 3px;
+          width: 90%;
+          bottom: -5px;
+
+          background: url(../../../public/images/final_card_line.png);
+        }
+        &:first-child {
+          padding-bottom: 15px;
+          padding-top: 0px;
+        }
+        &:last-child {
+          padding-bottom: 15px;
+          padding-top: 15px;
+          &::before {
+            background: none;
+          }
+        }
+        &:nth-child(even) {
+          color: #ababab;
+        }
+      }
+    }
+    .lc_fc_card_btn_ctr {
+      display: flex;
+      justify-content: center;
+      margin-top: 11px;
+      .lc_fc_card_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        background: #040404;
+        box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+        padding: 5px 11px;
+      }
+    }
+  }
+}
+
+.lc_fc_ctr.selected {
+  min-width: 240px;
+  width: 240px;
+  background: linear-gradient(
+    140deg,
+    rgba(217, 217, 217, 0.5) 31.46%,
+    rgba(255, 255, 255, 0.2) 55.76%,
+    rgba(217, 217, 217, 0.5) 69.76%,
+    rgba(255, 255, 255, 0.2) 86.99%,
+    rgba(255, 255, 255, 0.2) 93.75%,
+    rgba(217, 217, 217, 0.5) 99.15%
+  );
+  border: 2px solid #f31d1e;
 }
 
 @media (max-width: 768px) {
@@ -813,87 +822,92 @@
         font-size: 22px;
       }
     }
+  }
+  .lc_ctr {
+    background: rgba(24, 24, 24, 1);
 
-    .lc_ctr {
-      background: rgba(24, 24, 24, 1);
-
-      border: 2px solid #3f3f3f;
-      width: 100%;
-      animation: goUp 1s ease forwards;
-      border-radius: 20px 20px 0 0;
-      height: 85vh;
+    border: 2px solid #3f3f3f;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    height: 80vh;
+    position: fixed;
+    left: 0;
+    min-height: auto;
+    &.initial {
+      height: 80vh;
       position: fixed;
       left: 0;
-      min-height: auto;
-      &.inactive {
-        animation: goExtend 1s ease forwards;
-        .lc_wrapper {
-          opacity: 1;
-          transition: all 1s ease;
-        }
-      }
-      &.active {
-        .lc_wrapper {
-          opacity: 1;
-          transition: all 1s ease;
-        }
-      }
-
+      max-height: 80vh;
+      overflow-y: scroll;
+      bottom: auto;
+      animation: initialExtend 1s ease forwards;
       .lc_wrapper {
-        opacity: 0;
+        opacity: 1;
+        transition: all 1s ease;
+      }
+    }
+    &.inactive {
+      height: 80vh;
+      position: fixed;
+      left: 0;
+      max-height: 80vh;
+      overflow-y: scroll;
+      bottom: auto;
+      animation: goDown 1s ease forwards;
+      .lc_wrapper {
+        opacity: 1;
+        transition: all 1s ease;
+      }
+    }
+    &.active {
+      height: 80vh;
+      position: fixed;
+      left: 0;
+      max-height: 80vh;
+      overflow-y: scroll;
+      bottom: auto;
+      animation: goUp 1s ease forwards;
+      min-height: auto;
+      .lc_wrapper {
+        opacity: 1;
+        transition: all 1s ease;
+      }
+    }
 
-        .lc_filters {
-          background: #212121;
-          margin-bottom: 50px;
+    .lc_wrapper {
+      opacity: 0;
+
+      .lc_filters {
+        background: #212121;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #d1d1d1;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        padding: 25px 20px;
+        border-radius: 20px 20px 0 0;
+        position: sticky;
+        .lc_filters_txt {
+          font-size: 12px;
+        }
+        .lc_filters_btn_ctr {
           display: flex;
-          justify-content: space-between;
-          align-items: center;
-          color: #d1d1d1;
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 700;
-          line-height: normal;
-          padding: 25px 20px;
-          border-radius: 20px 20px 0 0;
-          position: static;
-          .lc_filters_txt {
-            font-size: 12px;
-          }
-          .lc_filters_btn_ctr {
-            display: flex;
-            width: 70%;
-            .lc_filters_btn {
-              width: 50%;
-              text-align: left;
-              position: relative;
-              &:disabled {
-                opacity: 0.5;
-                color: #3e3e3e;
-                cursor: not-allowed;
-              }
-              &.active {
-                &::before {
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  height: 0px;
-                  width: 90%;
-                  bottom: -5px;
-                  left: 0;
-                  border: 1.5px solid #f31d1e;
-                }
-              }
+          width: 70%;
+          .lc_filters_btn {
+            width: 50%;
+            text-align: left;
+            position: relative;
+            &:disabled {
+              opacity: 0.5;
+              color: #3e3e3e;
+              cursor: not-allowed;
+            }
+            &.active {
               &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                height: 0px;
-                width: 90%;
-                bottom: -5px;
-                left: 0;
-                border: 1.5px solid #3e3e3e;
-              }
-              &:hover::before {
                 content: '';
                 display: block;
                 position: absolute;
@@ -904,265 +918,285 @@
                 border: 1.5px solid #f31d1e;
               }
             }
-          }
-        }
-
-        .lc_card_ctr {
-          border-radius: 8.606px;
-          border: 2px solid #3f3f3f;
-          background: linear-gradient(
-            106deg,
-            rgba(217, 217, 217, 0.1) -0.44%,
-            rgba(255, 255, 255, 0.2) 33.17%,
-            rgba(217, 217, 217, 0.1) 52.52%,
-            rgba(217, 217, 217, 0.1) 76.34%,
-            rgba(255, 255, 255, 0.2) 85.69%,
-            rgba(217, 217, 217, 0.1) 93.15%
-          );
-          .lc_card_body {
-            margin-top: -40px;
-            padding: 0px 16px 10px;
-            color: #dbdbdb;
-            gap: 11px;
-            .lc_card_title {
-              font-size: 13px;
-              font-weight: 800;
-              line-height: 15px;
+            &::before {
+              content: '';
+              display: block;
+              position: absolute;
+              height: 0px;
+              width: 90%;
+              bottom: -5px;
+              left: 0;
+              border: 1.5px solid #3e3e3e;
             }
-            .lc_card_type {
-              font-size: 13px;
-              font-weight: 300;
-              padding: 11px 0;
-            }
-            .lc_card_price {
-              font-size: 9px;
-              font-weight: 700;
-            }
-            .lc_card_btn_ctr {
-              display: flex;
-              // justify-content: flex-end;
-              margin-top: 11px;
-              .lc_card_btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 20px;
-                background: #040404;
-                font-size: 11px;
-                box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
-                padding: 5px 11px;
-              }
+            &:hover::before {
+              content: '';
+              display: block;
+              position: absolute;
+              height: 0px;
+              width: 90%;
+              bottom: -5px;
+              left: 0;
+              border: 1.5px solid #f31d1e;
             }
           }
         }
+      }
 
-        .lc_fc_info_ctr {
-          display: none;
+      .lc_empty_ctr {
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .lc_empty_title {
+          position: relative;
+          text-align: center;
+          font-size: 20px;
+          span {
+            position: relative;
+            &::before {
+              content: '';
+              display: block;
+              position: absolute;
+              bottom: -30px;
+              right: -30px;
+              width: calc(80% - 30px);
+              height: 20px;
+              background: url('../../../public/images/mark_line_red.png')
+                no-repeat center / contain;
+            }
+          }
         }
-        .lc_fc_ctr {
-          min-width: 100%;
+        .lc_empty_reset {
+          margin-top: 20px;
+          color: #f31d1e;
+          cursor: pointer;
+          font-size: 16px;
+          border-radius: 10px;
+          padding: 2.5px 8px;
+          border: 1.5px solid #f31d1e;
+        }
+      }
+    }
+  }
+  .lc_card_ctr {
+    border-radius: 8.606px;
+    border: 2px solid #3f3f3f;
+    background: linear-gradient(
+      106deg,
+      rgba(217, 217, 217, 0.1) -0.44%,
+      rgba(255, 255, 255, 0.2) 33.17%,
+      rgba(217, 217, 217, 0.1) 52.52%,
+      rgba(217, 217, 217, 0.1) 76.34%,
+      rgba(255, 255, 255, 0.2) 85.69%,
+      rgba(217, 217, 217, 0.1) 93.15%
+    );
+    .lc_card_body {
+      margin-top: -40px;
+      padding: 0px 16px 10px;
+      color: #dbdbdb;
+      gap: 11px;
+      .lc_card_title {
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 15px;
+      }
+      .lc_card_type {
+        font-size: 13px;
+        font-weight: 300;
+        padding: 11px 0;
+      }
+      .lc_card_price {
+        font-size: 9px;
+        font-weight: 700;
+      }
+      .lc_card_btn_ctr {
+        display: flex;
+        // justify-content: flex-end;
+        margin-top: 11px;
+        .lc_card_btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 20px;
+          background: #040404;
+          font-size: 11px;
+          box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.25);
+          padding: 5px 11px;
+        }
+      }
+    }
+  }
+
+  .lc_fc_info_ctr {
+    display: none;
+  }
+  .lc_fc_ctr {
+    min-width: 100%;
+    width: 100%;
+    min-height: 500px;
+    border-radius: 8.606px;
+    border: 2px solid #3f3f3f;
+    background: linear-gradient(
+      140deg,
+      rgba(217, 217, 217, 0.2) 31.46%,
+      rgba(255, 255, 255, 0.1) 55.76%,
+      rgba(217, 217, 217, 0.2) 69.76%,
+      rgba(217, 217, 217, 0.2) 86.99%,
+      rgba(255, 255, 255, 0.1) 93.75%,
+      rgba(217, 217, 217, 0.2) 99.15%
+    );
+    padding: 0 10px 20px;
+    color: #dbdbdb;
+    &.carlist {
+      min-width: calc(50%);
+      width: 100%;
+      // max-width: calc(50%);
+    }
+    .lc_fc_body {
+      margin-top: -20px;
+      .lc_fc_title {
+        text-align: center;
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 16px;
+      }
+      .lc_fc_price {
+        text-align: center;
+        font-size: 9px;
+        font-weight: 700;
+        color: #ababab;
+        margin: 8px 0 30px;
+      }
+      .lc_fc_list_ctr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        .fc_list_ctr {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           width: 100%;
-          min-height: 500px;
-          border-radius: 8.606px;
-          border: 2px solid #3f3f3f;
-          background: linear-gradient(
-            140deg,
-            rgba(217, 217, 217, 0.2) 31.46%,
-            rgba(255, 255, 255, 0.1) 55.76%,
-            rgba(217, 217, 217, 0.2) 69.76%,
-            rgba(217, 217, 217, 0.2) 86.99%,
-            rgba(255, 255, 255, 0.1) 93.75%,
-            rgba(217, 217, 217, 0.2) 99.15%
-          );
-          padding: 0 10px 20px;
-          color: #dbdbdb;
-          &.carlist {
-            min-width: calc(50%);
+          color: #fff;
+          gap: 10px;
+          position: relative;
+          height: 50px;
+          &:nth-child(even) {
+            color: #ababab;
+          }
+          &:last-child {
+            &:before {
+              content: '';
+              display: block;
+              position: absolute;
+              height: 3px;
+              width: 100%;
+              bottom: -5px;
+              background: none;
+            }
+          }
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 3px;
             width: 100%;
-            // max-width: calc(50%);
-          }
-          .lc_fc_body {
-            margin-top: -20px;
-            .lc_fc_title {
-              text-align: center;
-              font-size: 15px;
-              font-weight: 800;
-              line-height: 16px;
-            }
-            .lc_fc_price {
-              text-align: center;
-              font-size: 9px;
-              font-weight: 700;
-              color: #ababab;
-              margin: 8px 0 30px;
-            }
-            .lc_fc_list_ctr {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              gap: 15px;
-              .fc_list_ctr {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                color: #fff;
-                gap: 10px;
-                position: relative;
-                height: 50px;
-                &:nth-child(even) {
-                  color: #ababab;
-                }
-                &:last-child {
-                  &:before {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    height: 3px;
-                    width: 100%;
-                    bottom: -5px;
-                    background: none;
-                  }
-                }
-                &:before {
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  height: 3px;
-                  width: 100%;
-                  bottom: -5px;
-                  background: url(../../../public/images/final_card_line.png);
-                }
-              }
-              .fc_list_spec {
-                font-size: 10px;
-                font-weight: 500;
-                text-align: left;
-                width: 100%;
-                position: relative;
-                display: flex;
-                justify-content: flex-start;
-                padding-bottom: 15px;
-                padding-top: 15px;
-                width: 30%;
-                .fc_list_spec_text {
-                  width: 100%;
-                  text-align: left;
-                  display: -webkit-box;
-                  -webkit-line-clamp: 1;
-                  -webkit-box-orient: vertical;
-                  overflow: hidden;
-                }
-              }
-              .fc_list_spec_item {
-                width: 70%;
-                position: relative;
-                .fc_list_spec_item_text {
-                  font-size: 12px;
-                  width: 100%;
-                  text-align: left;
-                  display: -webkit-box;
-                  -webkit-line-clamp: 2;
-                  -webkit-box-orient: vertical;
-                  overflow: hidden;
-                }
-              }
-              .fc_list_item {
-                color: #fff;
-                font-size: 12.5px;
-                font-weight: 500;
-                text-align: center;
-                width: 100%;
-                position: relative;
-                display: flex;
-                justify-content: center;
-                padding-bottom: 15px;
-                padding-top: 15px;
-                height: 50px;
-                &:before {
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  height: 3px;
-                  width: 90%;
-                  bottom: -5px;
-
-                  background: url(../../../public/images/final_card_line.png);
-                }
-                &:first-child {
-                  padding-bottom: 15px;
-                  padding-top: 0px;
-                }
-                &:last-child {
-                  padding-bottom: 15px;
-                  padding-top: 15px;
-                  &::before {
-                    background: none;
-                  }
-                }
-                &:nth-child(even) {
-                  color: #ababab;
-                }
-              }
-            }
+            bottom: -5px;
+            background: url(../../../public/images/final_card_line.png);
           }
         }
-
-        .lc_fc_ctr.selected {
-          min-width: 100%;
+        .fc_list_spec {
+          font-size: 10px;
+          font-weight: 500;
+          text-align: left;
           width: 100%;
-          position: sticky;
-          top: 80px;
-          background: linear-gradient(
-            140deg,
-            rgba(217, 217, 217, 0.5) 31.46%,
-            rgba(255, 255, 255, 0.2) 55.76%,
-            rgba(217, 217, 217, 0.5) 69.76%,
-            rgba(255, 255, 255, 0.2) 86.99%,
-            rgba(255, 255, 255, 0.2) 93.75%,
-            rgba(217, 217, 217, 0.5) 99.15%
-          );
-          border: 2px solid #f31d1e;
+          position: relative;
+          display: flex;
+          justify-content: flex-start;
+          padding-bottom: 15px;
+          padding-top: 15px;
+          width: 30%;
+          .fc_list_spec_text {
+            width: 100%;
+            text-align: left;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
         }
-        .lc_empty_ctr {
+        .fc_list_spec_item {
+          width: 70%;
+          position: relative;
+          .fc_list_spec_item_text {
+            font-size: 12px;
+            width: 100%;
+            text-align: left;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        }
+        .fc_list_item {
+          color: #fff;
+          font-size: 12.5px;
+          font-weight: 500;
+          text-align: center;
           width: 100%;
-          height: 70vh;
+          position: relative;
           display: flex;
           justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          .lc_empty_title {
-            position: relative;
-            text-align: center;
-            font-size: 20px;
-            span {
-              position: relative;
-              &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                bottom: -30px;
-                right: -30px;
-                width: calc(80% - 30px);
-                height: 20px;
-                background: url('../../../public/images/mark_line_red.png')
-                  no-repeat center / contain;
-              }
+          padding-bottom: 15px;
+          padding-top: 15px;
+          height: 50px;
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 90%;
+            bottom: -5px;
+
+            background: url(../../../public/images/final_card_line.png);
+          }
+          &:first-child {
+            padding-bottom: 15px;
+            padding-top: 0px;
+          }
+          &:last-child {
+            padding-bottom: 15px;
+            padding-top: 15px;
+            &::before {
+              background: none;
             }
           }
-          .lc_empty_reset {
-            margin-top: 20px;
-            color: #f31d1e;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 10px;
-            padding: 2.5px 8px;
-            border: 1.5px solid #f31d1e;
+          &:nth-child(even) {
+            color: #ababab;
           }
         }
       }
     }
+  }
+
+  .lc_fc_ctr.selected {
+    min-width: 100%;
+    width: 100%;
+    position: relative;
+    top: 0px;
+    background: linear-gradient(
+      140deg,
+      rgba(217, 217, 217, 0.5) 31.46%,
+      rgba(255, 255, 255, 0.2) 55.76%,
+      rgba(217, 217, 217, 0.5) 69.76%,
+      rgba(255, 255, 255, 0.2) 86.99%,
+      rgba(255, 255, 255, 0.2) 93.75%,
+      rgba(217, 217, 217, 0.5) 99.15%
+    );
+    border: 2px solid #f31d1e;
   }
 }
 
@@ -1175,7 +1209,7 @@
 
       // border-radius: 20px 20px 0 0;
       &.inactive {
-        animation: goExtend 1s ease forwards;
+        animation: goDown 1s ease forwards;
         .lc_wrapper {
           opacity: 1;
           transition: all 1s ease;

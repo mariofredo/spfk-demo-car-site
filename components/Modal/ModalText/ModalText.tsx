@@ -68,9 +68,7 @@ export const ModalText = ({
           <button
             className='mdl_btn_save'
             onClick={() => {
-              console.log(isValid, 'isvalid');
-              console.log('clicked');
-              // handleSendRecommendations();
+              handleSendRecommendations();
             }}
             disabled={!isValid}
           >
