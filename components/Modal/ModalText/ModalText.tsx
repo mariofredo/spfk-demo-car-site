@@ -95,7 +95,6 @@ export const ModalText = ({
                 onClick={() => {
                   setShowModalText(false);
                 }}
-                disabled={!isValid}
               >
                 Okay
               </button>
