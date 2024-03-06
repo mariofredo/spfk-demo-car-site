@@ -262,7 +262,6 @@
   transition: all 1s ease;
 }
 .lc_ctr .lc_wrapper .lc_filters {
-  margin-bottom: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -787,7 +786,6 @@
   .lc_ctr .lc_wrapper .lc_filters {
     border: 1px solid #3f3f3f;
     background: #212121;
-    margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;

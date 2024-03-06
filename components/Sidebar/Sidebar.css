@@ -282,4 +282,114 @@
   .sb_q_ctr .sb_btn_ctr .sb_btn_txt {
     font-size: 26px;
   }
+  .sb_answer_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sb_answer_list .sb_ac_ctr {
+    display: flex;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .sb_answer_list .sb_ac_ctr.appear {
+    transition: 1s ease-in-out;
+    opacity: 1;
+  }
+  .sb_answer_list .sb_ac_ctr.expand {
+    overflow: hidden;
+    transition: 2s ease-in-out;
+    max-height: 800px;
+  }
+  .sb_answer_list .sb_ac_ctr.not_expand {
+    transition: 2s ease-in-out;
+    max-height: 50px;
+  }
+  .sb_answer_list .sb_ac_ctr .left {
+    width: 20%;
+    background: #f31d1e;
+    border-radius: 10px 0px 0px 10px;
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sb_answer_list .sb_ac_ctr .right {
+    width: 80%;
+    background: #3e3e3e;
+    border-radius: 0px 10px 10px 0px;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .sb_answer_list .sb_ac_ctr .right .selected_option {
+    width: 100%;
+    height: 100%;
+    font-family: "Manrope-SemiBold";
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .sb_answer_list .sb_ac_ctr .right .sb_ac_q {
+    color: #8f8f8f;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .sb_answer_list .sb_ac_ctr .right .list_option {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .sb_answer_list .sb_ac_ctr .right .list_option input[type=radio] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .sb_answer_list .sb_ac_ctr .right .list_option input[type=radio]:checked + label::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    border: 2px solid #f31d1e;
+    border-radius: 50%;
+    background: #f31d1e;
+    z-index: 1;
+  }
+  .sb_answer_list .sb_ac_ctr .right .list_option label {
+    position: relative;
+    left: 30px;
+    width: calc(100% - 30px);
+    display: block;
+  }
+  .sb_answer_list .sb_ac_ctr .right .list_option label::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    border: 2px solid #f31d1e;
+    border-radius: 50%;
+    background: #3e3e3e;
+    z-index: 1;
+  }
+  .sb_answer_list .sb_ac_ctr .right .active {
+    height: auto;
+  }
+  .sb_answer_list .sb_ac_ctr .right .inactive {
+    overflow: hidden;
+  }
 }/*# sourceMappingURL=Sidebar.css.map */

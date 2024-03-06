@@ -15,3 +15,4 @@ export {default as DownloadCircle} from './download_circle.png';
 export {default as CloseIcon} from './close_icon.png';
 export {default as Loading} from './loading_bar.gif';
 export {default as ArrowTopLC} from './arrow_top_lc.png';
+export {default as ArrowBotLC} from './arrow_bot_lc.png';

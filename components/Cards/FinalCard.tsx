@@ -75,7 +75,9 @@ export const FinalCard = ({
             </>
           )}
         </div>
-        <div className='lc_fc_price'>{formatRupiah(data.price)}</div>
+        <div className='lc_fc_price'>
+          {isNaN(data.price) ? data.price : formatRupiah(data.price)}
+        </div>
         <div className='lc_fc_list_ctr'>
           {data.specs.map((item) =>
             width < 768 && selected ? (

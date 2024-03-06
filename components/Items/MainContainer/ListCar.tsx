@@ -2,7 +2,7 @@
 import {Card, FinalCard} from '@/components';
 import {useScreen} from '@/context';
 import {useCar} from '@/context/carContext';
-import {ArrowTopLC, Loading} from '@/public/images';
+import {ArrowBotLC, ArrowTopLC, Loading} from '@/public/images';
 import {Car, SelectedCarItem} from '@/types';
 import Image from 'next/image';
 import {useRouter} from 'next/navigation';
@@ -82,6 +82,7 @@ export const ListCar = ({
   const handleAnimation = useCallback(
     (width: number, step: number, goUp: boolean, initial: boolean) => {
       if (width < 769) {
+        console.log(goUp, 'goUp', initial, 'initial');
         if (step === 1 && initial) {
           return 'initial';
         } else if (step === 1 && !goUp) return 'active';
@@ -93,11 +94,13 @@ export const ListCar = ({
         else return 'inactive';
       }
     },
-    [width, step, goUp, initial]
+    [width, step, goUp, initial, finish]
   );
   useEffect(() => {
     if (finish) {
       setGoUp(false);
+      setInitial(false);
+      console.log(finish, 'finish');
     }
   }, [finish]);
   return (
@@ -105,7 +108,7 @@ export const ListCar = ({
       <div className='relative'>
         {width < 769 && (
           <Image
-            src={ArrowTopLC}
+            src={goUp ? ArrowTopLC : ArrowBotLC}
             className='absolute top-[-25px] left-[50%] translate-x-[-50%] z-[10] w-[80px]'
             alt='arrot_top_lc'
             onClick={() => {
@@ -149,7 +152,7 @@ export const ListCar = ({
             cars.length > 0 ? (
               finish ? (
                 <div
-                  className={`grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-2 max-[480px]:gap-[25px] min-[481px]:gap-[40px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px]`}
+                  className={`grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-2 max-[480px]:gap-[25px] min-[481px]:gap-[40px] max-[480px]:px-[20px] min-[481px]:px-[50px] pt-[40px] pb-[80px]`}
                 >
                   {cars.map(
                     ({
@@ -181,7 +184,7 @@ export const ListCar = ({
                   )}
                 </div>
               ) : (
-                <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[40px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px] '>
+                <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[40px] max-[480px]:px-[20px] min-[481px]:px-[50px] pt-[40px] pb-[80px] '>
                   {cars.map(
                     ({
                       brand_name,
@@ -234,7 +237,7 @@ export const ListCar = ({
           ) : (
             <>
               {selectedCar ? (
-                <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[20px] min-[769px]:gap-[10px] max-[480px]:px-[20px] min-[481px]:px-[50px] py-[20px] '>
+                <div className='grid max-[480px]:grid-cols-2 max-[769px]:grid-cols-2 min-[769px]:grid-cols-3 max-[480px]:gap-[25px] min-[481px]:gap-[20px] min-[769px]:gap-[10px] max-[480px]:px-[20px] min-[481px]:px-[50px] pt-[40px] pb-[80px]'>
                   <div className='py-[30px] lc_fc_info_ctr'>
                     <div className='lc_fc_ctr spec'>
                       <div className='lc_fc_body pt-[138px]'>
