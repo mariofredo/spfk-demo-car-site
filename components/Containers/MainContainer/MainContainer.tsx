@@ -1,6 +1,6 @@
 'use client';
 import {SetStateAction, useCallback, useEffect, useState} from 'react';
-import {Mitsubishi} from '@/public/images';
+import {ArrowTopLC, Mitsubishi} from '@/public/images';
 import Image from 'next/image';
 import {
   DreamCar,
@@ -12,6 +12,7 @@ import {
 } from '@/components';
 import {useCar} from '@/context/carContext';
 import './MainContainer.css';
+import {useScreen} from '@/context';
 
 export const MainContainer = () => {
   const [step, setStep] = useState(0);
@@ -40,6 +41,7 @@ export const MainContainer = () => {
     question,
     setQuestion,
   } = useCar();
+  const {width} = useScreen();
   const handleReset = useCallback(async () => {
     await setIsSubmitFirstStep(false);
     setStep(0);

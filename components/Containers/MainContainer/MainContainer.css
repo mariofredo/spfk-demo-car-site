@@ -260,7 +260,6 @@
 .lc_ctr .lc_wrapper {
   opacity: 0;
   transition: all 1s ease;
-  min-height: 60px;
 }
 .lc_ctr .lc_wrapper .lc_filters {
   margin-bottom: 50px;
@@ -747,7 +746,6 @@
     position: fixed;
     left: 0;
     max-height: 80vh;
-    overflow-y: scroll;
     bottom: auto;
     animation: initialExtend 1s ease forwards;
   }
@@ -760,7 +758,6 @@
     position: fixed;
     left: 0;
     max-height: 80vh;
-    overflow-y: scroll;
     bottom: auto;
     animation: goDown 1s ease forwards;
   }
@@ -773,7 +770,6 @@
     position: fixed;
     left: 0;
     max-height: 80vh;
-    overflow-y: scroll;
     bottom: auto;
     animation: goUp 1s ease forwards;
     min-height: auto;
@@ -784,8 +780,12 @@
   }
   .lc_ctr .lc_wrapper {
     opacity: 0;
+    max-height: 80vh;
+    overflow-y: scroll;
+    border-radius: 20px 20px 0 0;
   }
   .lc_ctr .lc_wrapper .lc_filters {
+    border: 1px solid #3f3f3f;
     background: #212121;
     margin-bottom: 50px;
     display: flex;
