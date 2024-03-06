@@ -84,6 +84,31 @@ export const CompareMobile = ({
               setShowModalCompare={setShowModalCompare}
             />
           ))}
+          <div className='opacity-0 relative flex flex-col gap-[20px]'>
+            <p className='why_text '>
+              Why <span>{recommendation.category_level_1_name}?</span>
+            </p>
+            <ul className='list-outside list-disc pl-[20px]'>
+              {answeredQuestion.map((data) => (
+                <li key={data.id}>{data.tag}</li>
+              ))}
+            </ul>
+            <div className='static'>
+              <button
+                className='mdl_fc_card_btn'
+                // onClick={() => {
+                //   setShowModalText(true);
+                // }}
+              >
+                Save the result
+                <Image
+                  className='ml-[15px] max-[480px]:w-[15px] max-[480px]:h-[15px]  min-[481px]:w-[20px] min-[481px]:h-[20px]'
+                  src={DownloadCircle}
+                  alt='DownloadCircle'
+                />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>
