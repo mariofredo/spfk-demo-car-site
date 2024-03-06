@@ -37,7 +37,7 @@ export const CompareMobile = ({
           </button>
         </div>
       </div>
-      <div className='w-full grid grid-cols-2 pt-[40px]'>
+      <div className='w-full grid grid-cols-2 pt-[40px] pb-[90px]'>
         <div className='col-span-1 pl-[20px] py-[20px] pr-[10px]'>
           <div className='sticky top-[125px]'>
             <FinalCard
