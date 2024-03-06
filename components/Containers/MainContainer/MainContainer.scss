@@ -822,6 +822,23 @@
       }
     }
   }
+  .arrow_btn {
+    background: linear-gradient(0deg, #181818, #181818),
+      linear-gradient(
+        155.28deg,
+        rgba(217, 217, 217, 0.15) -2.33%,
+        rgba(217, 217, 217, 0) 14.2%,
+        rgba(217, 217, 217, 0.15) 36.41%,
+        rgba(217, 217, 217, 0.15) 52.42%,
+        rgba(217, 217, 217, 0) 71.53%,
+        rgba(217, 217, 217, 0.15) 87.03%,
+        rgba(255, 255, 255, 0) 100.97%
+      );
+
+    padding: 7.5px 20px;
+    border: 2px solid #3f3f3f;
+    border-radius: 20px 20px 0 0;
+  }
   .lc_ctr {
     background: rgba(24, 24, 24, 1);
 

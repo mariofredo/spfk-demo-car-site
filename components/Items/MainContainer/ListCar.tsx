@@ -107,15 +107,17 @@ export const ListCar = ({
     <div className={`lc_ctr ${handleAnimation(width, step, goUp, initial)}`}>
       <div className='relative'>
         {width < 769 && (
-          <Image
-            src={goUp ? ArrowTopLC : ArrowBotLC}
-            className='absolute top-[-25px] left-[50%] translate-x-[-50%] z-[10] w-[80px]'
-            alt='arrot_top_lc'
-            onClick={() => {
-              if (initial) setInitial(false);
-              setGoUp(!goUp);
-            }}
-          />
+          <div className='absolute top-[-28px] left-[50%] translate-x-[-50%] w-[100px] arrow_btn'>
+            <Image
+              src={goUp ? ArrowTopLC : ArrowBotLC}
+              className=''
+              alt='arrot_top_lc'
+              onClick={() => {
+                if (initial) setInitial(false);
+                setGoUp(!goUp);
+              }}
+            />
+          </div>
         )}
         <div className='lc_wrapper'>
           <div
