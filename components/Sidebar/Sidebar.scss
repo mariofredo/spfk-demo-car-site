@@ -256,12 +256,11 @@ $breakpoint-md: 1024px;
       width: 100%;
       border-radius: 30px;
       color: #fff;
-      font-size: 36px;
+      font-size: 24px;
       font-family: 'Manrope-ExtraLight';
       cursor: pointer;
       display: flex;
       position: relative;
-
       &::before {
         content: '';
         display: block;
